@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-references/hyperdataset/singleframe" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">SingleFrame | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/references/hyperdataset/singleframe"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="SingleFrame | Klique"><meta data-rh="true" name="description" content="class dataframe.SingleFrame(id=None, source=None, width=None, height=None, timestamp=None, size=None, hash=None, previewuri=None, previewuritimestamp=None, metadata=None, annotations=None, masksource=None, context_id=None)"><meta data-rh="true" property="og:description" content="class dataframe.SingleFrame(id=None, source=None, width=None, height=None, timestamp=None, size=None, hash=None, previewuri=None, previewuritimestamp=None, metadata=None, annotations=None, masksource=None, context_id=None)"><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/references/hyperdataset/singleframe"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/hyperdataset/singleframe" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/hyperdataset/singleframe" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.f77cf0be.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.858c83d9.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Expand sidebar category &#x27;WebApp&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Collapse sidebar category &#x27;References&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/clearml_sdk"><span title="ClearML SDK" class="linkLabel_WmDU">ClearML SDK</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Legacy allegroai SDK" class="categoryLinkLabel_W154">Legacy allegroai SDK</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Dataset" class="linkLabel_WmDU">Dataset</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/hyperdatasetversion"><span title="DatasetVersion" class="linkLabel_WmDU">DatasetVersion</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/references/hyperdataset/singleframe"><span title="SingleFrame" class="linkLabel_WmDU">SingleFrame</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/framegroup"><span title="FrameGroup" class="linkLabel_WmDU">FrameGroup</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/annotation"><span title="Annotation" class="linkLabel_WmDU">Annotation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/dataview"><span title="DataView" class="linkLabel_WmDU">DataView</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/configs/client_configuration"><span title="Client Configuration" class="linkLabel_WmDU">Client Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/orchestrator"><span title="Klique Orchestrator" class="linkLabel_WmDU">Klique Orchestrator</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/mcp_server/overview"><span title="MCP Server" class="categoryLinkLabel_W154">MCP Server</span></a><button aria-label="Expand sidebar category &#x27;MCP Server&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/api/"><span title="Server API" class="categoryLinkLabel_W154">Server API</span></a><button aria-label="Expand sidebar category &#x27;Server API&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>SingleFrame</h1></header><h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframesingleframeidnone-sourcenone-widthnone-heightnone-timestampnone-sizenone-hashnone-preview_urinone-preview_uri_timestampnone-metadatanone-annotationsnone-mask_sourcenone-context_idnone"><em>class</em> dataframe.SingleFrame(id=None, source=None, width=None, height=None, timestamp=None, size=None, hash=None, preview_uri=None, preview_uri_timestamp=None, metadata=None, annotations=None, mask_source=None, context_id=None)<a href="#class-dataframesingleframeidnone-sourcenone-widthnone-heightnone-timestampnone-sizenone-hashnone-preview_urinone-preview_uri_timestampnone-metadatanone-annotationsnone-mask_sourcenone-context_idnone" class="hash-link" aria-label="Direct link to class-dataframesingleframeidnone-sourcenone-widthnone-heightnone-timestampnone-sizenone-hashnone-preview_urinone-preview_uri_timestampnone-metadatanone-annotationsnone-mask_sourcenone-context_idnone" title="Direct link to class-dataframesingleframeidnone-sourcenone-widthnone-heightnone-timestampnone-sizenone-hashnone-preview_urinone-preview_uri_timestampnone-metadatanone-annotationsnone-mask_sourcenone-context_idnone" translate="no">​</a></h2>
+<p>Single frame object, representing a single file with meta-data attached</p>
+<p>Create an empty SingleFrame and fill in the field from **kwargs</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>id</strong>  (<em>str</em> ) – UUID representing the frame in the entire system.
+UUID (A-z,0-9), If int/float automatically convert to string
+If None, a unique identifier will be created based on the source URI
+If source is not available, a randomly generated UUID will be used</p>
+</li>
+<li class="">
+<p><strong>source</strong>  (<em>str</em> ) – URI link to the source file of the data frame.
+(if local file, <a href="file://" target="_blank" rel="noopener noreferrer" class="">file://</a> prefix will be added automatically)</p>
+</li>
+<li class="">
+<p><strong>width</strong>  (<em>int</em> ) – Width (integer) of the data frame. None if not applicable</p>
+</li>
+<li class="">
+<p><strong>height</strong>  (<em>int</em> ) – Height (integer) of the data frame. None if not applicable</p>
+</li>
+<li class="">
+<p><strong>timestamp</strong>  (<em>int</em> ) – Timestamp (integer) of the data frame. Zero/None if not applicable</p>
+</li>
+<li class="">
+<p><strong>size</strong>  (<em>int</em> ) – Size (integer) in bytes of source file. None if not applicable</p>
+</li>
+<li class="">
+<p><strong>hash</strong>  (<em>str</em> ) – Hash (string) of source file content. None if not applicable</p>
+</li>
+<li class="">
+<p><strong>preview_uri</strong>  (<em>str</em> ) – URI link to a visualization preview of the data frame.
+Usually browser supported format, server from a supported source, can also be direct file link.</p>
+</li>
+<li class="">
+<p><strong>preview_uri_timestamp</strong>  (<em>int</em> ) – Timestamp (or index) (integer) valid for the URI
+link to a visualization preview of the data frame. (see also preview_uri)</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>dict</em> ) – General purpose dictionary (dict) stored alongside the data frame. Dict must be json-able.</p>
+</li>
+<li class="">
+<p><strong>annotations</strong>  (<em>list</em> ) – List of annotations (Annotation object) applicable for this data frame.</p>
+</li>
+<li class="">
+<p><strong>mask_source</strong>  (<em>str</em> ) – URI link (str) to a mask file for this data frame. None if not applicable</p>
+</li>
+<li class="">
+<p><strong>context_id</strong>  (<em>str</em> ) – Context ID. Used for default frames aggregation. If not set then it is filled from
+the uri of the first source.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="preview_uri">preview_uri<a href="#preview_uri" class="hash-link" aria-label="Direct link to preview_uri" title="Direct link to preview_uri" translate="no">​</a></h3>
+<p><strong>property preview_uri</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Interchangeable with preview_source,
+URI link to a visualization preview of the data frame. (see also preview_uri_timestamp)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="preview_uri_timestamp">preview_uri_timestamp<a href="#preview_uri_timestamp" class="hash-link" aria-label="Direct link to preview_uri_timestamp" title="Direct link to preview_uri_timestamp" translate="no">​</a></h3>
+<p><strong>property preview_uri_timestamp</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>int</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Interchangeable with preview_source_timestamp,
+Timestamp (or index) (integer) valid for the URI link to a visualization preview of the data frame.
+(see also preview_uri)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="mask_source">mask_source<a href="#mask_source" class="hash-link" aria-label="Direct link to mask_source" title="Direct link to mask_source" translate="no">​</a></h3>
+<p><strong>property mask_source</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>URI link (str) to a mask file for this data frame. None if not applicable</p>
+</li>
+</ul>
+<p>If multiple masks are registered, always return the first in the list</p>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="masks_source">masks_source<a href="#masks_source" class="hash-link" aria-label="Direct link to masks_source" title="Direct link to masks_source" translate="no">​</a></h3>
+<p><strong>property masks_source</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Dict</code>[<code>str</code>, <code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Dict of Mask IDS (e.g. “00”, “01” etc.) to URI links (str) to mask files for this data frame.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="origin">origin<a href="#origin" class="hash-link" aria-label="Direct link to origin" title="Direct link to origin" translate="no">​</a></h3>
+<p><strong>property origin</strong></p>
+<p>Returns the frame’s owner dataset/version information (Dataset is a collection of Versions),
+including Dataset ID, Dataset Name, Version ID and Version Name.
+Note: This is an auto-generated read-only property.</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Dict</code>[<code>str</code>, <code>str</code>]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="dataset_version_metadata">dataset_version_metadata<a href="#dataset_version_metadata" class="hash-link" aria-label="Direct link to dataset_version_metadata" title="Direct link to dataset_version_metadata" translate="no">​</a></h3>
+<p><strong>property dataset_version_metadata</strong></p>
+<p>Returns the frame’s owner dataset version meta-data (Read-Only).</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>dict</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>dict</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="blob">blob<a href="#blob" class="hash-link" aria-label="Direct link to blob" title="Direct link to blob" translate="no">​</a></h3>
+<p><strong>property blob</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Non-Indexed data (string) stored alongside the frame</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="sourcedata">sourcedata<a href="#sourcedata" class="hash-link" aria-label="Direct link to sourcedata" title="Direct link to sourcedata" translate="no">​</a></h3>
+<p><strong>property sourcedata</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>dict</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>General purpose dictionary stored alongside the data frame.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="add_annotation">add_annotation<a href="#add_annotation" class="hash-link" aria-label="Direct link to add_annotation" title="Direct link to add_annotation" translate="no">​</a></h3>
+<p><strong>add_annotation(poly2d_xy=None, poly3d_xyz=None, points2d_xy=None, points3d_xyz=None, box2d_xywh=None, box3d_xyzwhxyzwh=None, ellipse2d_xyrrt=None, mask_rgb=None, frame_class=None, id=None, labels=None, confidence=None, metadata=None, **kwargs)</strong></p>
+<p>Creates an annotation instance based on the provided arguments
+and adds it to the single frame’s annotations list.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case more than one of:
+poly2d_xy / poly3d_xyz / points2d_xy / points3d_xyz / box2d_xywh / box3d_xyzwhxyzwh /
+ellipse2d_xyrrt / mask_rgb
+are provided, an annotation instance will be created for each one. Created annotations will be associated
+by the provided id. If an ID is not provided, one will be automatically created.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>poly2d_xy</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – Floating points list (x,y) for single polygon,
+OR List of Floating points lists for complex polygon.</p>
+</li>
+<li class="">
+<p><strong>poly3d_xyz</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – Floating points list (x,y,z) for single polygon,
+OR List of Floating points lists for complex polygon.</p>
+</li>
+<li class="">
+<p><strong>points2d_xy</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – List of floating points pairs (x,y) for set of key-points,</p>
+</li>
+<li class="">
+<p><strong>points3d_xyz</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – List of floating points triplets (x,y,z) for set of key-points,</p>
+</li>
+<li class="">
+<p><strong>box2d_xywh</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – Bounding box, four or five floats for: X,Y,width,height, Optional(angle)</p>
+</li>
+<li class="">
+<p><strong>box3d_xyzwhxyzwh</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – Bounding box, four floats for: X,Y,width,height</p>
+</li>
+<li class="">
+<p><strong>ellipse2d_xyrrt</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – List of cx, cy, rx, ry, theta for the ellipse</p>
+</li>
+<li class="">
+<p><strong>mask_rgb</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – List of RGB (as [r, g, b]).</p>
+</li>
+<li class="">
+<p><strong>frame_class</strong>  (<code>Optional</code>[<code>Sequence</code>[<code>str</code>]]) – List of strings, frame level labels (classes).
+It is equivalent to passing <code>labels</code> without any specific annotation type.</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<code>Optional</code>[<code>str</code>]) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<code>Optional</code>[<code>Sequence</code>[<code>str</code>]]) – List of labels (string). If no specific annotation is passed (e.g. polygon, box, etc.)
+labels will be equivalent to frame_class annotations</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<code>Optional</code>[<code>float</code>]) – Labeling confidence (float). Optional</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<code>Optional</code>[<code>dict</code>]) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>kwargs</strong>  (<em>In case custom annotation classes are registered</em> *, * <em>you can use one of the registered
+annotation type name here to provide the values in order to create an instance of a custom annotation class.</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>List</code>[<a class="" href="/docs/latest/docs/references/hyperdataset/annotation#allegroai.dataframe.Annotation"><code>Annotation</code></a>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Annotation indexed list (int) containing a single value (in case a single instance was added) or
+multiple values (in case multiple instances were added)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="remove_annotation">remove_annotation<a href="#remove_annotation" class="hash-link" aria-label="Direct link to remove_annotation" title="Direct link to remove_annotation" translate="no">​</a></h3>
+<p><strong>remove_annotation(index=None, **kwargs)</strong></p>
+<p>Remove an annotation from the annotations list.
+Annotations to remove are selected based on index location in the
+annotation list.</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>index</strong>  (<code>Optional</code>[<code>int</code>]) – (int) index of annotation to remove</p>
+</li>
+<li class="">
+<p><strong>kwargs</strong>  (<em>Dict</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Union</code>[<a class="" href="/docs/latest/docs/references/hyperdataset/annotation#allegroai.dataframe.Annotation"><code>Annotation</code></a>, <code>None</code>, <code>Sequence</code>[<a class="" href="/docs/latest/docs/references/hyperdataset/annotation#allegroai.dataframe.Annotation"><code>Annotation</code></a>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>The removed annotation instance, or None</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="remove_annotations">remove_annotations<a href="#remove_annotations" class="hash-link" aria-label="Direct link to remove_annotations" title="Direct link to remove_annotations" translate="no">​</a></h3>
+<p><strong>remove_annotations(id=None, label=None, labels=None)</strong></p>
+<p>Remove one or more annotations from the annotations list.
+Annotations to remove are selected based on their ID and/or labels.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>Providing No arguments at all will remove All annotations</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>An annotation’s ID is NOT a system ID, but a user provided value.</p></div></div>
+<p>This means an annotation might have an ID value of None.</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>id</strong>  (<code>Optional</code>[<code>str</code>]) – alphanumeric user-provided ID of the annotations to be removed</p>
+</li>
+<li class="">
+<p><strong>label</strong>  (<code>Optional</code>[<code>str</code>]) – a string label. Any annotation whose labels include this label will be removed.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<code>Optional</code>[<code>Sequence</code>[<code>str</code>]]) – a list of string labels. Any annotation whose labels exactly match this list will be removed.</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<a class="" href="/docs/latest/docs/references/hyperdataset/annotation#allegroai.dataframe.Annotation"><code>Annotation</code></a>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>The removed annotation instances</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_annotations">get_annotations<a href="#get_annotations" class="hash-link" aria-label="Direct link to get_annotations" title="Direct link to get_annotations" translate="no">​</a></h3>
+<p><strong>get_annotations(id=None, index=None)</strong></p>
+<p>Retrieve annotation from the annotation list. Select annotation either based on index location in the
+annotation list, or based on annotation ID (that can be applied to a group of annotations with the same ID)</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>id</strong>  (<em>str</em> ) – alphanumeric ID of the annotations to be retrieved</p>
+</li>
+<li class="">
+<p><strong>index</strong>  (<em>int</em> ) – index of annotation to remove</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<a class="" href="/docs/latest/docs/references/hyperdataset/annotation#allegroai.dataframe.Annotation"><code>Annotation</code></a>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of Annotations</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="id">id<a href="#id" class="hash-link" aria-label="Direct link to id" title="Direct link to id" translate="no">​</a></h3>
+<p><strong>property id</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>UUID representing the frame in the entire system</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="source">source<a href="#source" class="hash-link" aria-label="Direct link to source" title="Direct link to source" translate="no">​</a></h3>
+<p><strong>property source</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>URI link to the source file of the data frame (if local file <a href="file://" target="_blank" rel="noopener noreferrer" class="">file://</a> is emitted from the source prefix)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="width">width<a href="#width" class="hash-link" aria-label="Direct link to width" title="Direct link to width" translate="no">​</a></h3>
+<p><strong>property width</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>int</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Width (integer) of the data frame. If not set, returns None</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="height">height<a href="#height" class="hash-link" aria-label="Direct link to height" title="Direct link to height" translate="no">​</a></h3>
+<p><strong>property height</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>int</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Height (integer) of the data frame. If not set, returns None</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="timestamp">timestamp<a href="#timestamp" class="hash-link" aria-label="Direct link to timestamp" title="Direct link to timestamp" translate="no">​</a></h3>
+<p><strong>property timestamp</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>int</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Data frame timestamp (int), or index. Zero (0) if not applicable</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="size">size<a href="#size" class="hash-link" aria-label="Direct link to size" title="Direct link to size" translate="no">​</a></h3>
+<p><strong>property size</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>int</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Size (integer) in bytes of source file.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="hash">hash<a href="#hash" class="hash-link" aria-label="Direct link to hash" title="Direct link to hash" translate="no">​</a></h3>
+<p><strong>property hash</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Hash (string) of source file content.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="preview_source">preview_source<a href="#preview_source" class="hash-link" aria-label="Direct link to preview_source" title="Direct link to preview_source" translate="no">​</a></h3>
+<p><strong>property preview_source</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>URI link to a visualization preview of the data frame. (see also preview_uri_timestamp)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="context_id">context_id<a href="#context_id" class="hash-link" aria-label="Direct link to context_id" title="Direct link to context_id" translate="no">​</a></h3>
+<p><strong>property context_id</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Context ID (string) of the data frame. If not set then it is filled from the source uri</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="preview_source_timestamp">preview_source_timestamp<a href="#preview_source_timestamp" class="hash-link" aria-label="Direct link to preview_source_timestamp" title="Direct link to preview_source_timestamp" translate="no">​</a></h3>
+<p><strong>property preview_source_timestamp</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>int</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Timestamp (or index) (integer) valid for the URI link to a visualization preview of the data frame.
+(see also preview_uri)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="metadata">metadata<a href="#metadata" class="hash-link" aria-label="Direct link to metadata" title="Direct link to metadata" translate="no">​</a></h3>
+<p><strong>property metadata</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>dict</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>General purpose dictionary stored alongside the data frame.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="annotations">annotations<a href="#annotations" class="hash-link" aria-label="Direct link to annotations" title="Direct link to annotations" translate="no">​</a></h3>
+<p><strong>property annotations</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>List</code>[<a class="" href="/docs/latest/docs/references/hyperdataset/annotation#allegroai.dataframe.Annotation"><code>Annotation</code></a>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>List of annotations (Annotation object) applicable for this data frame.
+Note that you can add directly to the list returned by this property.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="copy">copy<a href="#copy" class="hash-link" aria-label="Direct link to copy" title="Direct link to copy" translate="no">​</a></h3>
+<p><strong>copy()</strong></p>
+<p>Returns a copy of this SingleFrame, with a NEW RANDOM UUID.</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>SingleFrame</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>SingleFrame object</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_local_source">get_local_source<a href="#get_local_source" class="hash-link" aria-label="Direct link to get_local_source" title="Direct link to get_local_source" translate="no">​</a></h3>
+<p><strong>get_local_source(raise_on_error=False, skip_size_check=False, force_download=False)</strong></p>
+<p>Retrieve remote file and returns a link to a local file that can be used directly.</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>raise_on_error</strong>  (<code>bool</code>) – If True raise exception if accessing the file failed.
+If False (default) return None on error and print error to log.</p>
+</li>
+<li class="">
+<p><strong>skip_size_check</strong>  (<code>bool</code>) – If True will return also files size zero bytes.</p>
+</li>
+<li class="">
+<p><strong>force_download</strong>  (<code>bool</code>) – If True will ignore local cache and download the file.</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Full path to file (str)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_local_mask_source">get_local_mask_source<a href="#get_local_mask_source" class="hash-link" aria-label="Direct link to get_local_mask_source" title="Direct link to get_local_mask_source" translate="no">​</a></h3>
+<p><strong>get_local_mask_source(raise_on_error=False, mask_id=None, skip_size_check=False, force_download=False)</strong></p>
+<p>Retrieve remote mask file and returns a link to a local file that can be used directly.</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>raise_on_error</strong>  (<code>bool</code>) – If True raise exception if accessing the file failed.
+If False (default) return None on error and print error to log.</p>
+</li>
+<li class="">
+<p><strong>mask_id</strong>  (<code>Optional</code>[<code>str</code>]) – If provided return the specific mask_id local file copy.</p>
+</li>
+<li class="">
+<p><strong>skip_size_check</strong>  (<code>bool</code>) – If True will return also files size zero bytes.</p>
+</li>
+<li class="">
+<p><strong>force_download</strong>  (<code>bool</code>) – If True will ignore local cache and download the file.</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Full path to file (str)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_local_masks_source">get_local_masks_source<a href="#get_local_masks_source" class="hash-link" aria-label="Direct link to get_local_masks_source" title="Direct link to get_local_masks_source" translate="no">​</a></h3>
+<p><strong>get_local_masks_source(raise_on_error=False, skip_size_check=False, force_download=False)</strong></p>
+<p>Retrieve remote mask files and returns a list of links to a local file that can be used directly.</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>raise_on_error</strong>  (<code>bool</code>) – If True raise exception if accessing the file failed.
+If False (default) on error append None the list of local files and print error to log.</p>
+</li>
+<li class="">
+<p><strong>skip_size_check</strong>  (<code>bool</code>) – If True will return also files size zero bytes.</p>
+</li>
+<li class="">
+<p><strong>force_download</strong>  (<code>bool</code>) – If True will ignore local cache and download the file.</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Dict</code>[<code>str</code>, <code>Optional</code>[<code>str</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Dict of mask ID (i.e. “00”, “01” etc.) to full path to file (str)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_local_preview_source">get_local_preview_source<a href="#get_local_preview_source" class="hash-link" aria-label="Direct link to get_local_preview_source" title="Direct link to get_local_preview_source" translate="no">​</a></h3>
+<p><strong>get_local_preview_source(raise_on_error=False, skip_size_check=False, force_download=False)</strong></p>
+<p>Retrieve remote preview file and returns a link to a local file that can be used directly.</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>raise_on_error</strong>  (<code>bool</code>) – If True raise exception if accessing the file failed.
+If False (default) return None on error and print error to log.</p>
+</li>
+<li class="">
+<p><strong>skip_size_check</strong>  (<code>bool</code>) – If True will return also files size zero bytes.</p>
+</li>
+<li class="">
+<p><strong>force_download</strong>  (<code>bool</code>) – If True will ignore local cache and download the file.</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Full path to file (str)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="to_dict">to_dict<a href="#to_dict" class="hash-link" aria-label="Direct link to to_dict" title="Direct link to to_dict" translate="no">​</a></h3>
+<p><strong>to_dict()</strong></p>
+<p>Return REST API compliant dictionary</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>dict</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>API compliant dictionary for use directly with REST-API</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="singleframefrom_dict">SingleFrame.from_dict<a href="#singleframefrom_dict" class="hash-link" aria-label="Direct link to SingleFrame.from_dict" title="Direct link to SingleFrame.from_dict" translate="no">​</a></h3>
+<p><strong><em>classmethod</em> from_dict(singleframe_dict)</strong></p>
+<p>Build a SingleFrame from REST API compliant dictionary</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<p><strong>singleframe_dict</strong>  (<em>dict</em> ) – a dictionary returned from SingleFrame.to_dict()</p>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Union[<a class="" href="/docs/latest/docs/references/hyperdataset/framegroup#allegroai.dataframe.FrameGroup">FrameGroup</a>, SingleFrame]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>FrameGroup object built from REST API dictionary</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="update_source_files_hash">update_source_files_hash<a href="#update_source_files_hash" class="hash-link" aria-label="Direct link to update_source_files_hash" title="Direct link to update_source_files_hash" translate="no">​</a></h3>
+<p><strong>update_source_files_hash(allow_download=False)</strong></p>
+<p>Update internal source files hash (SHA2) values
+updates the self.sourcedata with:</p>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">self</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">sourcedata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;hash&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"> </span><span class="token operator">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;source&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> sha2_hash</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;mask_source&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain">sha2_hash</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;preview_source&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> sha2_hash</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></div></code></pre></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<p><strong>allow_download</strong>  (<em>bool</em> ) – if False(default) only calculate hash for local URL file,
+otherwise download and update the files content hash</p>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_source_hash">get_source_hash<a href="#get_source_hash" class="hash-link" aria-label="Direct link to get_source_hash" title="Direct link to get_source_hash" translate="no">​</a></h3>
+<p><strong>get_source_hash()</strong></p>
+<p>Return a dict of source hash.
+Example:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">  &#x27;source&#x27;</span><span class="token operator">:</span><span class="token plain"> sha2_hash</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">  &#x27;mask_source&#x27;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain">sha2_hash</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">  &#x27;preview_source&#x27;</span><span class="token operator">:</span><span class="token plain"> sha2_hash</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></div></code></pre></div></div>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Dict[str, (int, str)]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>dict</p>
+</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/references/hyperdataset/hyperdatasetversion"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">DatasetVersion</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/references/hyperdataset/framegroup"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">FrameGroup</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#class-dataframesingleframeidnone-sourcenone-widthnone-heightnone-timestampnone-sizenone-hashnone-preview_urinone-preview_uri_timestampnone-metadatanone-annotationsnone-mask_sourcenone-context_idnone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.SingleFrame(id=None, source=None, width=None, height=None, timestamp=None, size=None, hash=None, preview_uri=None, preview_uri_timestamp=None, metadata=None, annotations=None, mask_source=None, context_id=None)</a><ul><li><a href="#preview_uri" class="table-of-contents__link toc-highlight">preview_uri</a></li><li><a href="#preview_uri_timestamp" class="table-of-contents__link toc-highlight">preview_uri_timestamp</a></li><li><a href="#mask_source" class="table-of-contents__link toc-highlight">mask_source</a></li><li><a href="#masks_source" class="table-of-contents__link toc-highlight">masks_source</a></li><li><a href="#origin" class="table-of-contents__link toc-highlight">origin</a></li><li><a href="#dataset_version_metadata" class="table-of-contents__link toc-highlight">dataset_version_metadata</a></li><li><a href="#blob" class="table-of-contents__link toc-highlight">blob</a></li><li><a href="#sourcedata" class="table-of-contents__link toc-highlight">sourcedata</a></li><li><a href="#add_annotation" class="table-of-contents__link toc-highlight">add_annotation</a></li><li><a href="#remove_annotation" class="table-of-contents__link toc-highlight">remove_annotation</a></li><li><a href="#remove_annotations" class="table-of-contents__link toc-highlight">remove_annotations</a></li><li><a href="#get_annotations" class="table-of-contents__link toc-highlight">get_annotations</a></li><li><a href="#id" class="table-of-contents__link toc-highlight">id</a></li><li><a href="#source" class="table-of-contents__link toc-highlight">source</a></li><li><a href="#width" class="table-of-contents__link toc-highlight">width</a></li><li><a href="#height" class="table-of-contents__link toc-highlight">height</a></li><li><a href="#timestamp" class="table-of-contents__link toc-highlight">timestamp</a></li><li><a href="#size" class="table-of-contents__link toc-highlight">size</a></li><li><a href="#hash" class="table-of-contents__link toc-highlight">hash</a></li><li><a href="#preview_source" class="table-of-contents__link toc-highlight">preview_source</a></li><li><a href="#context_id" class="table-of-contents__link toc-highlight">context_id</a></li><li><a href="#preview_source_timestamp" class="table-of-contents__link toc-highlight">preview_source_timestamp</a></li><li><a href="#metadata" class="table-of-contents__link toc-highlight">metadata</a></li><li><a href="#annotations" class="table-of-contents__link toc-highlight">annotations</a></li><li><a href="#copy" class="table-of-contents__link toc-highlight">copy</a></li><li><a href="#get_local_source" class="table-of-contents__link toc-highlight">get_local_source</a></li><li><a href="#get_local_mask_source" class="table-of-contents__link toc-highlight">get_local_mask_source</a></li><li><a href="#get_local_masks_source" class="table-of-contents__link toc-highlight">get_local_masks_source</a></li><li><a href="#get_local_preview_source" class="table-of-contents__link toc-highlight">get_local_preview_source</a></li><li><a href="#to_dict" class="table-of-contents__link toc-highlight">to_dict</a></li><li><a href="#singleframefrom_dict" class="table-of-contents__link toc-highlight">SingleFrame.from_dict</a></li><li><a href="#update_source_files_hash" class="table-of-contents__link toc-highlight">update_source_files_hash</a></li><li><a href="#get_source_hash" class="table-of-contents__link toc-highlight">get_source_hash</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

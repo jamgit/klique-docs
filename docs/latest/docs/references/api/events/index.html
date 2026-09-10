@@ -1,0 +1,2940 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-references/api/events" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">events | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/references/api/events"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="events | Klique"><meta data-rh="true" name="description" content="POST /events.add"><meta data-rh="true" property="og:description" content="POST /events.add"><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/references/api/events"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/events" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/events" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.8cc3e11e.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.139c2e95.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Expand sidebar category &#x27;WebApp&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Collapse sidebar category &#x27;References&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/clearml_sdk"><span title="ClearML SDK" class="linkLabel_WmDU">ClearML SDK</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Legacy allegroai SDK" class="categoryLinkLabel_W154">Legacy allegroai SDK</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/configs/client_configuration"><span title="Client Configuration" class="linkLabel_WmDU">Client Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/orchestrator"><span title="Klique Orchestrator" class="linkLabel_WmDU">Klique Orchestrator</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/mcp_server/overview"><span title="MCP Server" class="categoryLinkLabel_W154">MCP Server</span></a><button aria-label="Expand sidebar category &#x27;MCP Server&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/latest/docs/references/api/"><span title="Server API" class="categoryLinkLabel_W154">Server API</span></a><button aria-label="Collapse sidebar category &#x27;Server API&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/definitions"><span title="API Definitions" class="linkLabel_WmDU">API Definitions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/apps"><span title="apps" class="linkLabel_WmDU">apps</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/auth"><span title="auth" class="linkLabel_WmDU">auth</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/datasets"><span title="datasets" class="linkLabel_WmDU">datasets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/debug"><span title="debug" class="linkLabel_WmDU">debug</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/references/api/events"><span title="events" class="linkLabel_WmDU">events</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/frames"><span title="frames" class="linkLabel_WmDU">frames</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/login"><span title="login" class="linkLabel_WmDU">login</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/models"><span title="models" class="linkLabel_WmDU">models</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/organization"><span title="organization" class="linkLabel_WmDU">organization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/permissions"><span title="permissions" class="linkLabel_WmDU">permissions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/pipelines"><span title="pipelines" class="linkLabel_WmDU">pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/projects"><span title="projects" class="linkLabel_WmDU">projects</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/queues"><span title="queues" class="linkLabel_WmDU">queues</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/reports"><span title="reports" class="linkLabel_WmDU">reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/resources"><span title="resources" class="linkLabel_WmDU">resources</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/routers"><span title="routers" class="linkLabel_WmDU">routers</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/server"><span title="server" class="linkLabel_WmDU">server</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/serving"><span title="serving" class="linkLabel_WmDU">serving</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/sso"><span title="sso" class="linkLabel_WmDU">sso</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/storage"><span title="storage" class="linkLabel_WmDU">storage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/system"><span title="system" class="linkLabel_WmDU">system</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tasks"><span title="tasks" class="linkLabel_WmDU">tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tenants"><span title="tenants" class="linkLabel_WmDU">tenants</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/users"><span title="users" class="linkLabel_WmDU">users</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/variables"><span title="variables" class="linkLabel_WmDU">variables</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/workers"><span title="workers" class="linkLabel_WmDU">workers</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>events</h1></header><p><a name="events-add" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsadd">POST /events.add<a href="#post-eventsadd" class="hash-link" aria-label="Direct link to POST /events.add" title="Direct link to POST /events.add" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description">Description<a href="#description" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Adds a single event</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-add-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-add-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_locked</strong>  <br><em>optional</em></td><td>Allow adding events to published tasks or models  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>model_event</strong>  <br><em>optional</em></td><td>If set then the event is for a model. Otherwise for a task. Cannot be used with  <br>task log events. If used in batch then all the events should be marked the same  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses">Responses<a href="#responses" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-add_batch" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsadd_batch">POST /events.add_batch<a href="#post-eventsadd_batch" class="hash-link" aria-label="Direct link to POST /events.add_batch" title="Direct link to POST /events.add_batch" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-1">Description<a href="#description-1" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Adds a batch of events in a single call (json-lines format, stream-friendly)</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>requests</strong>  <br><em>required</em></td><td>Json encoded newline-terminated lines, each representing an event in the batch and uses the same parameters used for events.add</td><td>&lt; object &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-1">Responses<a href="#responses-1" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-add_batch-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-add_batch-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>added</strong>  <br><em>optional</em></td><td>integer</td></tr><tr><td><strong>errors</strong>  <br><em>optional</em></td><td>integer</td></tr><tr><td><strong>errors_info</strong>  <br><em>optional</em></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-1">Security<a href="#security-1" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-clear_scroll" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsclear_scroll">POST /events.clear_scroll<a href="#post-eventsclear_scroll" class="hash-link" aria-label="Direct link to POST /events.clear_scroll" title="Direct link to POST /events.clear_scroll" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-2">Description<a href="#description-2" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Clear an open Scroll ID</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-clear_scroll-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-clear_scroll-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>scroll_id</strong>  <br><em>required</em></td><td>Scroll ID as returned by previous events service calls</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-2">Responses<a href="#responses-2" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-2">Security<a href="#security-2" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-clear_task_log" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsclear_task_log">POST /events.clear_task_log<a href="#post-eventsclear_task_log" class="hash-link" aria-label="Direct link to POST /events.clear_task_log" title="Direct link to POST /events.clear_task_log" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-3">Description<a href="#description-3" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Remove old logs from task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-3">Parameters<a href="#parameters-3" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-clear_task_log-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-clear_task_log-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_locked</strong>  <br><em>optional</em></td><td>Allow deleting events even if the task is locked  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>exclude_metrics</strong>  <br><em>optional</em></td><td>If passed then events for these metrics are retained</td><td>&lt; string &gt; array</td></tr><tr><td><strong>include_metrics</strong>  <br><em>optional</em></td><td>If passed then only events for these metrics are deleted</td><td>&lt; string &gt; array</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr><tr><td><strong>threshold_sec</strong>  <br><em>optional</em></td><td>The amount of seconds ago to retain the log records. The older log records will  <br>be deleted. If not passed or 0 then all the log records for the task will be  <br>deleted</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-3">Responses<a href="#responses-3" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-clear_task_log-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-clear_task_log-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>deleted</strong>  <br><em>optional</em></td><td>The number of deleted log records</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-3">Security<a href="#security-3" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-debug_images" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsdebug_images">POST /events.debug_images<a href="#post-eventsdebug_images" class="hash-link" aria-label="Direct link to POST /events.debug_images" title="Direct link to POST /events.debug_images" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-4">Description<a href="#description-4" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get the debug image events for the requested amount of iterations per each task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-debug_images-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-debug_images-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>iters</strong>  <br><em>optional</em></td><td>Max number of latest iterations for which to return debug images</td><td>integer</td></tr><tr><td><strong>metrics</strong>  <br><em>required</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventstask_metric_variants">events.task_metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>navigate_earlier</strong>  <br><em>optional</em></td><td>If set then events are retreived from latest iterations to earliest ones.  <br>Otherwise from earliest iterations to the latest. The default is True</td><td>boolean</td></tr><tr><td><strong>refresh</strong>  <br><em>optional</em></td><td>If set then scroll will be moved to the latest iterations. The default is False</td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID of previous call (used for getting more results)</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-4">Responses<a href="#responses-4" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsdebug_images_response">events.debug_images_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-4">Security<a href="#security-4" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-delete_for_model" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsdelete_for_model">POST /events.delete_for_model<a href="#post-eventsdelete_for_model" class="hash-link" aria-label="Direct link to POST /events.delete_for_model" title="Direct link to POST /events.delete_for_model" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-5">Description<a href="#description-5" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Delete all model events. <em>This cannot be undone!</em></p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-5">Parameters<a href="#parameters-5" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-delete_for_model-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-delete_for_model-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_locked</strong>  <br><em>optional</em></td><td>Allow deleting events even if the model is locked  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>model</strong>  <br><em>required</em></td><td>Model ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-5">Responses<a href="#responses-5" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-delete_for_model-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-delete_for_model-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>deleted</strong>  <br><em>optional</em></td><td>Number of deleted events</td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-5">Security<a href="#security-5" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-delete_for_task" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsdelete_for_task">POST /events.delete_for_task<a href="#post-eventsdelete_for_task" class="hash-link" aria-label="Direct link to POST /events.delete_for_task" title="Direct link to POST /events.delete_for_task" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-6">Description<a href="#description-6" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Delete all task events. <em>This cannot be undone!</em></p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-6">Parameters<a href="#parameters-6" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-delete_for_task-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-delete_for_task-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_locked</strong>  <br><em>optional</em></td><td>Allow deleting events even if the task is locked  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-6">Responses<a href="#responses-6" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-delete_for_task-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-delete_for_task-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>deleted</strong>  <br><em>optional</em></td><td>Number of deleted events</td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-6">Security<a href="#security-6" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-download_task_log" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsdownload_task_log">POST /events.download_task_log<a href="#post-eventsdownload_task_log" class="hash-link" aria-label="Direct link to POST /events.download_task_log" title="Direct link to POST /events.download_task_log" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-7">Description<a href="#description-7" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get an attachment containing the task&#x27;s log</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-7">Parameters<a href="#parameters-7" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-download_task_log-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-download_task_log-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>line_format</strong>  <br><em>optional</em></td><td>Line string format. Used if the line type is &#x27;text&#x27;  <br><strong>Default</strong> : <code>&quot;{asctime} {worker} {level} {msg}&quot;</code></td><td>string</td></tr><tr><td><strong>line_type</strong>  <br><em>optional</em></td><td>Line format type</td><td>enum (json, text)</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-7">Responses<a href="#responses-7" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-7">Security<a href="#security-7" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_debug_image_sample" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_debug_image_sample">POST /events.get_debug_image_sample<a href="#post-eventsget_debug_image_sample" class="hash-link" aria-label="Direct link to POST /events.get_debug_image_sample" title="Direct link to POST /events.get_debug_image_sample" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-8">Description<a href="#description-8" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Return the debug image per metric and variant for the provided iteration</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-8">Parameters<a href="#parameters-8" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_debug_image_sample-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_debug_image_sample-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>iteration</strong>  <br><em>optional</em></td><td>The iteration to bring debug image from. If not specified then the latest  <br>reported image is retrieved</td><td>integer</td></tr><tr><td><strong>metric</strong>  <br><em>required</em></td><td>Metric name</td><td>string</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model debug images. Otherwise task debug images  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>navigate_current_metric</strong>  <br><em>optional</em></td><td>If set then subsequent navigation with next_debug_image_sample is done on the  <br>debug images for the passed metric only. Otherwise for all the metrics  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>refresh</strong>  <br><em>optional</em></td><td>If set then scroll state will be refreshed to reflect the latest changes in the  <br>debug images</td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID from the previous call to get_debug_image_sample or empty</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr><tr><td><strong>variant</strong>  <br><em>required</em></td><td>Metric variant</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-8">Responses<a href="#responses-8" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsdebug_image_sample_response">events.debug_image_sample_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-8">Security<a href="#security-8" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_multi_task_metrics" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_multi_task_metrics">POST /events.get_multi_task_metrics<a href="#post-eventsget_multi_task_metrics" class="hash-link" aria-label="Direct link to POST /events.get_multi_task_metrics" title="Direct link to POST /events.get_multi_task_metrics" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-9">Description<a href="#description-9" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get unique metrics and variants from the events of the specified type. Only<br>
+events reported for the passed task or model ids are analyzed.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_multi_task_metrics-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_multi_task_metrics-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>event_type</strong>  <br><em>optional</em></td><td>Event type. If not specified then metrics are collected from the reported  <br>events of all types</td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsevent_type_enum">events.event_type_enum</a></td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If not set or set to Falsethen passed ids are task ids otherwise model ids  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>tasks</strong>  <br><em>required</em></td><td>task ids to get metrics from</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-9">Responses<a href="#responses-9" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_multi_task_metrics-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_multi_task_metrics-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-9">Security<a href="#security-9" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_multi_task_plots" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_multi_task_plots">POST /events.get_multi_task_plots<a href="#post-eventsget_multi_task_plots" class="hash-link" aria-label="Direct link to POST /events.get_multi_task_plots" title="Direct link to POST /events.get_multi_task_plots" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-10">Description<a href="#description-10" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get &#x27;plot&#x27; events for the given tasks</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-10">Parameters<a href="#parameters-10" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_multi_task_plots-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_multi_task_plots-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>iters</strong>  <br><em>optional</em></td><td>Max number of latest iterations for which to return plots</td><td>integer</td></tr><tr><td><strong>last_iters_per_task_metric</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and iters passed then last iterations for each task metrics  <br>are retrieved. Otherwise last iterations for the whole task are retrieved  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>no_scroll</strong>  <br><em>optional</em></td><td>If Truethen no scroll is created. Suitable for one time calls  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID of previous call (used for getting more results)</td><td>string</td></tr><tr><td><strong>tasks</strong>  <br><em>required</em></td><td>List of task IDs</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-10">Responses<a href="#responses-10" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_multi_task_plots-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_multi_task_plots-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>plots</strong>  <br><em>optional</em></td><td>Plots mapping (keyed by task name)</td><td>object</td></tr><tr><td><strong>returned</strong>  <br><em>optional</em></td><td>Number of results returned</td><td>integer</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID for getting more results</td><td>string</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of results available for this query. In case there are more than  <br>10000 results it is set to 10000</td><td>number</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-10">Security<a href="#security-10" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_plot_sample" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_plot_sample">POST /events.get_plot_sample<a href="#post-eventsget_plot_sample" class="hash-link" aria-label="Direct link to POST /events.get_plot_sample" title="Direct link to POST /events.get_plot_sample" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-11">Description<a href="#description-11" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Return plots for the provided iteration</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-11">Parameters<a href="#parameters-11" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_plot_sample-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_plot_sample-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>iteration</strong>  <br><em>optional</em></td><td>The iteration to bring plot from. If not specified then the latest reported  <br>plot is retrieved</td><td>integer</td></tr><tr><td><strong>metric</strong>  <br><em>required</em></td><td>Metric name</td><td>string</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model plots. Otherwise task plots  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>navigate_current_metric</strong>  <br><em>optional</em></td><td>If set then subsequent navigation with next_plot_sample is done on the plots  <br>for the passed metric only. Otherwise for all the metrics  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>refresh</strong>  <br><em>optional</em></td><td>If set then scroll state will be refreshed to reflect the latest changes in the  <br>plots</td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID from the previous call to get_plot_sample or empty</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-11">Responses<a href="#responses-11" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsplot_sample_response">events.plot_sample_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-11">Security<a href="#security-11" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_scalar_metric_data" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_scalar_metric_data">POST /events.get_scalar_metric_data<a href="#post-eventsget_scalar_metric_data" class="hash-link" aria-label="Direct link to POST /events.get_scalar_metric_data" title="Direct link to POST /events.get_scalar_metric_data" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-12">Description<a href="#description-12" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>get scalar metric data for task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-12">Parameters<a href="#parameters-12" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_scalar_metric_data-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_scalar_metric_data-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metric</strong>  <br><em>optional</em></td><td>type of metric</td><td>string</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>no_scroll</strong>  <br><em>optional</em></td><td>If Truethen no scroll is created. Suitable for one time calls  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID of previous call (used for getting more results)</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>optional</em></td><td>task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-12">Responses<a href="#responses-12" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_scalar_metric_data-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_scalar_metric_data-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>events</strong>  <br><em>optional</em></td><td>task scalar metric events</td><td>&lt; object &gt; array</td></tr><tr><td><strong>returned</strong>  <br><em>optional</em></td><td>amount of events returned</td><td>integer</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID for getting more results</td><td>string</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>amount of events in task</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-12">Security<a href="#security-12" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_scalar_metrics_and_variants" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_scalar_metrics_and_variants">POST /events.get_scalar_metrics_and_variants<a href="#post-eventsget_scalar_metrics_and_variants" class="hash-link" aria-label="Direct link to POST /events.get_scalar_metrics_and_variants" title="Direct link to POST /events.get_scalar_metrics_and_variants" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-13">Description<a href="#description-13" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>get task scalar metrics and variants</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-13">Parameters<a href="#parameters-13" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_scalar_metrics_and_variants-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_scalar_metrics_and_variants-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-13">Responses<a href="#responses-13" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_scalar_metrics_and_variants-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_scalar_metrics_and_variants-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-13">Security<a href="#security-13" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_task_events" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_task_events">POST /events.get_task_events<a href="#post-eventsget_task_events" class="hash-link" aria-label="Direct link to POST /events.get_task_events" title="Direct link to POST /events.get_task_events" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-14">Description<a href="#description-14" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Scroll through task events, sorted by timestamp</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-14">Parameters<a href="#parameters-14" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_task_events-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_task_events-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>Number of events to return each time (default 500)</td><td>integer</td></tr><tr><td><strong>event_type</strong>  <br><em>optional</em></td><td>Return only events of this type</td><td>string</td></tr><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then get retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>order</strong>  <br><em>optional</em></td><td>&#x27;asc&#x27; (default) or &#x27;desc&#x27;.</td><td>enum (asc, desc)</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Pass this value on next call to get next page</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-14">Responses<a href="#responses-14" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_task_events-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_task_events-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>events</strong>  <br><em>optional</em></td><td>Events list</td><td>&lt; object &gt; array</td></tr><tr><td><strong>returned</strong>  <br><em>optional</em></td><td>Number of results returned</td><td>integer</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID for getting more results</td><td>string</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of results available for this query. In case there are more than  <br>10000 results it is set to 10000</td><td>number</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-14">Security<a href="#security-14" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_task_latest_scalar_values" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_task_latest_scalar_values">POST /events.get_task_latest_scalar_values<a href="#post-eventsget_task_latest_scalar_values" class="hash-link" aria-label="Direct link to POST /events.get_task_latest_scalar_values" title="Direct link to POST /events.get_task_latest_scalar_values" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-15">Description<a href="#description-15" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get the tasks&#x27;s latest scalar values</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-15">Parameters<a href="#parameters-15" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_task_latest_scalar_values-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_task_latest_scalar_values-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-15">Responses<a href="#responses-15" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_task_latest_scalar_values-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_task_latest_scalar_values-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>&lt; <a href="#events-get_task_latest_scalar_values-post-metrics" class="">metrics</a> &gt; array</td></tr></tbody></table>
+<p><a name="events-get_task_latest_scalar_values-post-metrics" class=""></a></p>
+<p><strong>metrics</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>name</strong>  <br><em>optional</em></td><td>Metric name</td><td>string</td></tr><tr><td><strong>variants</strong>  <br><em>optional</em></td><td></td><td>&lt; <a href="#events-get_task_latest_scalar_values-post-metrics-variants" class="">variants</a> &gt; array</td></tr></tbody></table>
+<p><a name="events-get_task_latest_scalar_values-post-metrics-variants" class=""></a></p>
+<p><strong>variants</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>last_100_value</strong>  <br><em>optional</em></td><td>Average of 100 last reported values</td><td>number</td></tr><tr><td><strong>last_value</strong>  <br><em>optional</em></td><td>Last reported value</td><td>number</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>Variant name</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-15">Security<a href="#security-15" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_task_log" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_task_log">POST /events.get_task_log<a href="#post-eventsget_task_log" class="hash-link" aria-label="Direct link to POST /events.get_task_log" title="Direct link to POST /events.get_task_log" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-16">Description<a href="#description-16" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get &#x27;log&#x27; events for this task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-16">Parameters<a href="#parameters-16" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_task_log-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_task_log-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>The amount of log events to return</td><td>integer</td></tr><tr><td><strong>from_timestamp</strong>  <br><em>optional</em></td><td>Epoch time in UTC ms to use as the navigation start. Optional. If not provided,  <br>reference timestamp is determined by the &#x27;navigate_earlier&#x27; parameter (if true,  <br>reference timestamp is the last timestamp and if false, reference timestamp is  <br>the first timestamp)</td><td>number</td></tr><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>navigate_earlier</strong>  <br><em>optional</em></td><td>If set then log events are retreived from the latest to the earliest ones (in  <br>timestamp descending order, unless order=&#x27;asc&#x27;). Otherwise from the earliest to  <br>the latest ones (in timestamp ascending order, unless order=&#x27;desc&#x27;). The  <br>default is True</td><td>boolean</td></tr><tr><td><strong>order</strong>  <br><em>optional</em></td><td>If set, changes the order in which log events are returned based on the value  <br>of &#x27;navigate_earlier&#x27;</td><td>enum (asc, desc)</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-16">Responses<a href="#responses-16" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_task_log-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_task_log-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>events</strong>  <br><em>optional</em></td><td>Log items list</td><td>&lt; object &gt; array</td></tr><tr><td><strong>returned</strong>  <br><em>optional</em></td><td>Number of log events returned</td><td>integer</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of log events available for this query. In case there are more  <br>than 10000 events it is set to 10000</td><td>number</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-16">Security<a href="#security-16" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_task_metrics" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_task_metrics">POST /events.get_task_metrics<a href="#post-eventsget_task_metrics" class="hash-link" aria-label="Direct link to POST /events.get_task_metrics" title="Direct link to POST /events.get_task_metrics" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-17">Description<a href="#description-17" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>For each task, get a list of metrics for which the requested event type was<br>
+reported</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-17">Parameters<a href="#parameters-17" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_task_metrics-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_task_metrics-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>event_type</strong>  <br><em>optional</em></td><td>Event type</td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsevent_type_enum">events.event_type_enum</a></td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then get metrics from model events. Otherwise from task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>tasks</strong>  <br><em>required</em></td><td>Task IDs</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-17">Responses<a href="#responses-17" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_task_metrics-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_task_metrics-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of task with their metrics</td><td>&lt; object &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-17">Security<a href="#security-17" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_task_plots" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_task_plots">POST /events.get_task_plots<a href="#post-eventsget_task_plots" class="hash-link" aria-label="Direct link to POST /events.get_task_plots" title="Direct link to POST /events.get_task_plots" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-18">Description<a href="#description-18" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get all &#x27;plot&#x27; events for this task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-18">Parameters<a href="#parameters-18" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_task_plots-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_task_plots-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>iters</strong>  <br><em>optional</em></td><td>Max number of latest iterations for which to return plots</td><td>integer</td></tr><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>no_scroll</strong>  <br><em>optional</em></td><td>If Truethen no scroll is created. Suitable for one time calls  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID of previous call (used for getting more results)</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-18">Responses<a href="#responses-18" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_task_plots-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_task_plots-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>plots</strong>  <br><em>optional</em></td><td>Plots list</td><td>&lt; object &gt; array</td></tr><tr><td><strong>returned</strong>  <br><em>optional</em></td><td>Number of results returned</td><td>integer</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID for getting more results</td><td>string</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of results available for this query. In case there are more than  <br>10000 results it is set to 10000</td><td>number</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-18">Security<a href="#security-18" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_task_single_value_metrics" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_task_single_value_metrics">POST /events.get_task_single_value_metrics<a href="#post-eventsget_task_single_value_metrics" class="hash-link" aria-label="Direct link to POST /events.get_task_single_value_metrics" title="Direct link to POST /events.get_task_single_value_metrics" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-19">Description<a href="#description-19" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get single value metrics for the passed tasks</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-19">Parameters<a href="#parameters-19" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_task_single_value_metrics-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_task_single_value_metrics-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>tasks</strong>  <br><em>required</em></td><td>List of task Task IDs</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-19">Responses<a href="#responses-19" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventssingle_value_metrics_response">events.single_value_metrics_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-19">Security<a href="#security-19" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-get_vector_metrics_and_variants" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsget_vector_metrics_and_variants">POST /events.get_vector_metrics_and_variants<a href="#post-eventsget_vector_metrics_and_variants" class="hash-link" aria-label="Direct link to POST /events.get_vector_metrics_and_variants" title="Direct link to POST /events.get_vector_metrics_and_variants" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-20">Parameters<a href="#parameters-20" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-get_vector_metrics_and_variants-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-get_vector_metrics_and_variants-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-20">Responses<a href="#responses-20" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-get_vector_metrics_and_variants-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-get_vector_metrics_and_variants-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>&lt; object &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-20">Security<a href="#security-20" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-multi_task_scalar_metrics_iter_histogram" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsmulti_task_scalar_metrics_iter_histogram">POST /events.multi_task_scalar_metrics_iter_histogram<a href="#post-eventsmulti_task_scalar_metrics_iter_histogram" class="hash-link" aria-label="Direct link to POST /events.multi_task_scalar_metrics_iter_histogram" title="Direct link to POST /events.multi_task_scalar_metrics_iter_histogram" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-20">Description<a href="#description-20" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Used to compare scalar stats histogram of multiple tasks</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-21">Parameters<a href="#parameters-21" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-multi_task_scalar_metrics_iter_histogram-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-multi_task_scalar_metrics_iter_histogram-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>key</strong>  <br><em>optional</em></td><td>Histogram x axis to use: iter - iteration number iso_time - event time as ISO  <br>formatted string timestamp - event timestamp as milliseconds since epoch</td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsscalar_key_enum">events.scalar_key_enum</a></td></tr><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>samples</strong>  <br><em>optional</em></td><td>The amount of histogram points to return. Optional, the default value is 6000</td><td>integer</td></tr><tr><td><strong>tasks</strong>  <br><em>required</em></td><td>List of task Task IDs. Maximum amount of tasks is 100</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-21">Responses<a href="#responses-21" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-21">Security<a href="#security-21" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-next_debug_image_sample" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsnext_debug_image_sample">POST /events.next_debug_image_sample<a href="#post-eventsnext_debug_image_sample" class="hash-link" aria-label="Direct link to POST /events.next_debug_image_sample" title="Direct link to POST /events.next_debug_image_sample" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-21">Description<a href="#description-21" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get the image for the next variant for the same iteration or for the next<br>
+iteration</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-22">Parameters<a href="#parameters-22" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-next_debug_image_sample-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-next_debug_image_sample-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model debug images. Otherwise task debug images  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>navigate_earlier</strong>  <br><em>optional</em></td><td>If set then get the either previous variant event from the current iteration or  <br>(if does not exist) the last variant event from the previous iteration.  <br>Otherwise next variant event from the current iteration or first variant event  <br>from the next iteration</td><td>boolean</td></tr><tr><td><strong>next_iteration</strong>  <br><em>optional</em></td><td>If set then navigate to the next/previous iteration  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>required</em></td><td>Scroll ID from the previous call to get_debug_image_sample</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-22">Responses<a href="#responses-22" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsdebug_image_sample_response">events.debug_image_sample_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-22">Security<a href="#security-22" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-next_plot_sample" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsnext_plot_sample">POST /events.next_plot_sample<a href="#post-eventsnext_plot_sample" class="hash-link" aria-label="Direct link to POST /events.next_plot_sample" title="Direct link to POST /events.next_plot_sample" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-22">Description<a href="#description-22" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get the plot for the next metric for the same iteration or for the next<br>
+iteration</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-23">Parameters<a href="#parameters-23" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-next_plot_sample-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-next_plot_sample-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model plots. Otherwise task plots  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>navigate_earlier</strong>  <br><em>optional</em></td><td>If set then get the either previous metric events from the current iteration or  <br>(if does not exist) the last metric events from the previous iteration.  <br>Otherwise next metric events from the current iteration or first metric events  <br>from the next iteration</td><td>boolean</td></tr><tr><td><strong>next_iteration</strong>  <br><em>optional</em></td><td>If set then navigate to the next/previous iteration  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>required</em></td><td>Scroll ID from the previous call to get_plot_sample</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-23">Responses<a href="#responses-23" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsplot_sample_response">events.plot_sample_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-23">Security<a href="#security-23" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-plots" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsplots">POST /events.plots<a href="#post-eventsplots" class="hash-link" aria-label="Direct link to POST /events.plots" title="Direct link to POST /events.plots" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-23">Description<a href="#description-23" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get plot events for the requested amount of iterations per each task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-24">Parameters<a href="#parameters-24" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-plots-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-plots-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>iters</strong>  <br><em>optional</em></td><td>Max number of latest iterations for which to return plots</td><td>integer</td></tr><tr><td><strong>metrics</strong>  <br><em>required</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventstask_metric_variants">events.task_metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model plots. Otherwise task plots  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>navigate_earlier</strong>  <br><em>optional</em></td><td>If set then events are retreived from latest iterations to earliest ones.  <br>Otherwise from earliest iterations to the latest. The default is True</td><td>boolean</td></tr><tr><td><strong>refresh</strong>  <br><em>optional</em></td><td>If set then scroll will be moved to the latest iterations. The default is False</td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID of previous call (used for getting more results)</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-24">Responses<a href="#responses-24" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsplots_response">events.plots_response</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-24">Security<a href="#security-24" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-scalar_metrics_iter_histogram" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsscalar_metrics_iter_histogram">POST /events.scalar_metrics_iter_histogram<a href="#post-eventsscalar_metrics_iter_histogram" class="hash-link" aria-label="Direct link to POST /events.scalar_metrics_iter_histogram" title="Direct link to POST /events.scalar_metrics_iter_histogram" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-24">Description<a href="#description-24" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get histogram data of all the scalar metrics and variants in the task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-25">Parameters<a href="#parameters-25" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-scalar_metrics_iter_histogram-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-scalar_metrics_iter_histogram-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>key</strong>  <br><em>optional</em></td><td>Histogram x axis to use: iter - iteration number iso_time - event time as ISO  <br>formatted string timestamp - event timestamp as milliseconds since epoch</td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsscalar_key_enum">events.scalar_key_enum</a></td></tr><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>List of metrics and variants</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a> &gt; array</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>samples</strong>  <br><em>optional</em></td><td>The amount of histogram points to return (0 to return all the points).  <br>Optional, the default value is 6000.</td><td>integer</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-25">Responses<a href="#responses-25" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-scalar_metrics_iter_histogram-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-scalar_metrics_iter_histogram-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>images</strong>  <br><em>optional</em></td><td>&lt; object &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-25">Security<a href="#security-25" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-scalar_metrics_iter_raw" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsscalar_metrics_iter_raw">POST /events.scalar_metrics_iter_raw<a href="#post-eventsscalar_metrics_iter_raw" class="hash-link" aria-label="Direct link to POST /events.scalar_metrics_iter_raw" title="Direct link to POST /events.scalar_metrics_iter_raw" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-25">Description<a href="#description-25" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get raw data for a specific metric variants in the task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-26">Parameters<a href="#parameters-26" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-scalar_metrics_iter_raw-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-scalar_metrics_iter_raw-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>The number of data points to return for this call. Optional, the default value  <br>is 10000. Maximum batch size is 200000</td><td>integer</td></tr><tr><td><strong>count_total</strong>  <br><em>optional</em></td><td>Count the total number of data points. If false, total number of data points is  <br>not counted and null is returned  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>key</strong>  <br><em>optional</em></td><td>Array of x axis to return. Supported values: iter - iteration number timestamp  <br>- event timestamp as milliseconds since epoch</td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsscalar_key_enum">events.scalar_key_enum</a></td></tr><tr><td><strong>metric</strong>  <br><em>required</em></td><td>Metric and variants for which to return data points</td><td><a class="" href="/docs/latest/docs/references/api/definitions#eventsmetric_variants">events.metric_variants</a></td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Optional Scroll ID. Use to get more data points following a previous call</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-26">Responses<a href="#responses-26" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-scalar_metrics_iter_raw-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-scalar_metrics_iter_raw-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>returned</strong>  <br><em>optional</em></td><td>Number of data points returned in this call. If 0 results were returned, no  <br>more results are avilable</td><td>integer</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID. Use to get more data points when calling this endpoint again</td><td>string</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total data points count. If count_total is false, null is returned</td><td>integer</td></tr><tr><td><strong>variants</strong>  <br><em>optional</em></td><td>Raw data points for each variant</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-26">Security<a href="#security-26" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="events-vector_metrics_iter_histogram" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-eventsvector_metrics_iter_histogram">POST /events.vector_metrics_iter_histogram<a href="#post-eventsvector_metrics_iter_histogram" class="hash-link" aria-label="Direct link to POST /events.vector_metrics_iter_histogram" title="Direct link to POST /events.vector_metrics_iter_histogram" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-26">Description<a href="#description-26" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get histogram data of all the scalar metrics and variants in the task</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-27">Parameters<a href="#parameters-27" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#events-vector_metrics_iter_histogram-request" class="">request</a></td></tr></tbody></table>
+<p><a name="events-vector_metrics_iter_histogram-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metric</strong>  <br><em>required</em></td><td></td><td>string</td></tr><tr><td><strong>model_events</strong>  <br><em>optional</em></td><td>If set then the retrieving model events. Otherwise task events  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr><tr><td><strong>variant</strong>  <br><em>required</em></td><td></td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-27">Responses<a href="#responses-27" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#events-vector_metrics_iter_histogram-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="events-vector_metrics_iter_histogram-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>images</strong>  <br><em>optional</em></td><td>&lt; object &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-27">Security<a href="#security-27" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/references/api/debug"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">debug</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/references/api/frames"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">frames</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#post-eventsadd" class="table-of-contents__link toc-highlight">POST /events.add</a></li><li><a href="#post-eventsadd_batch" class="table-of-contents__link toc-highlight">POST /events.add_batch</a></li><li><a href="#post-eventsclear_scroll" class="table-of-contents__link toc-highlight">POST /events.clear_scroll</a></li><li><a href="#post-eventsclear_task_log" class="table-of-contents__link toc-highlight">POST /events.clear_task_log</a></li><li><a href="#post-eventsdebug_images" class="table-of-contents__link toc-highlight">POST /events.debug_images</a></li><li><a href="#post-eventsdelete_for_model" class="table-of-contents__link toc-highlight">POST /events.delete_for_model</a></li><li><a href="#post-eventsdelete_for_task" class="table-of-contents__link toc-highlight">POST /events.delete_for_task</a></li><li><a href="#post-eventsdownload_task_log" class="table-of-contents__link toc-highlight">POST /events.download_task_log</a></li><li><a href="#post-eventsget_debug_image_sample" class="table-of-contents__link toc-highlight">POST /events.get_debug_image_sample</a></li><li><a href="#post-eventsget_multi_task_metrics" class="table-of-contents__link toc-highlight">POST /events.get_multi_task_metrics</a></li><li><a href="#post-eventsget_multi_task_plots" class="table-of-contents__link toc-highlight">POST /events.get_multi_task_plots</a></li><li><a href="#post-eventsget_plot_sample" class="table-of-contents__link toc-highlight">POST /events.get_plot_sample</a></li><li><a href="#post-eventsget_scalar_metric_data" class="table-of-contents__link toc-highlight">POST /events.get_scalar_metric_data</a></li><li><a href="#post-eventsget_scalar_metrics_and_variants" class="table-of-contents__link toc-highlight">POST /events.get_scalar_metrics_and_variants</a></li><li><a href="#post-eventsget_task_events" class="table-of-contents__link toc-highlight">POST /events.get_task_events</a></li><li><a href="#post-eventsget_task_latest_scalar_values" class="table-of-contents__link toc-highlight">POST /events.get_task_latest_scalar_values</a></li><li><a href="#post-eventsget_task_log" class="table-of-contents__link toc-highlight">POST /events.get_task_log</a></li><li><a href="#post-eventsget_task_metrics" class="table-of-contents__link toc-highlight">POST /events.get_task_metrics</a></li><li><a href="#post-eventsget_task_plots" class="table-of-contents__link toc-highlight">POST /events.get_task_plots</a></li><li><a href="#post-eventsget_task_single_value_metrics" class="table-of-contents__link toc-highlight">POST /events.get_task_single_value_metrics</a></li><li><a href="#post-eventsget_vector_metrics_and_variants" class="table-of-contents__link toc-highlight">POST /events.get_vector_metrics_and_variants</a></li><li><a href="#post-eventsmulti_task_scalar_metrics_iter_histogram" class="table-of-contents__link toc-highlight">POST /events.multi_task_scalar_metrics_iter_histogram</a></li><li><a href="#post-eventsnext_debug_image_sample" class="table-of-contents__link toc-highlight">POST /events.next_debug_image_sample</a></li><li><a href="#post-eventsnext_plot_sample" class="table-of-contents__link toc-highlight">POST /events.next_plot_sample</a></li><li><a href="#post-eventsplots" class="table-of-contents__link toc-highlight">POST /events.plots</a></li><li><a href="#post-eventsscalar_metrics_iter_histogram" class="table-of-contents__link toc-highlight">POST /events.scalar_metrics_iter_histogram</a></li><li><a href="#post-eventsscalar_metrics_iter_raw" class="table-of-contents__link toc-highlight">POST /events.scalar_metrics_iter_raw</a></li><li><a href="#post-eventsvector_metrics_iter_histogram" class="table-of-contents__link toc-highlight">POST /events.vector_metrics_iter_histogram</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

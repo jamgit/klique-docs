@@ -1,0 +1,387 @@
+# Cluster Fractional GPU Injector (CFGI)
+
+> Installing the Cluster Fractional GPU Injector (CFGI) and configuring Agent queues for fractional non-MIG GPU allocation on Kubernetes.
+
+The **Cluster Fractional GPU Injector** (CFGI) allows AI workloads to utilize fractional (non-MIG) GPU slices 
+on Kubernetes clusters, maximizing hardware efficiency and performance.
+
+## Installation
+
+### Log into the Klique OCI Registry
+
+```bash
+echo <DOCKERHUB_TOKEN> | helm registry login docker.io --username kliqueenterprise --password-stdin
+```
+
+### Requirements
+
+* Install the NVIDIA `gpu-operator` using Helm. For instructions, see [Basic Deployment](gpu_operator.md).
+* Set the number of GPU slices to 8
+* Add and update the Nvidia Helm repo:
+
+  ```bash
+  helm repo add nvidia https://nvidia.github.io/gpu-operator
+  helm repo update
+  ```
+  
+* Credentials for the Klique DockerHub repository
+
+### GPU Operator Configuration
+
+To enable fractional GPU support, configure the NVIDIA GPU Operator using the appropriate device plugin configuration for 
+your CFGI version.
+
+In addition, some Kubernetes platforms (k3s, MicroK8s, or OpenShift) require additional configuration entries 
+(see [below](#platform-specific-configuration)).
+
+#### For CFGI Version >= 1.3.0
+
+1. Create a Docker Registry secret named `clearml-dockerhub-access` in the `gpu-operator` namespace. Make sure to replace `<DOCKERHUB_TOKEN>` with your token.
+
+   ```bash
+   kubectl create secret -n gpu-operator docker-registry clearml-dockerhub-access \
+     --docker-server=docker.io \
+     --docker-username=kliqueenterprise \
+     --docker-password="<DOCKERHUB_TOKEN>" \
+     --docker-email=""
+   ```
+
+1. Create a `gpu-operator.override.yaml` file as follows:
+   * Set `devicePlugin.repository` to `docker.io/kliqueai` 
+   * Configure `devicePlugin.config.data.renamed-resources.sharing.timeSlicing.resources` for each GPU index on the host
+   * Use `nvidia.com/gpu-<INDEX>` format for the `rename` field, and set `replicas` to `8`. 
+
+   ```yaml
+   gfd:
+     imagePullSecrets:
+       - "clearml-dockerhub-access"
+   toolkit:
+     env:
+       - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_ENVVAR_WHEN_UNPRIVILEGED
+         value: "false"
+       - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_AS_VOLUME_MOUNTS
+         value: "true"
+       - name: NVIDIA_CONTAINER_TOOLKIT_OPT_IN_FEATURES
+         value: "disable-cuda-compat-lib-hook"
+   devicePlugin:
+     repository: docker.io/kliqueai
+     image: k8s-device-plugin
+     version: "v0.17.2-gpu-card-selection"
+     imagePullPolicy: Always
+     imagePullSecrets:
+       - "clearml-dockerhub-access"
+     env:
+       - name: PASS_DEVICE_SPECS
+         value: "true"
+       - name: FAIL_ON_INIT_ERROR
+         value: "true"
+       - name: DEVICE_LIST_STRATEGY # Use volume-mounts
+         value: volume-mounts
+       - name: DEVICE_ID_STRATEGY
+         value: uuid
+       - name: NVIDIA_VISIBLE_DEVICES
+         value: all
+       - name: NVIDIA_DRIVER_CAPABILITIES
+         value: all
+     config:
+       name: device-plugin-config
+       create: true
+       default: "renamed-resources"
+       data:
+         renamed-resources: |-
+           version: v1
+           flags:
+             migStrategy: none
+           sharing:
+             timeSlicing:
+               renameByDefault: false
+               failRequestsGreaterThanOne: false
+               # Edit the following configuration as needed, adding as many GPU indices as many cards are installed on the Host.
+               resources:
+               - name: nvidia.com/gpu
+                 rename: nvidia.com/gpu-0
+                 devices:
+                 - "0"
+                 replicas: 8
+               - name: nvidia.com/gpu
+                 rename: nvidia.com/gpu-1
+                 devices:
+                 - "1"
+                 replicas: 8
+   ```
+   
+   :::important
+   If you are using k3s, MicroK8s, or OpenShift Kubernetes distribution, additional configuration is required. 
+   See [Platform-Specific Configuration](#platform-specific-configuration) below.
+   :::
+
+#### For CFGI version < 1.3.0 (Legacy)
+
+Create a `gpu-operator.override.yaml` file:
+
+```yaml
+toolkit:
+  env:
+    - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_ENVVAR_WHEN_UNPRIVILEGED
+      value: "false"
+    - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_AS_VOLUME_MOUNTS
+      value: "true"
+    - name: NVIDIA_CONTAINER_TOOLKIT_OPT_IN_FEATURES
+      value: "disable-cuda-compat-lib-hook"
+devicePlugin:
+  env:
+    - name: PASS_DEVICE_SPECS
+      value: "true"
+    - name: FAIL_ON_INIT_ERROR
+      value: "true"
+    - name: DEVICE_LIST_STRATEGY # Use volume-mounts
+      value: volume-mounts
+    - name: DEVICE_ID_STRATEGY
+      value: uuid
+    - name: NVIDIA_VISIBLE_DEVICES
+      value: all
+    - name: NVIDIA_DRIVER_CAPABILITIES
+      value: all
+  config:
+    name: device-plugin-config
+    create: true
+    default: "any"
+    data:
+      any: |-
+        version: v1
+        flags:
+          migStrategy: none
+        sharing:
+          timeSlicing:
+            renameByDefault: false
+            failRequestsGreaterThanOne: false
+            resources:
+              - name: nvidia.com/gpu
+                replicas: 8
+```
+
+:::important
+If you are using k3s, MicroK8s, or OpenShift Kubernetes distribution, additional configuration is required. 
+See [Platform-Specific Configuration](#platform-specific-configuration) below.
+:::
+
+#### Platform-Specific Configuration
+Some Kubernetes distributions require custom configuration for the GPU Operator.
+
+These adjustments apply to all CFGI versions.
+
+##### K3s
+If using k3s, you must set the `containerd` socket path. Add the following entry to your `gpu-operator.override.yaml`:
+
+```yaml
+toolkit:
+  env:
+    - name: CONTAINERD_SOCKET
+      value: "/run/k3s/containerd/containerd.sock"
+```
+
+##### MicroK8s
+If using MicroK8s, you must configure the `containerd` paths used by MicroK8s. Add the following entries to your 
+`gpu-operator.override.yaml`:
+
+```yaml
+toolkit:
+ env:
+   - name: CONTAINERD_CONFIG
+     value: "/var/snap/microk8s/current/args/containerd-template.toml"
+   - name: CONTAINERD_SOCKET
+     value: "/var/snap/microk8s/common/run/containerd.sock"
+   - name: CONTAINERD_RUNTIME_CLASS
+     value: "nvidia"
+   - name: CONTAINERD_SET_AS_DEFAULT
+     value: "true"
+```
+
+##### OpenShift
+If using OpenShift, the NVIDIA GPU Operator is installed through Operator Hub. In this case, GPU Operator configuration 
+is managed using a ClusterPolicy resource rather than a Helm values file.
+
+To configure the device plugin for CFGI, create a ConfigMap containing the device plugin configuration and reference it 
+from the `devicePlugin.config` section of the ClusterPolicy.
+
+1. Create a file named `device-plugin-config.yaml`:
+
+   ```yaml
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+    name: nvidia-device-plugin-config
+    namespace: nvidia-gpu-operator
+   data:
+    config.yaml: |
+      version: v1
+      flags:
+        migStrategy: mixed
+   ```
+
+1. Apply the ConfigMap to the cluster:
+
+   ```bash
+   oc apply -f device-plugin-config.yaml
+   ```
+   
+1. Edit or create the NVIDIA GPU Operator ClusterPolicy and add the following configuration:
+
+   ```yaml
+   spec:
+    devicePlugin:
+      enabled: true
+      config:
+        name: nvidia-device-plugin-config
+        default: config.yaml
+   ```
+
+### Install GPU Operator and CFGI 
+
+1. Install the NVIDIA `gpu-operator` using the previously created `gpu-operator.override.yaml` file:
+
+   ```bash
+   helm install -n gpu-operator gpu-operator nvidia/gpu-operator --create-namespace -f gpu-operator.override.yaml
+   ```
+
+1. Create a `cfgi-values.override.yaml` file with the following content:
+
+   ```yaml
+   imageCredentials:
+     password: "<DOCKERHUB_TOKEN>"
+   ```
+
+1. Install the CFGI Helm Chart using the previous override file:
+
+   ```bash
+   helm upgrade -i -n cfgi cfgi oci://docker.io/kliqueai/fractional-gpu-injector --create-namespace -f cfgi-values.override.yaml
+   ```
+
+## Usage
+
+To use fractional GPUs, label your pod with:
+
+```yaml
+labels:
+  clearml-injector/fraction: "<GPU_FRACTION_VALUE>"
+```
+
+Valid values for `"<GPU_FRACTION_VALUE>"` include: 
+
+* Fractions: 
+  * "0.0625" (1/16th)
+  * "0.125" (1/8th)
+  * "0.250"
+  * "0.375"
+  * "0.500"
+  * "0.625"
+  * "0.750"
+  * "0.875"
+* Integer representation of GPUs such as `1.000`, `2`, `2.0`, etc.
+
+### ClearML Agent Configuration
+
+To run jobs with fractional GPU allocation, configure your queues in your `orchestrator-values.override.yaml` file.
+
+Each queue should include a `templateOverride` that sets the `clearml-injector/fraction` label, which determines the 
+fraction of a GPU to allocate (e.g., "0.500" for half a GPU).
+
+This label is used by the CFGI to assign the correct portion of GPU resources to the pod running the task.
+
+#### CFGI Version >= 1.3.0
+
+Starting from version 1.3.0, there is no need to specify the resources field. You only need to set the labels:
+
+```yaml
+orchestratork8sglue:
+  createQueues: true
+  queues:
+    gpu-fraction-1_000:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "1.000"
+    gpu-fraction-0_500:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "0.500"
+    gpu-fraction-0_250:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "0.250"
+    gpu-fraction-0_125:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "0.125"
+```
+
+#### CFGI Version < 1.3.0
+
+For versions older than 1.3.0, the GPU limits must be defined: 
+
+```yaml
+orchestratork8sglue:
+  createQueues: true
+  queues:
+    gpu-fraction-1_000:
+      templateOverrides:
+        resources:
+          limits:
+            nvidia.com/gpu: 8
+    gpu-fraction-0_500:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "0.500"
+        resources:
+          limits:
+            nvidia.com/gpu: 4
+    gpu-fraction-0_250:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "0.250"
+        resources:
+          limits:
+            nvidia.com/gpu: 2
+    gpu-fraction-0_125:
+      templateOverrides:
+        labels:
+          clearml-injector/fraction: "0.125"
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+```
+
+## Disabling Fractions
+
+To revert to standard GPU scheduling (without time slicing): 
+1. Remove the `devicePlugin.config` section from the `gpu-operator.override.yaml`:  
+
+    ```yaml
+    toolkit:
+      env:
+        - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_ENVVAR_WHEN_UNPRIVILEGED
+          value: "false"
+        - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_AS_VOLUME_MOUNTS
+          value: "true"
+        - name: NVIDIA_CONTAINER_TOOLKIT_OPT_IN_FEATURES
+          value: "disable-cuda-compat-lib-hook"
+    devicePlugin:
+      env:
+        - name: PASS_DEVICE_SPECS
+          value: "true"
+        - name: FAIL_ON_INIT_ERROR
+          value: "true"
+        - name: DEVICE_LIST_STRATEGY # Use volume-mounts
+          value: volume-mounts
+        - name: DEVICE_ID_STRATEGY
+          value: uuid
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: all
+    ```
+
+1. Upgrade the `gpu-operator`:
+
+   ```bash
+   helm upgrade -n gpu-operator gpu-operator nvidia/gpu-operator -f gpu-operator.override.yaml
+   ```

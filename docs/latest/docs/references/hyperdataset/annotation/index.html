@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-references/hyperdataset/annotation" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">Annotation | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/references/hyperdataset/annotation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Annotation | Klique"><meta data-rh="true" name="description" content="class dataframe.Annotation(values=None, id=None, labels=None, confidence=None, metadata=None)"><meta data-rh="true" property="og:description" content="class dataframe.Annotation(values=None, id=None, labels=None, confidence=None, metadata=None)"><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/references/hyperdataset/annotation"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/hyperdataset/annotation" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/hyperdataset/annotation" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.8cc3e11e.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.139c2e95.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Expand sidebar category &#x27;WebApp&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Collapse sidebar category &#x27;References&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/clearml_sdk"><span title="ClearML SDK" class="linkLabel_WmDU">ClearML SDK</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Legacy allegroai SDK" class="categoryLinkLabel_W154">Legacy allegroai SDK</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Dataset" class="linkLabel_WmDU">Dataset</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/hyperdatasetversion"><span title="DatasetVersion" class="linkLabel_WmDU">DatasetVersion</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/singleframe"><span title="SingleFrame" class="linkLabel_WmDU">SingleFrame</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/framegroup"><span title="FrameGroup" class="linkLabel_WmDU">FrameGroup</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/references/hyperdataset/annotation"><span title="Annotation" class="linkLabel_WmDU">Annotation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/hyperdataset/dataview"><span title="DataView" class="linkLabel_WmDU">DataView</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/configs/client_configuration"><span title="Client Configuration" class="linkLabel_WmDU">Client Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/orchestrator"><span title="Klique Orchestrator" class="linkLabel_WmDU">Klique Orchestrator</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/mcp_server/overview"><span title="MCP Server" class="categoryLinkLabel_W154">MCP Server</span></a><button aria-label="Expand sidebar category &#x27;MCP Server&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/api/"><span title="Server API" class="categoryLinkLabel_W154">Server API</span></a><button aria-label="Expand sidebar category &#x27;Server API&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Annotation</h1></header><h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframeannotationvaluesnone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.Annotation(values=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframeannotationvaluesnone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframeannotationvaluesnone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframeannotationvaluesnone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Annotation object, representing general purpose annotation data.
+Should be inherited and extended/specified as needed</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  (<code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]) – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<code>Optional</code>[<code>str</code>]) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<code>Optional</code>[<code>Sequence</code>[<code>str</code>]]) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<code>Optional</code>[<code>float</code>]) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<code>Optional</code>[<code>dict</code>]) – General purpose dictionary storing multiple field/values</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="label_enum">label_enum<a href="#label_enum" class="hash-link" aria-label="Direct link to label_enum" title="Direct link to label_enum" translate="no">​</a></h3>
+<p><strong>property label_enum</strong></p>
+<p>Returns the enumeration value (integer) based on the DataView mapping, this is a readonly field</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>int</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>(int)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="annotationget_type">Annotation.get_type<a href="#annotationget_type" class="hash-link" aria-label="Direct link to Annotation.get_type" title="Direct link to Annotation.get_type" translate="no">​</a></h3>
+<p><strong><em>classmethod</em> get_type()</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Unique string representing the annotation type.
+Optional values: “p2d”, “k2d”, “k3d”, “elp”, “b2d”, “b3d”, “im”, “mask”</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="values">values<a href="#values" class="hash-link" aria-label="Direct link to values" title="Direct link to values" translate="no">​</a></h3>
+<p><strong>property values</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Union</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]], <code>Sequence</code>[<code>Sequence</code>[<code>Union</code>[<code>int</code>, <code>float</code>]]], <code>None</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list(float), or list(list(float)), values associated with the annotation object</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="id">id<a href="#id" class="hash-link" aria-label="Direct link to id" title="Direct link to id" translate="no">​</a></h3>
+<p><strong>property id</strong></p>
+<p>Returns an ID (str) associated with the annotation object, None if not applicable.</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>str</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Unique ID for the annotation in within a frame context</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="labels">labels<a href="#labels" class="hash-link" aria-label="Direct link to labels" title="Direct link to labels" translate="no">​</a></h3>
+<p><strong>property labels</strong></p>
+<p>Returns a list of labels (strings) associated with the annotation object</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>Sequence</code>[<code>str</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list(str)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="metadata">metadata<a href="#metadata" class="hash-link" aria-label="Direct link to metadata" title="Direct link to metadata" translate="no">​</a></h3>
+<p><strong>property metadata</strong></p>
+<p>Returns General purpose dictionary storing multiple field/values</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>dict</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>(dict)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="confidence">confidence<a href="#confidence" class="hash-link" aria-label="Direct link to confidence" title="Direct link to confidence" translate="no">​</a></h3>
+<p><strong>property confidence</strong></p>
+<p>Returns confidence level associated with the annotation</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Optional</code>[<code>float</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>(float)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="to_dict">to_dict<a href="#to_dict" class="hash-link" aria-label="Direct link to to_dict" title="Direct link to to_dict" translate="no">​</a></h3>
+<p><strong>to_dict()</strong></p>
+<p>Return REST API compliant dictionary</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>dict</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>API compliant dictionary for use directly with REST-API</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="register">register<a href="#register" class="hash-link" aria-label="Direct link to register" title="Direct link to register" translate="no">​</a></h3>
+<p>*<em>static register(<em>type_names)</em></em></p>
+<p>A decorator to register an annotation type name for classes deriving from Annotation</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<p><strong>type_names</strong>  (<em>list</em> <em>(</em> <em>str</em> <em>)</em> ) – List of annotation types to associated with the class type.</p>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Callable</code></p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="copy">copy<a href="#copy" class="hash-link" aria-label="Direct link to copy" title="Direct link to copy" translate="no">​</a></h3>
+<p><strong>copy()</strong></p>
+<p>Returns a copy of this Annotation.
+:param id: An optional ID value. if None, a new random UUID will be created.</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Annotation</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>Annotation object</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframemaskmask_rgbnone-idnone-labelsnone-confidencenone-metadatanone-mask_idnone"><em>class</em> dataframe.Mask(mask_rgb=None, id=None, labels=None, confidence=None, metadata=None, mask_id=None)<a href="#class-dataframemaskmask_rgbnone-idnone-labelsnone-confidencenone-metadatanone-mask_idnone" class="hash-link" aria-label="Direct link to class-dataframemaskmask_rgbnone-idnone-labelsnone-confidencenone-metadatanone-mask_idnone" title="Direct link to class-dataframemaskmask_rgbnone-idnone-labelsnone-confidencenone-metadatanone-mask_idnone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>Mask object, representing a mask annotation.</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>mask_rgb</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>int</em> *, * <em>int</em> *, * <em>int</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+<li class="">
+<p><strong>mask_id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="mask_id">mask_id<a href="#mask_id" class="hash-link" aria-label="Direct link to mask_id" title="Direct link to mask_id" translate="no">​</a></h3>
+<p><strong>property mask_id</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>str</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>mask ID</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="mask_rgb">mask_rgb<a href="#mask_rgb" class="hash-link" aria-label="Direct link to mask_rgb" title="Direct link to mask_rgb" translate="no">​</a></h3>
+<p><strong>property mask_rgb</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[int, int, int]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of RGB [int, int, int]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframepolygon2dpolygon_xynone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.Polygon2D(polygon_xy=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframepolygon2dpolygon_xynone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframepolygon2dpolygon_xynone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframepolygon2dpolygon_xynone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>Polygon2D object, representing a 2D polygon, parsing the set of float values as pairs of x,y vertices.</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>polygon_xy</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Tuple</em> <em>[</em> <em>float</em> *, * <em>float</em> <em>]</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_bounding_box">get_bounding_box<a href="#get_bounding_box" class="hash-link" aria-label="Direct link to get_bounding_box" title="Direct link to get_bounding_box" translate="no">​</a></h3>
+<p><strong>get_bounding_box()</strong></p>
+<p>Get the bounding box for this 2D polygon</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[4, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>[left_x top_y width height]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="polygon_xy">polygon_xy<a href="#polygon_xy" class="hash-link" aria-label="Direct link to polygon_xy" title="Direct link to polygon_xy" translate="no">​</a></h3>
+<p><strong>property polygon_xy</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of x,y pairs [(float, float), ]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframecomplexpolygon2dpolygons_xynone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.ComplexPolygon2D(polygons_xy=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframecomplexpolygon2dpolygons_xynone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframecomplexpolygon2dpolygons_xynone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframecomplexpolygon2dpolygons_xynone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>ComplexPolygon2D object, representing a set of 2D polygons,
+parsing the set of float values as list of polygons (with pairs of x,y vertices per polygon).</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>polygons_xy</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Tuple</em> <em>[</em> <em>float</em> *, * <em>float</em> <em>]</em> <em>]</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_bounding_box-1">get_bounding_box<a href="#get_bounding_box-1" class="hash-link" aria-label="Direct link to get_bounding_box" title="Direct link to get_bounding_box" translate="no">​</a></h3>
+<p><strong>get_bounding_box()</strong></p>
+<p>Get the bounding box for this 2D polygon</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[4, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>[left_x top_y width height]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="polygons_xy">polygons_xy<a href="#polygons_xy" class="hash-link" aria-label="Direct link to polygons_xy" title="Direct link to polygons_xy" translate="no">​</a></h3>
+<p><strong>property polygons_xy</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>]]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of list of x,y pairs [[(float, float), ], [(float, float), ], ]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframepolygon3dpolygon_xyznone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.Polygon3D(polygon_xyz=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframepolygon3dpolygon_xyznone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframepolygon3dpolygon_xyznone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframepolygon3dpolygon_xyznone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>Polygon3D object, representing a 3D polygon, parsing the set of float values as triplets of x,y,z vertices.</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>polygon_xyz</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Tuple</em> <em>[</em> <em>float</em> *, * <em>float</em> *, * <em>float</em> <em>]</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="polygon_xyz">polygon_xyz<a href="#polygon_xyz" class="hash-link" aria-label="Direct link to polygon_xyz" title="Direct link to polygon_xyz" translate="no">​</a></h3>
+<p><strong>property polygon_xyz</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>, <code>float</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of x,y,z triplets [(float, float, float), ]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframecomplexpolygon3dpolygons_xyznone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.ComplexPolygon3D(polygons_xyz=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframecomplexpolygon3dpolygons_xyznone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframecomplexpolygon3dpolygons_xyznone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframecomplexpolygon3dpolygons_xyznone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>ComplexPolygon3D object, representing a set of 3D polygons,
+parsing the set of float values as list of polygons (with triplets of x,y,z vertices per polygon).</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<code>Optional</code>[<code>str</code>]) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<code>Optional</code>[<code>Sequence</code>[<code>str</code>]]) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<code>Optional</code>[<code>float</code>]) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<code>Optional</code>[<code>dict</code>]) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>polygons_xyz</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Tuple</em> <em>[</em> <em>float</em> *, * <em>float</em> *, * <em>float</em> <em>]</em> <em>]</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="polygons_xyz">polygons_xyz<a href="#polygons_xyz" class="hash-link" aria-label="Direct link to polygons_xyz" title="Direct link to polygons_xyz" translate="no">​</a></h3>
+<p><strong>property polygons_xyz</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>, <code>float</code>]]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of list of x,y,z triplets [[(float, float, float), ], [(float, float, float), ], ]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframekeypoints2dkeypoints_xynone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.KeyPoints2D(keypoints_xy=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframekeypoints2dkeypoints_xynone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframekeypoints2dkeypoints_xynone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframekeypoints2dkeypoints_xynone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>KeyPoints2D object, representing a 2D set of key points, parsing the set of float values as pairs of x,y points.</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>keypoints_xy</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Tuple</em> <em>[</em> <em>float</em> *, * <em>float</em> <em>]</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_bounding_box-2">get_bounding_box<a href="#get_bounding_box-2" class="hash-link" aria-label="Direct link to get_bounding_box" title="Direct link to get_bounding_box" translate="no">​</a></h3>
+<p><strong>get_bounding_box()</strong></p>
+<p>Get the bounding box for this 2D key points object</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[4, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>[left_x top_y width height]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="keypoints_xy">keypoints_xy<a href="#keypoints_xy" class="hash-link" aria-label="Direct link to keypoints_xy" title="Direct link to keypoints_xy" translate="no">​</a></h3>
+<p><strong>property keypoints_xy</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of x,y pairs [(float, float), ]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframekeypoints3dkeypoints_xyznone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.KeyPoints3D(keypoints_xyz=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframekeypoints3dkeypoints_xyznone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframekeypoints3dkeypoints_xyznone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframekeypoints3dkeypoints_xyznone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>KeyPoints3D object, representing a 3D set of key points,
+parsing the set of float values as triplets of x,y,z points.</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>keypoints_xyz</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>Tuple</em> <em>[</em> <em>float</em> *, * <em>float</em> *, * <em>float</em> <em>]</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="keypoints_xyz">keypoints_xyz<a href="#keypoints_xyz" class="hash-link" aria-label="Direct link to keypoints_xyz" title="Direct link to keypoints_xyz" translate="no">​</a></h3>
+<p><strong>property keypoints_xyz</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>, <code>float</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of x,y,z triplets [(float, float, float), ]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframeellipse2dellipse2d_xyrrtnone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.Ellipse2D(ellipse2d_xyrrt=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframeellipse2dellipse2d_xyrrtnone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframeellipse2dellipse2d_xyrrtnone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframeellipse2dellipse2d_xyrrtnone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>Ellipse2D object, representing an 2D Ellipse, parsing the central point with rx and ry as radii and
+theta as the rotation angle (radians)</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>ellipse2d_xyrrt</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>5</em> *, * <em>float</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="angle">angle<a href="#angle" class="hash-link" aria-label="Direct link to angle" title="Direct link to angle" translate="no">​</a></h3>
+<p><strong>property angle</strong></p>
+<p>Return the angle (radians) of the ellipse</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>float</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>float represent the angle (radians)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="center">center<a href="#center" class="hash-link" aria-label="Direct link to center" title="Direct link to center" translate="no">​</a></h3>
+<p><strong>property center</strong></p>
+<p>Return the center of the ellipse</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Tuple</code>[<code>float</code>, <code>float</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>(float, float) represent the center x, y coordinates</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="ellipse2d_xyrrt">ellipse2d_xyrrt<a href="#ellipse2d_xyrrt" class="hash-link" aria-label="Direct link to ellipse2d_xyrrt" title="Direct link to ellipse2d_xyrrt" translate="no">​</a></h3>
+<p><strong>property ellipse2d_xyrrt</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[float, float, float, float, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of x, y, rx, ry and theta as angle (radians) [float, float, float, float, float]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_bounding_box-3">get_bounding_box<a href="#get_bounding_box-3" class="hash-link" aria-label="Direct link to get_bounding_box" title="Direct link to get_bounding_box" translate="no">​</a></h3>
+<p><strong>get_bounding_box()</strong></p>
+<p>Get the bounding box for this 2D ellipse (angle in radians)</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[5, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>[left_x top_y width height angle]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_polygon">get_polygon<a href="#get_polygon" class="hash-link" aria-label="Direct link to get_polygon" title="Direct link to get_polygon" translate="no">​</a></h3>
+<p><strong>get_polygon(num_point=4)</strong></p>
+<p>Get a polygon points wrapping the ellipse</p>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<p><strong>num_point</strong>  (<code>int</code>) – the number of polygon points.</p>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Sequence</code>[<code>Tuple</code>[<code>float</code>, <code>float</code>]]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of x,y pairs [(float, float), (float, float), …]</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="radii">radii<a href="#radii" class="hash-link" aria-label="Direct link to radii" title="Direct link to radii" translate="no">​</a></h3>
+<p><strong>property radii</strong></p>
+<p>Return the radii of the ellipse</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>Tuple</code>[<code>float</code>, <code>float</code>]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>(float, float) represent the (rx, ry)</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframeboundingbox2dbounding_box_xywhnone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.BoundingBox2D(bounding_box_xywh=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframeboundingbox2dbounding_box_xywhnone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframeboundingbox2dbounding_box_xywhnone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframeboundingbox2dbounding_box_xywhnone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>BoundingBox2D object, representing a 2D bounding-box, parsing the set of float values as 5 values as top, left,
+width, height, angle (radians) values.</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>bounding_box_xywh</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>5</em> *, * <em>float</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="angle-1">angle<a href="#angle-1" class="hash-link" aria-label="Direct link to angle" title="Direct link to angle" translate="no">​</a></h3>
+<p><strong>property angle</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p><code>float</code></p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>angle (radians) of the bounding box</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="bounding_box_xywh">bounding_box_xywh<a href="#bounding_box_xywh" class="hash-link" aria-label="Direct link to bounding_box_xywh" title="Direct link to bounding_box_xywh" translate="no">​</a></h3>
+<p><strong>property bounding_box_xywh</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[4, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of top x,left y, width, height of the bounding box (float, float, float, float)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="bounding_box_xywha">bounding_box_xywha<a href="#bounding_box_xywha" class="hash-link" aria-label="Direct link to bounding_box_xywha" title="Direct link to bounding_box_xywha" translate="no">​</a></h3>
+<p><strong>property bounding_box_xywha</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[5, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of top x,left y, width, height, angle (radians) of the bounding box
+(float, float, float, float, float)</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="get_bounding_box-4">get_bounding_box<a href="#get_bounding_box-4" class="hash-link" aria-label="Direct link to get_bounding_box" title="Direct link to get_bounding_box" translate="no">​</a></h3>
+<p><strong>get_bounding_box()</strong></p>
+<p>Get the bounding box for this 2D bounding box (angle in radians)</p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[4, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>[left_x top_y width height]</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframeboundingbox3dbounding_box_3d_xyzwhxyzwhnone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.BoundingBox3D(bounding_box_3d_xyzwhxyzwh=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframeboundingbox3dbounding_box_3d_xyzwhxyzwhnone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframeboundingbox3dbounding_box_3d_xyzwhxyzwhnone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframeboundingbox3dbounding_box_3d_xyzwhxyzwhnone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>BoundingBox3D object, representing a 3D bounding-box, parsing the set of float values as:
+front-top-left corner (triplets x,y,z), front-width, front-height,
+back-top-left corner (triplets x,y,z), back-width, back-height</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>bounding_box_3d_xyzwhxyzwh</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>10</em> *, * <em>float</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="bounding_box_3d_xyzwhxyzwh">bounding_box_3d_xyzwhxyzwh<a href="#bounding_box_3d_xyzwhxyzwh" class="hash-link" aria-label="Direct link to bounding_box_3d_xyzwhxyzwh" title="Direct link to bounding_box_3d_xyzwhxyzwh" translate="no">​</a></h3>
+<p><strong>property bounding_box_3d_xyzwhxyzwh</strong></p>
+<ul>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>Sequence[10, float]</p>
+</li>
+<li class="">
+<p><strong>Returns</strong></p>
+<p>list of 10 floats: front-top-left corner (triplets x,y,z), front-width, front-height,
+back-top-left corner (triplets x,y,z), back-width, back-height</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="class-dataframeimageannotationimage_classesnone-idnone-labelsnone-confidencenone-metadatanone"><em>class</em> dataframe.ImageAnnotation(image_classes=None, id=None, labels=None, confidence=None, metadata=None)<a href="#class-dataframeimageannotationimage_classesnone-idnone-labelsnone-confidencenone-metadatanone" class="hash-link" aria-label="Direct link to class-dataframeimageannotationimage_classesnone-idnone-labelsnone-confidencenone-metadatanone" title="Direct link to class-dataframeimageannotationimage_classesnone-idnone-labelsnone-confidencenone-metadatanone" translate="no">​</a></h2>
+<p>Extending Annotation class object.</p>
+<p>ImageAnnotation annotation object, representing an image level annotation (applies for the entire image)</p>
+<p>Create a new annotation object</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>In case you need to annotate the same object with more than one annotation type, associate the
+annotation objects by giving them the same ID.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Parameters</strong></p>
+<ul>
+<li class="">
+<p><strong>values</strong>  – A sequence of numeric values or a list of sequences of numeric values</p>
+</li>
+<li class="">
+<p><strong>id</strong>  (<em>Optional</em> <em>[</em> <em>str</em> <em>]</em> ) – String representing the specific annotation. Useful for tracking objects. None is a valid option.</p>
+</li>
+<li class="">
+<p><strong>labels</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) – List of labels (string)</p>
+</li>
+<li class="">
+<p><strong>confidence</strong>  (<em>Optional</em> <em>[</em> <em>float</em> <em>]</em> ) – confidence of annotation</p>
+</li>
+<li class="">
+<p><strong>metadata</strong>  (<em>Optional</em> <em>[</em> <em>dict</em> <em>]</em> ) – General purpose dictionary storing multiple field/values</p>
+</li>
+<li class="">
+<p><strong>image_classes</strong>  (<em>Optional</em> <em>[</em> <em>Sequence</em> <em>[</em> <em>str</em> <em>]</em> <em>]</em> ) –</p>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Return type</strong></p>
+<p>()</p>
+</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/references/hyperdataset/framegroup"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">FrameGroup</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/references/hyperdataset/dataview"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">DataView</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#class-dataframeannotationvaluesnone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.Annotation(values=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#label_enum" class="table-of-contents__link toc-highlight">label_enum</a></li><li><a href="#annotationget_type" class="table-of-contents__link toc-highlight">Annotation.get_type</a></li><li><a href="#values" class="table-of-contents__link toc-highlight">values</a></li><li><a href="#id" class="table-of-contents__link toc-highlight">id</a></li><li><a href="#labels" class="table-of-contents__link toc-highlight">labels</a></li><li><a href="#metadata" class="table-of-contents__link toc-highlight">metadata</a></li><li><a href="#confidence" class="table-of-contents__link toc-highlight">confidence</a></li><li><a href="#to_dict" class="table-of-contents__link toc-highlight">to_dict</a></li><li><a href="#register" class="table-of-contents__link toc-highlight">register</a></li><li><a href="#copy" class="table-of-contents__link toc-highlight">copy</a></li></ul></li><li><a href="#class-dataframemaskmask_rgbnone-idnone-labelsnone-confidencenone-metadatanone-mask_idnone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.Mask(mask_rgb=None, id=None, labels=None, confidence=None, metadata=None, mask_id=None)</a><ul><li><a href="#mask_id" class="table-of-contents__link toc-highlight">mask_id</a></li><li><a href="#mask_rgb" class="table-of-contents__link toc-highlight">mask_rgb</a></li></ul></li><li><a href="#class-dataframepolygon2dpolygon_xynone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.Polygon2D(polygon_xy=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#get_bounding_box" class="table-of-contents__link toc-highlight">get_bounding_box</a></li><li><a href="#polygon_xy" class="table-of-contents__link toc-highlight">polygon_xy</a></li></ul></li><li><a href="#class-dataframecomplexpolygon2dpolygons_xynone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.ComplexPolygon2D(polygons_xy=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#get_bounding_box-1" class="table-of-contents__link toc-highlight">get_bounding_box</a></li><li><a href="#polygons_xy" class="table-of-contents__link toc-highlight">polygons_xy</a></li></ul></li><li><a href="#class-dataframepolygon3dpolygon_xyznone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.Polygon3D(polygon_xyz=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#polygon_xyz" class="table-of-contents__link toc-highlight">polygon_xyz</a></li></ul></li><li><a href="#class-dataframecomplexpolygon3dpolygons_xyznone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.ComplexPolygon3D(polygons_xyz=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#polygons_xyz" class="table-of-contents__link toc-highlight">polygons_xyz</a></li></ul></li><li><a href="#class-dataframekeypoints2dkeypoints_xynone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.KeyPoints2D(keypoints_xy=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#get_bounding_box-2" class="table-of-contents__link toc-highlight">get_bounding_box</a></li><li><a href="#keypoints_xy" class="table-of-contents__link toc-highlight">keypoints_xy</a></li></ul></li><li><a href="#class-dataframekeypoints3dkeypoints_xyznone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.KeyPoints3D(keypoints_xyz=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#keypoints_xyz" class="table-of-contents__link toc-highlight">keypoints_xyz</a></li></ul></li><li><a href="#class-dataframeellipse2dellipse2d_xyrrtnone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.Ellipse2D(ellipse2d_xyrrt=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#angle" class="table-of-contents__link toc-highlight">angle</a></li><li><a href="#center" class="table-of-contents__link toc-highlight">center</a></li><li><a href="#ellipse2d_xyrrt" class="table-of-contents__link toc-highlight">ellipse2d_xyrrt</a></li><li><a href="#get_bounding_box-3" class="table-of-contents__link toc-highlight">get_bounding_box</a></li><li><a href="#get_polygon" class="table-of-contents__link toc-highlight">get_polygon</a></li><li><a href="#radii" class="table-of-contents__link toc-highlight">radii</a></li></ul></li><li><a href="#class-dataframeboundingbox2dbounding_box_xywhnone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.BoundingBox2D(bounding_box_xywh=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#angle-1" class="table-of-contents__link toc-highlight">angle</a></li><li><a href="#bounding_box_xywh" class="table-of-contents__link toc-highlight">bounding_box_xywh</a></li><li><a href="#bounding_box_xywha" class="table-of-contents__link toc-highlight">bounding_box_xywha</a></li><li><a href="#get_bounding_box-4" class="table-of-contents__link toc-highlight">get_bounding_box</a></li></ul></li><li><a href="#class-dataframeboundingbox3dbounding_box_3d_xyzwhxyzwhnone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.BoundingBox3D(bounding_box_3d_xyzwhxyzwh=None, id=None, labels=None, confidence=None, metadata=None)</a><ul><li><a href="#bounding_box_3d_xyzwhxyzwh" class="table-of-contents__link toc-highlight">bounding_box_3d_xyzwhxyzwh</a></li></ul></li><li><a href="#class-dataframeimageannotationimage_classesnone-idnone-labelsnone-confidencenone-metadatanone" class="table-of-contents__link toc-highlight"><em>class</em> dataframe.ImageAnnotation(image_classes=None, id=None, labels=None, confidence=None, metadata=None)</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

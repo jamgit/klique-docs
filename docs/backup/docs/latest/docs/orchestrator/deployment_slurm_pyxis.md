@@ -1,0 +1,148 @@
+# Slurm with Pyxis
+
+> Deploying the Slurm Glue orchestrator with Pyxis containers, using SBATCH directives or a custom srun wrapper for OCI images.
+
+The Klique Orchestrator can deploy **Pyxis** containers in Linux clusters managed by Slurm.
+
+Pyxis provides OCI-compatible container execution on Slurm clusters, typically backed by Enroot.
+
+This integration works similarly to the [Native Slurm](deployment_slurm.md) workflow, with the following 
+differences:
+* Container execution requires either Pyxis-specific SBATCH directives or a customized `srun` command wrapper.
+* To run tasks using the `srun` wrapper approach, the orchestrator must be launched with `--srun-delegation`.
+* Tasks must specify an OCI-style container image (DockerHub, NVIDIA NGC, etc.).
+
+## 1. Install the Slurm Glue
+
+Install the Slurm Glue on a machine where you can run Slurm commands such as `sbatch` and `squeue` (typically the login node).
+One instance is sufficient for the entire cluster; there is no need to install it on every node.
+   
+```
+pip3 install -U --extra-index-url https://*****@*****.allegro.ai/repository/clearml_agent_slurm/simple clearml-agent-slurm
+```
+   
+:::tip[Python repository credentials]
+Your credentials for `--extra-index-url` are available in the WebApp under the **Help** menu   **>** 
+**Enterprise Packages** **>** **Klique HPC daemon**.
+:::
+
+## 2. Create a Batch Template
+
+Create a batch template using either [explicit SBATCH Directives](#explicit-sbatch-directives) or [Custom srun wrapper](#custom-srun-wrapper).
+
+:::note
+Pyxis requires explicit OCI-style container URLs. For example:
+* DockerHub: `docker://ubuntu:22.04`
+* NVIDIA NGC: `docker://nvcr.io/nvidia/pytorch:24.01-py3`
+
+The ClearML SDK supports this format when specifying a base container programmatically. For example:
+
+```python
+task.set_base_docker("docker://nvcr.io/nvidia/pytorch:24.01-py3")
+```
+:::
+
+### Explicit SBATCH Directives
+Configure Pyxis directly using `#SBATCH --container-*` options. Use this approach for clusters where container execution is 
+standardized.
+
+**Example Template:**
+
+```
+#!/bin/bash
+
+#SBATCH --job-name=clearml_task_${CLEARML_TASK.id}
+#SBATCH --ntasks=1
+# #SBATCH --mem=1mb
+# #SBATCH --time=00:05:00
+#SBATCH --output=task-${CLEARML_TASK.id}-%j.log
+#SBATCH --partition debug
+#SBATCH --cpus-per-task=1
+#SBATCH --priority=5
+#SBATCH --nodes=${CLEARML_TASK.hyperparams.properties.num_nodes.value:1}
+
+# Pyxis container configuration
+#SBATCH --container-image=${CLEARML_TASK.container.image}
+#SBATCH --container-remap-root
+#SBATCH --container-writable
+
+${CLEARML_PRE_SETUP}
+
+export CLEARML_MULTI_NODE_SINGLE_TASK=1
+
+echo whoami $(whoami)
+
+${CLEARML_AGENT_EXECUTE}
+
+${CLEARML_POST_SETUP}
+```
+
+:::note 
+For details on available template variables, see [Slurm (Native)](deployment_slurm.md#dynamic-template-variables).
+:::
+
+### Custom srun Wrapper
+Use this approach if your cluster does not use the SBATCH container directives, or if you need dynamic flags or custom 
+mounts. In this method, the template creates a custom srun wrapper which includes the required  `srun --container-*` parameters.
+
+**Example Template:**
+```
+#!/bin/bash
+#SBATCH --job-name=clearml_task_${CLEARML_TASK.id}
+#SBATCH --ntasks=1
+#SBATCH --output=task-${CLEARML_TASK.id}-%j.log
+#SBATCH --partition debug
+#SBATCH --cpus-per-task=1
+#SBATCH --priority=5
+#SBATCH --nodes=${CLEARML_TASK.hyperparams.properties.num_nodes.value:1}
+
+${CLEARML_PRE_SETUP}
+
+export CLEARML_MULTI_NODE_SINGLE_TASK=1
+
+echo whoami $(whoami)
+
+# Wrap srun to always add the container options
+srun() {
+    command srun \
+        --container-image="${CLEARML_TASK.container.image}" \
+        --container-remap-root \
+        --container-writable \
+        --container-mounts=$CLEARML_AGENT__AGENT__VENVS_DIR/clearml.conf:$CLEARML_AGENT__AGENT__VENVS_DIR/clearml.conf \
+        "$@"
+}
+
+${CLEARML_POST_SETUP}
+```
+
+Note the srun wrapper method enables flexible mounting:
+```
+--container-mounts=host_path:container_path[,host_path2:container_path2]
+```
+
+:::note 
+For details on available template variables see [Slurm (Native)](deployment_slurm.md#dynamic-template-variables).
+:::
+
+## 3. Launch the Slurm Glue
+
+Launch the Klique Orchestrator Slurm Glue and assign the Slurm configuration to a Klique queue. For example, the following 
+associates the `default` queue to the `slurm.example_pyxis.template` script, so any jobs pushed to this queue will use the 
+resources set by that script.  
+
+```commandline
+clearml-agent-slurm --template-files slurm.example_pyxis.template --queue default
+```
+   
+If using the **srun approach** add `--srun-delegation` to the command line:
+
+```commandline
+clearml-agent-slurm --srun-delegation --template-files slurm.example_pyxis.template --queue default
+``` 
+
+## User Impersonation
+
+By default, Slurm jobs are submitted as the Linux user running the orchestrator process.
+
+You can configure the orchestrator to submit jobs as different Linux users based on the Klique user who enqueued the task. 
+See [Slurm User Impersonation](slurm_impersonation.md).

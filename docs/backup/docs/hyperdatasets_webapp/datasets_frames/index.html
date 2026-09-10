@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-hyperdatasets_webapp/datasets_frames" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">Working with Frames | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/hyperdatasets_webapp/datasets_frames"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Working with Frames | Klique"><meta data-rh="true" name="description" content="Viewing and editing dataset version frames, including the frame viewer, masks, annotations, and frame metadata."><meta data-rh="true" property="og:description" content="Viewing and editing dataset version frames, including the frame viewer, masks, annotations, and frame metadata."><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/hyperdatasets_webapp/datasets_frames"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/hyperdatasets_webapp/datasets_frames" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/hyperdatasets_webapp/datasets_frames" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.f77cf0be.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.858c83d9.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Collapse sidebar category &#x27;WebApp&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/role_based_ui"><span title="Role-Based UI" class="linkLabel_WmDU">Role-Based UI</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/webapp_admin_dashboard"><span title="Admin Dashboard" class="categoryLinkLabel_W154">Admin Dashboard</span></a><button aria-label="Expand sidebar category &#x27;Admin Dashboard&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/admin_settings"><span title="Administrator Settings" class="categoryLinkLabel_W154">Administrator Settings</span></a><button aria-label="Expand sidebar category &#x27;Administrator Settings&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_overview"><span title="Klique Applications" class="categoryLinkLabel_W154">Klique Applications</span></a><button aria-label="Expand sidebar category &#x27;Klique Applications&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/webapp_workers_queues"><span title="Orchestration" class="categoryLinkLabel_W154">Orchestration</span></a><button aria-label="Expand sidebar category &#x27;Orchestration&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/webapp_model_endpoints"><span title="Model Endpoints" class="linkLabel_WmDU">Model Endpoints</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/datasets/webapp_dataset_page"><span title="Datasets" class="categoryLinkLabel_W154">Datasets</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/latest/docs/hyperdatasets_webapp/datasets"><span title="Hyper-Datasets" class="categoryLinkLabel_W154">Hyper-Datasets</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/hyperdatasets_webapp/datasets"><span title="Hyper-Datasets Page" class="linkLabel_WmDU">Hyper-Datasets Page</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/hyperdatasets_webapp/datasets_versioning"><span title="Dataset Versions" class="linkLabel_WmDU">Dataset Versions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/hyperdatasets_webapp/datasets_frames"><span title="Working with Frames" class="linkLabel_WmDU">Working with Frames</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/hyperdatasets_webapp/annotator"><span title="Annotation Tasks" class="linkLabel_WmDU">Annotation Tasks</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/webapp_home"><span title="Projects" class="categoryLinkLabel_W154">Projects</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/pipelines/webapp_pipeline_page"><span title="Pipelines" class="categoryLinkLabel_W154">Pipelines</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/settings/webapp_settings_overview"><span title="Settings" class="categoryLinkLabel_W154">Settings</span></a><button aria-label="Expand sidebar category &#x27;Settings&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Expand sidebar category &#x27;References&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Working with Frames</h1></header><p>View and edit SingleFrames in the Dataset page. After selecting a Hyper-Dataset version, the <strong>Version Browser</strong> shows a sample
+of frames and enables viewing SingleFrames and FramesGroups, and editing SingleFrames, in the <a href="#frame-viewer" class="">frame viewer</a>.
+Before opening the frame viewer, you can apply <a class="" href="/docs/latest/docs/hyperdatasets_webapp/datasets_versioning#frame-filtering">frame filters</a>.</p>
+<p><img decoding="async" loading="lazy" alt="Dataset page" src="/docs/latest/assets/images/dataset_versions-090835bd50cf769c182feea604fae822.png#light-mode-only" width="1920" height="1080" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Dataset page" src="/docs/latest/assets/images/dataset_versions_dark-2ddc74ced5e79dbb2247056d29816848.png#dark-mode-only" width="1920" height="1080" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="frame-viewer">Frame Viewer<a href="#frame-viewer" class="hash-link" aria-label="Direct link to Frame Viewer" title="Direct link to Frame Viewer" translate="no">​</a></h2>
+<p>Use the frame viewer to view and edit annotations (ROIs and frame labels), frame details (see <a href="https://clear.ml/docs/latest/docs/hyperdatasets/frames/" target="_blank" rel="nofollow noopener noreferrer" class="">frames</a>),
+and frame metadata, as well as view frame masks of your dataset version frames.</p>
+<p><img decoding="async" loading="lazy" alt="Frame viewer" src="/docs/latest/assets/images/dataset_example_frame_editor-c541024a23e7cc53001fa4be95f3b26f.png#light-mode-only" width="1920" height="1080" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Frame viewer" src="/docs/latest/assets/images/dataset_example_frame_editor_dark-8190b1225b6d518e25040e4cb40fb6c6.png#dark-mode-only" width="1920" height="1080" class="img_ev3q"></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="viewing-framegroup-data">Viewing FrameGroup Data<a href="#viewing-framegroup-data" class="hash-link" aria-label="Direct link to Viewing FrameGroup Data" title="Direct link to Viewing FrameGroup Data" translate="no">​</a></h3>
+<p>FrameGroup information is organized across several panels in the Frame Viewer:</p>
+<ul>
+<li class=""><strong>FrameGroup Details</strong> – Displays all FrameGroup details except metadata. The details include: general fields (e.g.
+<code>context_id</code>, dataset ID and version, timestamp, etc.) as well as annotation (e.g. <code>rois</code>, their <code>labels</code>, <code>confidence</code>, etc.)
+<ul>
+<li class="">Click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-metadata.svg" alt="edit metadata" class="icon size-md space-sm img_ev3q"> to view the details in a larger window.</li>
+<li class="">Click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-code-file.svg" alt="view schema" class="icon size-md space-sm img_ev3q"> to view the dataset&#x27;s frame document schema. This covers all possible fields in the dataset</li>
+</ul>
+</li>
+<li class=""><strong>FrameGroup Metadata</strong> – Displays FrameGroup-level metadata. Displays only the contents of the <code>frame.meta</code> field—typically used for structured metadata or custom key-value data.
+<ul>
+<li class="">Click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-metadata.svg" alt="edit metadata" class="icon size-md space-sm img_ev3q"> to modify the metadata field.</li>
+</ul>
+</li>
+<li class=""><strong>Annotations</strong> - Review and modify frame annotations. For more information, see <a href="#masks" class="">Masks</a> and <a href="#annotations" class="">Annotations</a>.</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="frame-viewer-controls">Frame Viewer Controls<a href="#frame-viewer-controls" class="hash-link" aria-label="Direct link to Frame Viewer Controls" title="Direct link to Frame Viewer Controls" translate="no">​</a></h3>
+<p>Use frame viewer controls to navigate between frames in a Hyper-Dataset Version, and control frame changes and viewing.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control Icon</th><th>Actions</th><th>Shortcut</th></tr></thead><tbody><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-backward.svg" alt="Jump backwards icon" class="icon size-md space-sm img_ev3q"></td><td>Jumps backwards ten frames</td><td>CTRL + Left arrow</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-previous.svg" alt="Jump to previous unfiltered annotation" class="icon size-md space-sm img_ev3q"></td><td>Go to the previous frame containing a non-filtered annotation. The filter is the minimum confidence level setting. If the confidence level filter is set to zero, any frame containing annotations matches the filter.</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-arrow-left.svg" alt="Previous frame icon" class="icon size-md space-sm img_ev3q"></td><td>Go to the previous frame</td><td>Left arrow</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-arrow-right.svg" alt="Next frame icon" class="icon size-md space-sm img_ev3q"></td><td>Go to the next frame</td><td>Right arrow</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-next.svg" alt="Jump to next unfiltered annotation" class="icon size-md space-sm img_ev3q"></td><td>Go to the next frame containing a non-filtered annotation (same filter as <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-previous.svg" alt="Jump to previous unfiltered annotation" class="icon size-md space-sm img_ev3q">).</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-forward.svg" alt="Jump forwards icon" class="icon size-md space-sm img_ev3q"></td><td>Jump forwards ten frames</td><td>CTRL + Right arrow</td></tr><tr><td><code>Use Source Data</code></td><td>Show the frame&#x27;s <code>source</code> rather than its <code>preview</code></td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-revert.svg" alt="Reload frame icon" class="icon size-md space-sm img_ev3q"></td><td>Reload the frame.</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-undo.svg" alt="Undo icon" class="icon size-md space-sm img_ev3q"></td><td>Undo changes.</td><td>Ctrl + Z</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-redo.svg" alt="Redo icon" class="icon size-md space-sm img_ev3q"></td><td>Redo changes.</td><td>Ctrl + Y</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-zoom-to-fit.svg" alt="Autofit icon" class="icon size-md space-sm img_ev3q"></td><td>Autofit</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-zoom-1-to-1.svg" alt="Return to original size" class="icon size-md space-sm img_ev3q"></td><td>View image in original size</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-zoom-in.svg" alt="Zoom in icon" class="icon size-md space-sm img_ev3q"></td><td>Zoom in</td><td><strong>+</strong> or Ctrl + Mouse wheel</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-zoom-out.svg" alt="Zoom out icon" class="icon size-md space-sm img_ev3q"></td><td>Zoom out</td><td><strong>-</strong> or Ctrl + Mouse wheel</td></tr><tr><td>Percentage textbox</td><td>Zoom percentage</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><code>Current Source</code></td><td>When viewing multi-source FrameGroups, select which of the FrameGroups&#x27; sources to display: <ul><li class=""><code>Default preview source</code>: present the first available source for each frame (sources are retrieved in ASCIIbetical order)</li><li class=""><code>All sources </code>: Present all the FrameGroup’s sources in a grid</li><li class="">Specific source: Select an individual source by name from the list of available sources</li></ul></td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-shared-item.svg" alt="Copy URL" class="icon size-md space-sm img_ev3q"></td><td>Copy frame URL. A direct link to view the current frame</td><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-optional-no.svg" alt="Not applicable" class="icon size-md center-md img_ev3q"></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="additional-keyboard-shortcuts">Additional Keyboard Shortcuts<a href="#additional-keyboard-shortcuts" class="hash-link" aria-label="Direct link to Additional Keyboard Shortcuts" title="Direct link to Additional Keyboard Shortcuts" translate="no">​</a></h4>
+<p><strong>General Controls</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Action</th></tr></thead><tbody><tr><td>Hold Spacebar + Press and hold image + Drag</td><td>Move around image. NOTE: If using a touchpad, this only works if the <em>Disable touchpad while typing</em> setting is turned off</td></tr><tr><td>Esc</td><td>Escape frame viewer and return to dataset page</td></tr></tbody></table>
+<p><strong>General Annotation Controls</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Action</th></tr></thead><tbody><tr><td>Delete</td><td>Remove annotation</td></tr><tr><td>Alt + ] / [</td><td>Choose a default ROI label by navigating between previous / next labels</td></tr><tr><td>Shift + M</td><td>Edit metadata</td></tr><tr><td>Shift + N</td><td>Add a new <a href="https://clear.ml/docs/latest/docs/hyperdatasets/annotations/#frame-labels" target="_blank" rel="nofollow noopener noreferrer" class="">frame label</a></td></tr><tr><td>Shift + Tab</td><td>Previous annotation (use after clicking an annotation)</td></tr></tbody></table>
+<p><strong>Mode-specific annotation controls</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Mode</th><th>Action</th></tr></thead><tbody><tr><td>Hold Shift</td><td>Key points (<img decoding="async" loading="lazy" src="/docs/latest/icons/ico-keypoint-icon-purple.svg" alt="Key points mode" class="icon size-sm space-sm img_ev3q">)</td><td>While holding Shift, add new points to the ROI by left clicking, and move a single point by dragging it with your mouse</td></tr><tr><td>Enter</td><td>Key points (<img decoding="async" loading="lazy" src="/docs/latest/icons/ico-keypoint-icon-purple.svg" alt="Key points mode" class="icon size-sm space-sm img_ev3q">)</td><td>Complete annotation</td></tr><tr><td>Esc</td><td>Key points (<img decoding="async" loading="lazy" src="/docs/latest/icons/ico-keypoint-icon-purple.svg" alt="Key points mode" class="icon size-sm space-sm img_ev3q">), Polygon (<img decoding="async" loading="lazy" src="/docs/latest/icons/ico-polygon-icon-purple.svg" alt="Polygon mode" class="icon size-sm space-sm img_ev3q">)</td><td>Cancel annotation process</td></tr></tbody></table>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="viewing-and-editing-frames">Viewing and Editing Frames<a href="#viewing-and-editing-frames" class="hash-link" aria-label="Direct link to Viewing and Editing Frames" title="Direct link to Viewing and Editing Frames" translate="no">​</a></h3>
+<p><strong>To view / edit a frame in the frame editor</strong></p>
+<ol>
+<li class="">Locate your frame by applying <a class="" href="/docs/latest/docs/hyperdatasets_webapp/datasets_versioning#frame-filtering">frame filters</a>.</li>
+<li class="">Click the frame thumbnail. The frame editor appears.</li>
+<li class="">Do any of the following:
+<ul>
+<li class="">View frame details, including:
+<ul>
+<li class="">Frame file path</li>
+<li class="">Dimensions of the image or video</li>
+<li class="">Frame details</li>
+<li class="">Frame metadata</li>
+<li class="">Annotations
+<ul>
+<li class="">Frame objects - Labeled Regions of Interest, with confidence levels and custom metadata per frame object.</li>
+<li class="">Frame labels - Labels applied to the entire frame, not a region in the frame.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">Optionally, filter annotations by confidence level using the <strong>Minimum confidence</strong> slider.</li>
+<li class="">Add, change, and delete <a href="#annotations" class="">annotations</a> and <a href="#frame-metadata" class="">frame metadata</a>.</li>
+</ul>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-important admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Saving Frame Changes</div><div class="admonitionContent_BuS1"><p>To save frames changes at any time, click <strong>SAVE</strong> (below the annotation list area).</p></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="viewing-framegroups">Viewing FrameGroups<a href="#viewing-framegroups" class="hash-link" aria-label="Direct link to Viewing FrameGroups" title="Direct link to Viewing FrameGroups" translate="no">​</a></h3>
+<p>Viewing and editing frames in a FrameGroup is similar to viewing and editing SingleFrames.
+Click the FrameGroup in the Hyper-Dataset. In the frame viewer, select SingleFrame to view / modify from
+a dropdown list in the <strong>Current Source</strong> section.</p>
+<p><img decoding="async" loading="lazy" alt="Frame dropdown menu in FrameGroup" src="/docs/latest/assets/images/framegroup_01-e5d46cf61e0ef47b9a05bfe861e38605.png#light-mode-only" width="1920" height="1080" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Frame dropdown menu in FrameGroup" src="/docs/latest/assets/images/framegroup_01_dark-bef6543b464bc10570897e2c4a4f899b.png#dark-mode-only" width="1920" height="1080" class="img_ev3q"></p>
+<p>If an annotation applies to all frames in a FrameGroup, it is displayed with a <code>Multi Source</code> indicator:</p>
+<div class="max-w-50">
+<p><img decoding="async" loading="lazy" alt="Multi-source ROI" src="/docs/latest/assets/images/multi_source_annotation-21ba1e577cf65009728c0a17c4b01720.png#light-mode-only" width="812" height="172" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Multi-source ROI" src="/docs/latest/assets/images/multi_source_annotation_dark-674eab33a2dbe4a68e71d6de25e1858f.png#dark-mode-only" width="812" height="169" class="img_ev3q"></p>
+</div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="masks">Masks<a href="#masks" class="hash-link" aria-label="Direct link to Masks" title="Direct link to Masks" translate="no">​</a></h2>
+<p>Use the <strong>MASKS</strong> panel to select which masks to apply over the frame.</p>
+<p>To view / hide a specific mask, click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-show.svg" alt="Eye Show" class="icon size-md space-sm img_ev3q">.
+In order to view / hide all masks, click <strong>Show all</strong> / <strong>Hide all</strong>.</p>
+<p>Masks are applied over the image either by pixel segmentation or as an alpha channel:</p>
+<ul>
+<li class=""><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-segmentation.svg" alt="Pixel segmentation mode" class="icon size-md space-sm img_ev3q"> Pixel
+segmentation - Class labels are mapped onto the mask according to their pixel value definitions, and each
+class is assigned a unique color.</li>
+<li class=""><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-alpha-mask.svg" alt="Alpha channel mode" class="icon size-md space-sm img_ev3q"> Alpha
+channel - Mask pixel values are translated to transparency. Additionally, a color can be applied to the mask to help
+distinguish multiple masks. Click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-mask-color-preview.svg" alt="Alpha color" class="icon size-md space-sm img_ev3q"> to select
+a color.</li>
+</ul>
+<p>To adjust the transparency of a mask, use its opacity slider.</p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="labels">Labels<a href="#labels" class="hash-link" aria-label="Direct link to Labels" title="Direct link to Labels" translate="no">​</a></h3>
+<p>The <strong>Active mask labels</strong> section displays the color mapping of the mask labels.
+The panel presents labels only from masks that are currently displayed.</p>
+<p><strong>To modify a label&#x27;s color and opacity:</strong></p>
+<ol>
+<li class="">Click the colored circle next to the label</li>
+<li class="">Select a new color</li>
+<li class="">Adjust the opacity slider</li>
+<li class="">Click <strong>OK</strong></li>
+</ol>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="annotations">Annotations<a href="#annotations" class="hash-link" aria-label="Direct link to Annotations" title="Direct link to Annotations" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="adding-frame-objects-regions-of-interest">Adding Frame Objects (Regions of Interest)<a href="#adding-frame-objects-regions-of-interest" class="hash-link" aria-label="Direct link to Adding Frame Objects (Regions of Interest)" title="Direct link to Adding Frame Objects (Regions of Interest)" translate="no">​</a></h3>
+<p>Annotate images and video by labeling regions of interest in Dataset version frames. You can create new annotations
+and copy existing annotations.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="creating-new-frame-objects">Creating New Frame Objects<a href="#creating-new-frame-objects" class="hash-link" aria-label="Direct link to Creating New Frame Objects" title="Direct link to Creating New Frame Objects" translate="no">​</a></h4>
+<p>To draw a new annotation:</p>
+<ol>
+<li class="">
+<p>Click one of the following modes to choose what annotation to create:</p>
+<ul>
+<li class="">
+<p><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-rectangle-icon-purple.svg" alt="Rectangle mode icon" class="icon size-md space-sm img_ev3q"> - Rectangle mode:
+Click then drag the cursor to create a rectangle annotation on the frame.</p>
+</li>
+<li class="">
+<p><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-ellipse-icon-purple.svg" alt="Ellipse mode icon" class="icon size-md space-sm img_ev3q"> - Ellipse mode:
+Click then drag the cursor to create an ellipse annotation on the frame.</p>
+</li>
+<li class="">
+<p><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-polygon-icon-purple.svg" alt="Polygon mode icon" class="icon size-md space-sm img_ev3q"> - Polygon mode:
+Each click sets polygon vertices on the frame. Click again on the initial vertex to close the polygon.</p>
+</li>
+<li class="">
+<p><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-keypoint-icon-purple.svg" alt="Key points mode icon" class="icon size-md space-sm img_ev3q"> - Key points mode:
+Each click adds a keypoint to the frame. After clicking the last keypoint, click  <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-save.svg" alt="Check mark" class="icon size-md space-sm img_ev3q">
+or <code>Enter</code> to save the annotation. Click <code>Esc</code> to cancel the annotation.</p>
+</li>
+</ul>
+<p>A new annotation is created.</p>
+</li>
+<li class="">
+<p>In the newly created annotation, select or type-in the labels for this annotation.</p>
+</li>
+</ol>
+<p>You can use the <strong>Default ROI Label(s)</strong> list to automatically set labels to all new annotations.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Annotation color</div><div class="admonitionContent_BuS1"><p>Each annotation label is automatically assigned a color based on its value. The annotation color is automatically
+calculated based on the colors of its labels.</p><p>Click the color circle in the label name to manually set the label&#x27;s color.</p><div class="max-w-75"><p><img decoding="async" loading="lazy" alt="Set label color" src="/docs/latest/assets/images/annotation_label_color-0227abfe6bffb3b95eb43665741d0321.png#light-mode-only" width="839" height="172" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Set label color" src="/docs/latest/assets/images/annotation_label_color_dark-013d2fe58f0e374b96940483d209d7f5.png#dark-mode-only" width="839" height="170" class="img_ev3q"></p></div><p>Click the color circle in the annotation header to manually set the annotation’s color and its opacity.</p><div class="max-w-75"><p><img decoding="async" loading="lazy" alt="Set annotation color and opacity" src="/docs/latest/assets/images/annotation_label_opacity-c63c03383def033b34b49bd3eeffd1a5.png#light-mode-only" width="840" height="177" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Set annotation color and opacity" src="/docs/latest/assets/images/annotation_label_opacity_dark-1e661a6f5ac284226277588b4fdefd1d.png#dark-mode-only" width="842" height="175" class="img_ev3q"></p></div></div></div>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="copying-frame-objects">Copying Frame Objects<a href="#copying-frame-objects" class="hash-link" aria-label="Direct link to Copying Frame Objects" title="Direct link to Copying Frame Objects" translate="no">​</a></h4>
+<p>You can copy existing annotations, and paste them to any frame of your choice:</p>
+<ol>
+<li class="">Click the annotation or bounded area in the frame.</li>
+<li class="">Click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-copy-to-clipboard.svg" alt="Copy annotation" class="icon size-md space-sm img_ev3q">
+(copy annotation).</li>
+<li class="">Navigate to the frame of your choice (you can remain in the same frame).</li>
+<li class="">Click <strong>PASTE</strong>. The new annotation appears in the same location as the one you copied. You can paste the annotation
+multiple times.</li>
+</ol>
+<p>Copy all annotations in a frame by clicking the <strong>COPY ALL</strong> button.</p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="annotation-actions">Annotation Actions<a href="#annotation-actions" class="hash-link" aria-label="Direct link to Annotation Actions" title="Direct link to Annotation Actions" translate="no">​</a></h3>
+<p>The following table describes the actions that can be performed on existing annotations. The frame editor automatically
+saves changes when you move to another frame using the frame navigation controls
+(<img decoding="async" loading="lazy" src="/docs/latest/icons/ico-arrow-right.svg" alt="Next frame icon" class="icon size-md space-sm img_ev3q">, <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-next.svg" alt="Jump to next unfiltered annotation" class="icon size-md space-sm img_ev3q">, <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-forward.svg" alt="Jump forwards icon" class="icon size-md space-sm img_ev3q">, <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-arrow-left.svg" alt="Previous frame icon" class="icon size-md space-sm img_ev3q">, <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-previous.svg" alt="Jump to previous unfiltered annotation" class="icon size-md space-sm img_ev3q">, <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-skip-backward.svg" alt="Jump backwards icon" class="icon size-md space-sm img_ev3q">,
+or the arrow keys on the keyboard). Closing the frame editor will prompt you to save any changes.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Icon (when applicable)</th><th>Action</th><th>Description</th></tr></thead><tbody><tr><td></td><td>Move annotation</td><td>Click on a bounded area and drag it.</td></tr><tr><td></td><td>Resize annotation</td><td>Select an annotation, then click on a bounded area&#x27;s vertex and drag it.</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-metadata.svg" alt="edit metadata" class="icon size-md space-sm img_ev3q"></td><td>Edit metadata</td><td>Hover over an annotation in the list and click the icon to open the edit window. Input the metadata dictionary in JSON format. This metadata is specific to the selected annotation, not the entire frame.</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-lock-open.svg" alt="Lock annotation" class="icon size-md space-sm img_ev3q"></td><td>Lock / Unlock annotation</td><td>Click the button on a specific annotation to make it uneditable. You can also click the button on top of the annotations list to lock all annotations in the frame.</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-trash.svg" alt="Trash" class="icon size-md space-sm img_ev3q"></td><td>Delete annotation</td><td>Click the annotation or bounded area in the frame and then click the button to delete the annotation.</td></tr><tr><td><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-show.svg" alt="Eye Show All" class="icon size-md space-sm img_ev3q"></td><td>Show/hide annotations</td><td>Click the button on a specific annotation to hide it. You can also click the button on top of the annotations list to hide all annotations. Hidden annotations can&#x27;t be modified.</td></tr><tr><td></td><td>Delete label</td><td>In the relevant annotation, click <strong>x</strong> on the label you want to remove.</td></tr></tbody></table>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="frame-labels">Frame Labels<a href="#frame-labels" class="hash-link" aria-label="Direct link to Frame Labels" title="Direct link to Frame Labels" translate="no">​</a></h3>
+<p>You can add labels which describe the whole frame, with no specific coordinates.</p>
+<p><strong>To add frame labels:</strong></p>
+<ol>
+<li class="">Expand the <strong>FRAME LABELS</strong> area (below <strong>OBJECTS</strong>)</li>
+<li class="">Click <strong>+ Add new</strong></li>
+<li class="">Enter a label(s)</li>
+</ol>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="frame-metadata">Frame Metadata<a href="#frame-metadata" class="hash-link" aria-label="Direct link to Frame Metadata" title="Direct link to Frame Metadata" translate="no">​</a></h2>
+<p><strong>To edit frame metadata:</strong></p>
+<ol>
+<li class="">Expand the <strong>FRAMEGROUP METADATA</strong> area</li>
+<li class="">Click edit <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-metadata.svg" alt="edit metadata" class="icon size-md space-sm img_ev3q">
+which will open an editing window</li>
+<li class="">Modify the metadata dictionary in JSON format</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/hyperdatasets_webapp/datasets_versioning"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Dataset Versions</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/hyperdatasets_webapp/annotator"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Annotation Tasks</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#frame-viewer" class="table-of-contents__link toc-highlight">Frame Viewer</a><ul><li><a href="#viewing-framegroup-data" class="table-of-contents__link toc-highlight">Viewing FrameGroup Data</a></li><li><a href="#frame-viewer-controls" class="table-of-contents__link toc-highlight">Frame Viewer Controls</a></li><li><a href="#viewing-and-editing-frames" class="table-of-contents__link toc-highlight">Viewing and Editing Frames</a></li><li><a href="#viewing-framegroups" class="table-of-contents__link toc-highlight">Viewing FrameGroups</a></li></ul></li><li><a href="#masks" class="table-of-contents__link toc-highlight">Masks</a><ul><li><a href="#labels" class="table-of-contents__link toc-highlight">Labels</a></li></ul></li><li><a href="#annotations" class="table-of-contents__link toc-highlight">Annotations</a><ul><li><a href="#adding-frame-objects-regions-of-interest" class="table-of-contents__link toc-highlight">Adding Frame Objects (Regions of Interest)</a></li><li><a href="#annotation-actions" class="table-of-contents__link toc-highlight">Annotation Actions</a></li><li><a href="#frame-labels" class="table-of-contents__link toc-highlight">Frame Labels</a></li></ul></li><li><a href="#frame-metadata" class="table-of-contents__link toc-highlight">Frame Metadata</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

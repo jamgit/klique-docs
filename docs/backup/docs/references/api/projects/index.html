@@ -1,0 +1,2825 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-references/api/projects" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">projects | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/references/api/projects"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="projects | Klique"><meta data-rh="true" name="description" content="POST /projects.create"><meta data-rh="true" property="og:description" content="POST /projects.create"><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/references/api/projects"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/projects" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/projects" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.f77cf0be.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.858c83d9.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Expand sidebar category &#x27;WebApp&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Collapse sidebar category &#x27;References&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/clearml_sdk"><span title="ClearML SDK" class="linkLabel_WmDU">ClearML SDK</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Legacy allegroai SDK" class="categoryLinkLabel_W154">Legacy allegroai SDK</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/configs/client_configuration"><span title="Client Configuration" class="linkLabel_WmDU">Client Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/orchestrator"><span title="Klique Orchestrator" class="linkLabel_WmDU">Klique Orchestrator</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/mcp_server/overview"><span title="MCP Server" class="categoryLinkLabel_W154">MCP Server</span></a><button aria-label="Expand sidebar category &#x27;MCP Server&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/latest/docs/references/api/"><span title="Server API" class="categoryLinkLabel_W154">Server API</span></a><button aria-label="Collapse sidebar category &#x27;Server API&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/definitions"><span title="API Definitions" class="linkLabel_WmDU">API Definitions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/apps"><span title="apps" class="linkLabel_WmDU">apps</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/auth"><span title="auth" class="linkLabel_WmDU">auth</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/datasets"><span title="datasets" class="linkLabel_WmDU">datasets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/debug"><span title="debug" class="linkLabel_WmDU">debug</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/events"><span title="events" class="linkLabel_WmDU">events</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/frames"><span title="frames" class="linkLabel_WmDU">frames</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/login"><span title="login" class="linkLabel_WmDU">login</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/models"><span title="models" class="linkLabel_WmDU">models</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/organization"><span title="organization" class="linkLabel_WmDU">organization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/permissions"><span title="permissions" class="linkLabel_WmDU">permissions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/pipelines"><span title="pipelines" class="linkLabel_WmDU">pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/references/api/projects"><span title="projects" class="linkLabel_WmDU">projects</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/queues"><span title="queues" class="linkLabel_WmDU">queues</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/reports"><span title="reports" class="linkLabel_WmDU">reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/resources"><span title="resources" class="linkLabel_WmDU">resources</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/routers"><span title="routers" class="linkLabel_WmDU">routers</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/server"><span title="server" class="linkLabel_WmDU">server</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/serving"><span title="serving" class="linkLabel_WmDU">serving</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/sso"><span title="sso" class="linkLabel_WmDU">sso</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/storage"><span title="storage" class="linkLabel_WmDU">storage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/system"><span title="system" class="linkLabel_WmDU">system</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tasks"><span title="tasks" class="linkLabel_WmDU">tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tenants"><span title="tenants" class="linkLabel_WmDU">tenants</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/users"><span title="users" class="linkLabel_WmDU">users</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/variables"><span title="variables" class="linkLabel_WmDU">variables</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/workers"><span title="workers" class="linkLabel_WmDU">workers</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>projects</h1></header><p><a name="projects-create" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectscreate">POST /projects.create<a href="#post-projectscreate" class="hash-link" aria-label="Direct link to POST /projects.create" title="Direct link to POST /projects.create" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description">Description<a href="#description" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Create a new project</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-create-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-create-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>default_output_destination</strong>  <br><em>optional</em></td><td>The default output destination URL for new tasks under this project</td><td>string</td></tr><tr><td><strong>description</strong>  <br><em>optional</em></td><td>Project description.</td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>required</em></td><td>Project name Unique within the company.</td><td>string</td></tr><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>System tags. This field is reserved for system use, please don&#x27;t use it.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>User-defined tags</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses">Responses<a href="#responses" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-create-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-create-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>id</strong>  <br><em>optional</em></td><td>Project id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-delete" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsdelete">POST /projects.delete<a href="#post-projectsdelete" class="hash-link" aria-label="Direct link to POST /projects.delete" title="Direct link to POST /projects.delete" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-1">Description<a href="#description-1" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Deletes a project</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-delete-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-delete-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>delete_contents</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then the project tasks, models and dataviews will be deleted.  <br>Otherwise their project property will be unassigned. Default value is &#x27;false&#x27;</td><td>boolean</td></tr><tr><td><strong>delete_external_artifacts</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then BE will try to delete the extenal artifacts associated  <br>with the project tasks and models from the fileserver (if configured to do so)  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>force</strong>  <br><em>optional</em></td><td>If not true, fails if project has tasks. If true, and project has tasks, they  <br>will be unassigned  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-1">Responses<a href="#responses-1" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-delete-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-delete-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>deleted</strong>  <br><em>optional</em></td><td>Number of projects deleted (0 or 1)</td><td>integer</td></tr><tr><td><strong>deleted_datasets</strong>  <br><em>optional</em></td><td>Number of datasets deleted</td><td>integer</td></tr><tr><td><strong>deleted_dataviews</strong>  <br><em>optional</em></td><td>Number of dataviews deleted</td><td>integer</td></tr><tr><td><strong>deleted_models</strong>  <br><em>optional</em></td><td>Number of models deleted</td><td>integer</td></tr><tr><td><strong>deleted_tasks</strong>  <br><em>optional</em></td><td>Number of tasks deleted</td><td>integer</td></tr><tr><td><strong>disassociated_datasets</strong>  <br><em>optional</em></td><td>Number of datasets disassociated from the deleted project</td><td>integer</td></tr><tr><td><strong>disassociated_tasks</strong>  <br><em>optional</em></td><td>Number of tasks disassociated from the deleted project</td><td>integer</td></tr><tr><td><strong>urls</strong>  <br><em>optional</em></td><td>The urls of the files that were uploaded by the project tasks and models.  <br>Returned if the &#x27;delete_contents&#x27; was set to &#x27;true&#x27;</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsurls">projects.urls</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-1">Security<a href="#security-1" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_all" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_all">POST /projects.get_all<a href="#post-projectsget_all" class="hash-link" aria-label="Direct link to POST /projects.get_all" title="Direct link to POST /projects.get_all" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-2">Description<a href="#description-2" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get all the company&#x27;s projects and all public projects</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_all-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_all-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong><em>all</em></strong>  <br><em>optional</em></td><td>Multi-field pattern condition (all fields match pattern)</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsmulti_field_pattern_data">projects.multi_field_pattern_data</a></td></tr><tr><td><strong><em>any</em></strong>  <br><em>optional</em></td><td>Multi-field pattern condition (any field matches pattern)</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsmulti_field_pattern_data">projects.multi_field_pattern_data</a></td></tr><tr><td><strong>basename</strong>  <br><em>optional</em></td><td>Project base name</td><td>string</td></tr><tr><td><strong>description</strong>  <br><em>optional</em></td><td>Get only projects whose description matches this pattern (python regular  <br>expression syntax)</td><td>string</td></tr><tr><td><strong>id</strong>  <br><em>optional</em></td><td>List of IDs to filter by</td><td>&lt; string &gt; array</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>Get only projects whose name matches this pattern (python regular expression  <br>syntax)</td><td>string</td></tr><tr><td><strong>only_fields</strong>  <br><em>optional</em></td><td>List of document&#x27;s field names (nesting is supported using &#x27;.&#x27;, e.g.  <br>execution.model_labels). If provided, this list defines the query&#x27;s projection  <br>(only these fields will be returned for each result entry)</td><td>&lt; string &gt; array</td></tr><tr><td><strong>order_by</strong>  <br><em>optional</em></td><td>List of field names to order by. When search_text is used, &#x27;@text_score&#x27; can be  <br>used as a field representing the text score of returned documents. Use &#x27;-&#x27;  <br>prefix to specify descending order. Optional, recommended when using page</td><td>&lt; string &gt; array</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number, returns a specific page out of the resulting list of dataviews  <br><strong>Minimum value</strong> : <code>0</code></td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size, specifies the number of results returned in each page (last page may  <br>contain fewer results)  <br><strong>Minimum value</strong> : <code>1</code></td><td>integer</td></tr><tr><td><strong>refresh_scroll</strong>  <br><em>optional</em></td><td>If set then all the data received with this scroll will be requeried</td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID returned from the previos calls to get_all_ex</td><td>string</td></tr><tr><td><strong>search_hidden</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then hidden projects are included in the search results  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>search_text</strong>  <br><em>optional</em></td><td>Free text search query</td><td>string</td></tr><tr><td><strong>shallow_search</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then the search with the specified criteria is performed among  <br>top level projects only (or if parents specified, among the direct children of  <br>the these parents). Otherwise the search is performed among all the company  <br>projects (or among all of the descendants of the specified parents).  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>size</strong>  <br><em>optional</em></td><td>The number of projects to retrieve  <br><strong>Minimum value</strong> : <code>1</code></td><td>integer</td></tr><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>System tags list used to filter results. Prepend &#x27;-&#x27; to system tag name to  <br>indicate exclusion</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>User-defined tags list used to filter results. Prepend &#x27;-&#x27; to tag name to  <br>indicate exclusion</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-2">Responses<a href="#responses-2" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_all-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_all-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>Projects list</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#projectsprojects_get_all_response_single">projects.projects_get_all_response_single</a> &gt; array</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID that can be used with the next calls to get_all_ex to retrieve more  <br>data</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-2">Security<a href="#security-2" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_all_ex" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_all_ex">POST /projects.get_all_ex<a href="#post-projectsget_all_ex" class="hash-link" aria-label="Direct link to POST /projects.get_all_ex" title="Direct link to POST /projects.get_all_ex" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-3">Description<a href="#description-3" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get all the company&#x27;s projects and all public projects</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-3">Parameters<a href="#parameters-3" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_all_ex-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_all_ex-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong><em>all</em></strong>  <br><em>optional</em></td><td>Multi-field pattern condition (all fields match pattern)</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsmulti_field_pattern_data">projects.multi_field_pattern_data</a></td></tr><tr><td><strong><em>any</em></strong>  <br><em>optional</em></td><td>Multi-field pattern condition (any field matches pattern)</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsmulti_field_pattern_data">projects.multi_field_pattern_data</a></td></tr><tr><td><strong>active_users</strong>  <br><em>optional</em></td><td>The list of users that were active in the project. If passes then the resulting  <br>projects are filtered to the ones that have tasks created by these users</td><td>&lt; string &gt; array</td></tr><tr><td><strong>allow_public</strong>  <br><em>optional</em></td><td>Allow public projects to be returned in the results  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>basename</strong>  <br><em>optional</em></td><td>Project base name</td><td>string</td></tr><tr><td><strong>check_own_contents</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and project ids are passed to the query then for these  <br>projects their own tasks, models and dataviews are counted  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>children_tags</strong>  <br><em>optional</em></td><td>The list of tag values to filter children by. Takes effect only if  <br>children_type is set. Use &#x27;null&#x27; value to specify empty tags. Use &#x27;__Snot&#x27;  <br>value to specify that the following value should be excluded</td><td>&lt; string &gt; array</td></tr><tr><td><strong>children_tags_filter</strong>  <br><em>optional</em></td><td>Filter on a field that includes combination of &#x27;any&#x27; or &#x27;all&#x27; included and  <br>excluded terms</td><td><a href="#projects-get_all_ex-post-children_tags_filter" class="">children_tags_filter</a></td></tr><tr><td><strong>children_type</strong>  <br><em>optional</em></td><td>If specified that only the projects under which the entities of this type can  <br>be found will be returned</td><td>enum (pipeline, report, hyperdataset, dataset)</td></tr><tr><td><strong>description</strong>  <br><em>optional</em></td><td>Get only projects whose description matches this pattern (python regular  <br>expression syntax)</td><td>string</td></tr><tr><td><strong>filters</strong>  <br><em>optional</em></td><td>List of FilterRule (&#x27;OR&#x27; connection)</td><td>&lt; string, <a href="#projects-get_all_ex-post-filters" class="">filters</a> &gt; map</td></tr><tr><td><strong>id</strong>  <br><em>optional</em></td><td>List of IDs to filter by</td><td>&lt; string &gt; array</td></tr><tr><td><strong>include_dataset_stats</strong>  <br><em>optional</em></td><td>If true, include project dataset statistic in response  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>include_stats</strong>  <br><em>optional</em></td><td>If true, include project statistic in response.  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>include_stats_filter</strong>  <br><em>optional</em></td><td>The filter for selecting entities that participate in statistics calculation.  <br>For each task field that you want to filter on pass the list of allowed values.  <br>Prepend the value with &#x27;-&#x27; to exclude</td><td>object</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>Get only projects whose name matches this pattern (python regular expression  <br>syntax)</td><td>string</td></tr><tr><td><strong>non_public</strong>  <br><em>optional</em></td><td>Return only non-public projects  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>only_fields</strong>  <br><em>optional</em></td><td>List of document&#x27;s field names (nesting is supported using &#x27;.&#x27;, e.g.  <br>execution.model_labels). If provided, this list defines the query&#x27;s projection  <br>(only these fields will be returned for each result entry)</td><td>&lt; string &gt; array</td></tr><tr><td><strong>order_by</strong>  <br><em>optional</em></td><td>List of field names to order by. When search_text is used, &#x27;@text_score&#x27; can be  <br>used as a field representing the text score of returned documents. Use &#x27;-&#x27;  <br>prefix to specify descending order. Optional, recommended when using page</td><td>&lt; string &gt; array</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number, returns a specific page out of the resulting list of dataviews  <br><strong>Minimum value</strong> : <code>0</code></td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size, specifies the number of results returned in each page (last page may  <br>contain fewer results)  <br><strong>Minimum value</strong> : <code>1</code></td><td>integer</td></tr><tr><td><strong>permission_roots_only</strong>  <br><em>optional</em></td><td>If Truethen the shallow search is done among all the top projects that the user  <br>has access to beneath the requested parent. Even if these projects are not  <br>direct children of the parent  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>refresh_scroll</strong>  <br><em>optional</em></td><td>If set then all the data received with this scroll will be requeried</td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID returned from the previos calls to get_all</td><td>string</td></tr><tr><td><strong>search_hidden</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then hidden projects are included in the search results  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>search_text</strong>  <br><em>optional</em></td><td>Free text search query</td><td>string</td></tr><tr><td><strong>shallow_search</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then the search with the specified criteria is performed among  <br>top level projects only (or if parents specified, among the direct children of  <br>the these parents). Otherwise the search is performed among all the company  <br>projects (or among all of the descendants of the specified parents).  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>size</strong>  <br><em>optional</em></td><td>The number of projects to retrieve  <br><strong>Minimum value</strong> : <code>1</code></td><td>integer</td></tr><tr><td><strong>stats_for_state</strong>  <br><em>optional</em></td><td>Obsolete! Statistics is calculated always for the &#x27;active&#x27; state  <br><strong>Default</strong> : <code>&quot;active&quot;</code></td><td>enum (active, archived)</td></tr><tr><td><strong>stats_with_children</strong>  <br><em>optional</em></td><td>If include_stats flag is set then this flag contols whether the child projects  <br>tasks are taken into statistics or not  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>System tags list used to filter results. Prepend &#x27;-&#x27; to system tag name to  <br>indicate exclusion</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>User-defined tags list used to filter results. Prepend &#x27;-&#x27; to tag name to  <br>indicate exclusion</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_all_ex-post-children_tags_filter" class=""></a></p>
+<p><strong>children_tags_filter</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>all</strong>  <br><em>optional</em></td><td>All the terms in &#x27;all&#x27; condition are combined with &#x27;and&#x27; operation</td><td><a href="#projects-get_all_ex-post-children_tags_filter-all" class="">all</a></td></tr><tr><td><strong>any</strong>  <br><em>optional</em></td><td>All the terms in &#x27;any&#x27; condition are combined with &#x27;or&#x27; operation</td><td><a href="#projects-get_all_ex-post-children_tags_filter-any" class="">any</a></td></tr><tr><td><strong>op</strong>  <br><em>optional</em></td><td>The operation between &#x27;any&#x27; and &#x27;all&#x27; parts of the filter if both are provided  <br><strong>Default</strong> : <code>&quot;and&quot;</code></td><td>enum (and, or)</td></tr></tbody></table>
+<p><a name="projects-get_all_ex-post-children_tags_filter-all" class=""></a></p>
+<p><strong>all</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>exclude</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr><tr><td><strong>include</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_all_ex-post-children_tags_filter-any" class=""></a></p>
+<p><strong>any</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>exclude</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr><tr><td><strong>include</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_all_ex-post-filters" class=""></a></p>
+<p><strong>filters</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>all</strong>  <br><em>optional</em></td><td>All the terms in &#x27;all&#x27; condition are combined with &#x27;and&#x27; operation</td><td><a href="#projects-get_all_ex-post-filters-all" class="">all</a></td></tr><tr><td><strong>any</strong>  <br><em>optional</em></td><td>All the terms in &#x27;any&#x27; condition are combined with &#x27;or&#x27; operation</td><td><a href="#projects-get_all_ex-post-filters-any" class="">any</a></td></tr><tr><td><strong>op</strong>  <br><em>optional</em></td><td>The operation between &#x27;any&#x27; and &#x27;all&#x27; parts of the filter if both are provided  <br><strong>Default</strong> : <code>&quot;and&quot;</code></td><td>enum (and, or)</td></tr></tbody></table>
+<p><a name="projects-get_all_ex-post-filters-all" class=""></a></p>
+<p><strong>all</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>exclude</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr><tr><td><strong>include</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_all_ex-post-filters-any" class=""></a></p>
+<p><strong>any</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>exclude</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr><tr><td><strong>include</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-3">Responses<a href="#responses-3" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_all_ex-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_all_ex-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>Projects list</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#projectsprojects_get_all_response_single">projects.projects_get_all_response_single</a> &gt; array</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll ID that can be used with the next calls to get_all to retrieve more data</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-3">Security<a href="#security-3" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_by_id" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_by_id">POST /projects.get_by_id<a href="#post-projectsget_by_id" class="hash-link" aria-label="Direct link to POST /projects.get_by_id" title="Direct link to POST /projects.get_by_id" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_by_id-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_by_id-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-4">Responses<a href="#responses-4" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_by_id-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_by_id-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>project</strong>  <br><em>optional</em></td><td>Project info</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsproject">projects.project</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-4">Security<a href="#security-4" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_hyper_parameters" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_hyper_parameters">POST /projects.get_hyper_parameters<a href="#post-projectsget_hyper_parameters" class="hash-link" aria-label="Direct link to POST /projects.get_hyper_parameters" title="Direct link to POST /projects.get_hyper_parameters" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-4">Description<a href="#description-4" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a list of all hyper parameter sections and names used in tasks within the<br>
+given project.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-5">Parameters<a href="#parameters-5" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_hyper_parameters-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_hyper_parameters-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the project field is set then the result includes hyper  <br>parameters from the subproject tasks  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number</td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size</td><td>integer</td></tr><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-5">Responses<a href="#responses-5" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_hyper_parameters-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_hyper_parameters-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>parameters</strong>  <br><em>optional</em></td><td>A list of parameter sections and names</td><td>&lt; object &gt; array</td></tr><tr><td><strong>remaining</strong>  <br><em>optional</em></td><td>Remaining results</td><td>integer</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of results</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-5">Security<a href="#security-5" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_hyperdataset_stats" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_hyperdataset_stats">POST /projects.get_hyperdataset_stats<a href="#post-projectsget_hyperdataset_stats" class="hash-link" aria-label="Direct link to POST /projects.get_hyperdataset_stats" title="Direct link to POST /projects.get_hyperdataset_stats" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-5">Description<a href="#description-5" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get statistics for hyperdatasets that are direct children of the<br>
+passed project</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-6">Parameters<a href="#parameters-6" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_hyperdataset_stats-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_hyperdataset_stats-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>active_users</strong>  <br><em>optional</em></td><td>Only hyperdatasets created by those users are counted</td><td>&lt; string &gt; array</td></tr><tr><td><strong>project</strong>  <br><em>optional</em></td><td>Project ID. &lt;pyhocon.config_tree.NoneValue object at 0x7f38e1cb5400&gt;for the  <br>Root project</td><td>string</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>Only hyperdatasets with any of those tags counted</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags_filter</strong>  <br><em>optional</em></td><td>Filter on a field that includes combination of &#x27;any&#x27; or &#x27;all&#x27; included and  <br>excluded terms</td><td><a href="#projects-get_hyperdataset_stats-post-tags_filter" class="">tags_filter</a></td></tr></tbody></table>
+<p><a name="projects-get_hyperdataset_stats-post-tags_filter" class=""></a></p>
+<p><strong>tags_filter</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>all</strong>  <br><em>optional</em></td><td>All the terms in &#x27;all&#x27; condition are combined with &#x27;and&#x27; operation</td><td><a href="#projects-get_hyperdataset_stats-post-tags_filter-all" class="">all</a></td></tr><tr><td><strong>any</strong>  <br><em>optional</em></td><td>All the terms in &#x27;any&#x27; condition are combined with &#x27;or&#x27; operation</td><td><a href="#projects-get_hyperdataset_stats-post-tags_filter-any" class="">any</a></td></tr><tr><td><strong>op</strong>  <br><em>optional</em></td><td>The operation between &#x27;any&#x27; and &#x27;all&#x27; parts of the filter if both are provided  <br><strong>Default</strong> : <code>&quot;and&quot;</code></td><td>enum (and, or)</td></tr></tbody></table>
+<p><a name="projects-get_hyperdataset_stats-post-tags_filter-all" class=""></a></p>
+<p><strong>all</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>exclude</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr><tr><td><strong>include</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_hyperdataset_stats-post-tags_filter-any" class=""></a></p>
+<p><strong>any</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>exclude</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr><tr><td><strong>include</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-6">Responses<a href="#responses-6" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_hyperdataset_stats-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_hyperdataset_stats-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>stats</strong>  <br><em>optional</em></td><td>Stats for children hyperdatasets</td><td><a class="" href="/docs/latest/docs/references/api/definitions#projectsstats_datasets">projects.stats_datasets</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-6">Security<a href="#security-6" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_hyperparam_values" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_hyperparam_values">POST /projects.get_hyperparam_values<a href="#post-projectsget_hyperparam_values" class="hash-link" aria-label="Direct link to POST /projects.get_hyperparam_values" title="Direct link to POST /projects.get_hyperparam_values" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-6">Description<a href="#description-6" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a list of distinct values for the chosen hyperparameter</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-7">Parameters<a href="#parameters-7" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_hyperparam_values-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_hyperparam_values-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_public</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then collect values from both company and public tasks  <br>otherwise company tasks only. The default is &#x27;true&#x27;</td><td>boolean</td></tr><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the project field is set then the result includes hyper  <br>parameters values from the subproject tasks  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>name</strong>  <br><em>required</em></td><td>Hyperparameter name</td><td>string</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number</td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size</td><td>integer</td></tr><tr><td><strong>pattern</strong>  <br><em>optional</em></td><td>The search pattern regex</td><td>string</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>Project IDs</td><td>&lt; string &gt; array</td></tr><tr><td><strong>section</strong>  <br><em>required</em></td><td>Hyperparameter section name</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-7">Responses<a href="#responses-7" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_hyperparam_values-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_hyperparam_values-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of distinct parameter values</td><td>integer</td></tr><tr><td><strong>values</strong>  <br><em>optional</em></td><td>The list of the unique values for the parameter</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-7">Security<a href="#security-7" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_model_metadata_keys" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_model_metadata_keys">POST /projects.get_model_metadata_keys<a href="#post-projectsget_model_metadata_keys" class="hash-link" aria-label="Direct link to POST /projects.get_model_metadata_keys" title="Direct link to POST /projects.get_model_metadata_keys" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-7">Description<a href="#description-7" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a list of all metadata keys used in models within the given project.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-8">Parameters<a href="#parameters-8" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_model_metadata_keys-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_model_metadata_keys-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the project field is set then the result includes metadate  <br>keys from the subproject models  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number</td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size</td><td>integer</td></tr><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-8">Responses<a href="#responses-8" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_model_metadata_keys-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_model_metadata_keys-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>keys</strong>  <br><em>optional</em></td><td>A list of model keys</td><td>&lt; string &gt; array</td></tr><tr><td><strong>remaining</strong>  <br><em>optional</em></td><td>Remaining results</td><td>integer</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of results</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-8">Security<a href="#security-8" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_model_metadata_values" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_model_metadata_values">POST /projects.get_model_metadata_values<a href="#post-projectsget_model_metadata_values" class="hash-link" aria-label="Direct link to POST /projects.get_model_metadata_values" title="Direct link to POST /projects.get_model_metadata_values" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-8">Description<a href="#description-8" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a list of distinct values for the chosen model metadata key</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_model_metadata_values-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_model_metadata_values-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_public</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then collect values from both company and public models  <br>otherwise company modeels only. The default is &#x27;true&#x27;</td><td>boolean</td></tr><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the project field is set then the result includes metadata  <br>values from the subproject models  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>key</strong>  <br><em>required</em></td><td>Metadata key</td><td>string</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number</td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size</td><td>integer</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>Project IDs</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-9">Responses<a href="#responses-9" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_model_metadata_values-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_model_metadata_values-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total number of distinct values</td><td>integer</td></tr><tr><td><strong>values</strong>  <br><em>optional</em></td><td>The list of the unique values</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-9">Security<a href="#security-9" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_model_tags" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_model_tags">POST /projects.get_model_tags<a href="#post-projectsget_model_tags" class="hash-link" aria-label="Direct link to POST /projects.get_model_tags" title="Direct link to POST /projects.get_model_tags" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-9">Description<a href="#description-9" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get user and system tags used for the models under the specified projects</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-10">Parameters<a href="#parameters-10" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_model_tags-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_model_tags-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>filter</strong>  <br><em>optional</em></td><td>Filter on entities to collect tags from</td><td><a href="#projects-get_model_tags-post-filter" class="">filter</a></td></tr><tr><td><strong>include_system</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then the list of the system tags is also returned. The default  <br>value is &#x27;false&#x27;  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>The list of projects under which the tags are searched. If not passed or empty  <br>then all the projects are searched</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_model_tags-post-filter" class=""></a></p>
+<p><strong>filter</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>The list of system tag values to filter by. Use &#x27;null&#x27; value to specify empty  <br>system tags. Use &#x27;__Snot&#x27; value to specify that the following value should be  <br>excluded</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>The list of tag values to filter by. Use &#x27;null&#x27; value to specify empty tags.  <br>Use &#x27;__Snot&#x27; value to specify that the following value should be excluded</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-10">Responses<a href="#responses-10" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_model_tags-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_model_tags-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>The list of unique system tag values. Returned only if &#x27;include_system&#x27; is set  <br>to &#x27;true&#x27; in the request</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>The list of unique tag values</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-10">Security<a href="#security-10" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_project_tags" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_project_tags">POST /projects.get_project_tags<a href="#post-projectsget_project_tags" class="hash-link" aria-label="Direct link to POST /projects.get_project_tags" title="Direct link to POST /projects.get_project_tags" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-10">Description<a href="#description-10" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get user and system tags used for the specified projects and their children</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-11">Parameters<a href="#parameters-11" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_project_tags-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_project_tags-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>filter</strong>  <br><em>optional</em></td><td>Filter on entities to collect tags from</td><td><a href="#projects-get_project_tags-post-filter" class="">filter</a></td></tr><tr><td><strong>include_system</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then the list of the system tags is also returned. The default  <br>value is &#x27;false&#x27;  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>The list of projects under which the tags are searched. If not passed or empty  <br>then all the projects are searched</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_project_tags-post-filter" class=""></a></p>
+<p><strong>filter</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>The list of system tag values to filter by. Use &#x27;null&#x27; value to specify empty  <br>system tags. Use &#x27;__Snot&#x27; value to specify that the following value should be  <br>excluded</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>The list of tag values to filter by. Use &#x27;null&#x27; value to specify empty tags.  <br>Use &#x27;__Snot&#x27; value to specify that the following value should be excluded</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-11">Responses<a href="#responses-11" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_project_tags-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_project_tags-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>The list of unique system tag values. Returned only if &#x27;include_system&#x27; is set  <br>to &#x27;true&#x27; in the request</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>The list of unique tag values</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-11">Security<a href="#security-11" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_task_parents" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_task_parents">POST /projects.get_task_parents<a href="#post-projectsget_task_parents" class="hash-link" aria-label="Direct link to POST /projects.get_task_parents" title="Direct link to POST /projects.get_task_parents" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-11">Description<a href="#description-11" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get unique parent tasks for the tasks in the specified projects</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-12">Parameters<a href="#parameters-12" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_task_parents-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_task_parents-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the projects field is not empty then the result includes  <br>tasks parents from the subproject tasks  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>The list of projects which task parents are retieved. If not passed or empty  <br>then all the projects are searched</td><td>&lt; string &gt; array</td></tr><tr><td><strong>task_name</strong>  <br><em>optional</em></td><td>Task name pattern for the returned parent tasks</td><td>string</td></tr><tr><td><strong>tasks_state</strong>  <br><em>optional</em></td><td>Return parents for tasks in the specified state. If Null is provided, parents  <br>for all task states will be returned.  <br><strong>Default</strong> : <code>&quot;active&quot;</code></td><td>enum (active, archived)</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-12">Responses<a href="#responses-12" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_task_parents-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_task_parents-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>parents</strong>  <br><em>optional</em></td><td>The list of unique task parents sorted by their names</td><td>&lt; <a href="#projects-get_task_parents-post-parents" class="">parents</a> &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_task_parents-post-parents" class=""></a></p>
+<p><strong>parents</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>id</strong>  <br><em>optional</em></td><td>The ID of the parent task</td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>The name of the parent task</td><td>string</td></tr><tr><td><strong>project</strong>  <br><em>optional</em></td><td></td><td><a href="#projects-get_task_parents-post-parents-project" class="">project</a></td></tr></tbody></table>
+<p><a name="projects-get_task_parents-post-parents-project" class=""></a></p>
+<p><strong>project</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>id</strong>  <br><em>optional</em></td><td>The ID of the parent task project</td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>The name of the parent task project</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-12">Security<a href="#security-12" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_task_tags" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_task_tags">POST /projects.get_task_tags<a href="#post-projectsget_task_tags" class="hash-link" aria-label="Direct link to POST /projects.get_task_tags" title="Direct link to POST /projects.get_task_tags" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-12">Description<a href="#description-12" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get user and system tags used for the tasks under the specified projects</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-13">Parameters<a href="#parameters-13" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_task_tags-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_task_tags-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>filter</strong>  <br><em>optional</em></td><td>Filter on entities to collect tags from</td><td><a href="#projects-get_task_tags-post-filter" class="">filter</a></td></tr><tr><td><strong>include_system</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then the list of the system tags is also returned. The default  <br>value is &#x27;false&#x27;  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>The list of projects under which the tags are searched. If not passed or empty  <br>then all the projects are searched</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_task_tags-post-filter" class=""></a></p>
+<p><strong>filter</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>The list of system tag values to filter by. Use &#x27;null&#x27; value to specify empty  <br>system tags. Use &#x27;__Snot&#x27; value to specify that the following value should be  <br>excluded</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>The list of tag values to filter by. Use &#x27;null&#x27; value to specify empty tags.  <br>Use &#x27;__Snot&#x27; value to specify that the following value should be excluded</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-13">Responses<a href="#responses-13" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_task_tags-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_task_tags-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>The list of unique system tag values. Returned only if &#x27;include_system&#x27; is set  <br>to &#x27;true&#x27; in the request</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>The list of unique tag values</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-13">Security<a href="#security-13" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_unique_metric_variants" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_unique_metric_variants">POST /projects.get_unique_metric_variants<a href="#post-projectsget_unique_metric_variants" class="hash-link" aria-label="Direct link to POST /projects.get_unique_metric_variants" title="Direct link to POST /projects.get_unique_metric_variants" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-13">Description<a href="#description-13" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get all metric/variant pairs reported for tasks in a specific project. If no<br>
+project is specified, metrics/variant paris reported for all tasks will be<br>
+returned. If the project does not exist, an empty list will be returned.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-14">Parameters<a href="#parameters-14" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_unique_metric_variants-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_unique_metric_variants-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>ids</strong>  <br><em>optional</em></td><td>IDs of the tasks or models to get metrics from</td><td>&lt; string &gt; array</td></tr><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the project field is set then the result includes  <br>metrics/variants from the subproject tasks  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>model_metrics</strong>  <br><em>optional</em></td><td>If set to Truethen bring unique metric and variant names from the project  <br>models otherwise from the project tasks  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>project</strong>  <br><em>optional</em></td><td>Project ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-14">Responses<a href="#responses-14" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_unique_metric_variants-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_unique_metric_variants-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>metrics</strong>  <br><em>optional</em></td><td>A list of metric variants reported for tasks in this project</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#projectsmetric_variant_result">projects.metric_variant_result</a> &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-14">Security<a href="#security-14" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-get_user_names" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsget_user_names">POST /projects.get_user_names<a href="#post-projectsget_user_names" class="hash-link" aria-label="Direct link to POST /projects.get_user_names" title="Direct link to POST /projects.get_user_names" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-14">Description<a href="#description-14" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get names and ids of the users who created child entitites under the passed<br>
+projects</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-15">Parameters<a href="#parameters-15" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-get_user_names-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-get_user_names-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>entity</strong>  <br><em>optional</em></td><td>The type of the child entity to look for  <br><strong>Default</strong> : <code>&quot;task&quot;</code></td><td>enum (task, model, dataview)</td></tr><tr><td><strong>include_subprojects</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; and the projects field is not empty then the result includes  <br>user name from the subprojects children  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr><tr><td><strong>projects</strong>  <br><em>optional</em></td><td>The list of projects. If not passed or empty then all the projects are searched</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-15">Responses<a href="#responses-15" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-get_user_names-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-get_user_names-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>users</strong>  <br><em>optional</em></td><td>The list of users sorted by their names</td><td>&lt; <a href="#projects-get_user_names-post-users" class="">users</a> &gt; array</td></tr></tbody></table>
+<p><a name="projects-get_user_names-post-users" class=""></a></p>
+<p><strong>users</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>id</strong>  <br><em>optional</em></td><td>The ID of the user</td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>The name of the user</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-15">Security<a href="#security-15" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-merge" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsmerge">POST /projects.merge<a href="#post-projectsmerge" class="hash-link" aria-label="Direct link to POST /projects.merge" title="Direct link to POST /projects.merge" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-15">Description<a href="#description-15" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Moves all the source project&#x27;s contents to the destination project and remove<br>
+the source project</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-16">Parameters<a href="#parameters-16" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-merge-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-merge-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>destination_project</strong>  <br><em>optional</em></td><td>The ID of the destination project</td><td>string</td></tr><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-16">Responses<a href="#responses-16" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-merge-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-merge-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>moved_entities</strong>  <br><em>optional</em></td><td>The number of tasks, models and dataviews moved from the merged project into  <br>the destination</td><td>integer</td></tr><tr><td><strong>moved_projects</strong>  <br><em>optional</em></td><td>The number of child projects moved from the merged project into the destination</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-16">Security<a href="#security-16" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-move" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsmove">POST /projects.move<a href="#post-projectsmove" class="hash-link" aria-label="Direct link to POST /projects.move" title="Direct link to POST /projects.move" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-16">Description<a href="#description-16" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Moves a project and all of its subprojects under the different location</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-17">Parameters<a href="#parameters-17" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-move-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-move-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>new_location</strong>  <br><em>optional</em></td><td>The name location for the project</td><td>string</td></tr><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-17">Responses<a href="#responses-17" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-move-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-move-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>moved</strong>  <br><em>optional</em></td><td>The number of projects moved</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-17">Security<a href="#security-17" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-update" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsupdate">POST /projects.update<a href="#post-projectsupdate" class="hash-link" aria-label="Direct link to POST /projects.update" title="Direct link to POST /projects.update" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-17">Description<a href="#description-17" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Update project information</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-18">Parameters<a href="#parameters-18" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-update-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-update-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>default_output_destination</strong>  <br><em>optional</em></td><td>The default output destination URL for new tasks under this project</td><td>string</td></tr><tr><td><strong>description</strong>  <br><em>optional</em></td><td>Project description</td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>Project name. Unique within the company.</td><td>string</td></tr><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project id</td><td>string</td></tr><tr><td><strong>system_tags</strong>  <br><em>optional</em></td><td>System tags list. This field is reserved for system use, please don&#x27;t use it.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>tags</strong>  <br><em>optional</em></td><td>User-defined tags list</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-18">Responses<a href="#responses-18" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-update-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-update-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>fields</strong>  <br><em>optional</em></td><td>Updated fields names and values</td><td>object</td></tr><tr><td><strong>updated</strong>  <br><em>optional</em></td><td>Number of projects updated (0 or 1)</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-18">Security<a href="#security-18" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="projects-validate_delete" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-projectsvalidate_delete">POST /projects.validate_delete<a href="#post-projectsvalidate_delete" class="hash-link" aria-label="Direct link to POST /projects.validate_delete" title="Direct link to POST /projects.validate_delete" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-18">Description<a href="#description-18" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Validates that the project existis and can be deleted</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-19">Parameters<a href="#parameters-19" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#projects-validate_delete-request" class="">request</a></td></tr></tbody></table>
+<p><a name="projects-validate_delete-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>project</strong>  <br><em>required</em></td><td>Project ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-19">Responses<a href="#responses-19" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#projects-validate_delete-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="projects-validate_delete-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>datasets</strong>  <br><em>optional</em></td><td>The total number of non-empty datasets under the project and all its children</td><td>integer</td></tr><tr><td><strong>dataviews</strong>  <br><em>optional</em></td><td>The total number of dataviews under the project and all its children</td><td>integer</td></tr><tr><td><strong>hyper_datasets</strong>  <br><em>optional</em></td><td>The total number of hyper-datasets under the project and all its children</td><td>integer</td></tr><tr><td><strong>models</strong>  <br><em>optional</em></td><td>The total number of models under the project and all its children</td><td>integer</td></tr><tr><td><strong>non_archived_dataviews</strong>  <br><em>optional</em></td><td>The total number of non-archived dataviews under the project and all its  <br>children</td><td>integer</td></tr><tr><td><strong>non_archived_models</strong>  <br><em>optional</em></td><td>The total number of non-archived models under the project and all its children</td><td>integer</td></tr><tr><td><strong>non_archived_reports</strong>  <br><em>optional</em></td><td>The total number of non-archived reports under the project and all its children</td><td>integer</td></tr><tr><td><strong>non_archived_tasks</strong>  <br><em>optional</em></td><td>The total number of non-archived tasks under the project and all its children</td><td>integer</td></tr><tr><td><strong>pipelines</strong>  <br><em>optional</em></td><td>The total number of pipelines with active controllers under the project and all  <br>its children</td><td>integer</td></tr><tr><td><strong>reports</strong>  <br><em>optional</em></td><td>The total number of reports under the project and all its children</td><td>integer</td></tr><tr><td><strong>tasks</strong>  <br><em>optional</em></td><td>The total number of tasks under the project and all its children</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-19">Security<a href="#security-19" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/references/api/pipelines"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">pipelines</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/references/api/queues"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">queues</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#post-projectscreate" class="table-of-contents__link toc-highlight">POST /projects.create</a></li><li><a href="#post-projectsdelete" class="table-of-contents__link toc-highlight">POST /projects.delete</a></li><li><a href="#post-projectsget_all" class="table-of-contents__link toc-highlight">POST /projects.get_all</a></li><li><a href="#post-projectsget_all_ex" class="table-of-contents__link toc-highlight">POST /projects.get_all_ex</a></li><li><a href="#post-projectsget_by_id" class="table-of-contents__link toc-highlight">POST /projects.get_by_id</a></li><li><a href="#post-projectsget_hyper_parameters" class="table-of-contents__link toc-highlight">POST /projects.get_hyper_parameters</a></li><li><a href="#post-projectsget_hyperdataset_stats" class="table-of-contents__link toc-highlight">POST /projects.get_hyperdataset_stats</a></li><li><a href="#post-projectsget_hyperparam_values" class="table-of-contents__link toc-highlight">POST /projects.get_hyperparam_values</a></li><li><a href="#post-projectsget_model_metadata_keys" class="table-of-contents__link toc-highlight">POST /projects.get_model_metadata_keys</a></li><li><a href="#post-projectsget_model_metadata_values" class="table-of-contents__link toc-highlight">POST /projects.get_model_metadata_values</a></li><li><a href="#post-projectsget_model_tags" class="table-of-contents__link toc-highlight">POST /projects.get_model_tags</a></li><li><a href="#post-projectsget_project_tags" class="table-of-contents__link toc-highlight">POST /projects.get_project_tags</a></li><li><a href="#post-projectsget_task_parents" class="table-of-contents__link toc-highlight">POST /projects.get_task_parents</a></li><li><a href="#post-projectsget_task_tags" class="table-of-contents__link toc-highlight">POST /projects.get_task_tags</a></li><li><a href="#post-projectsget_unique_metric_variants" class="table-of-contents__link toc-highlight">POST /projects.get_unique_metric_variants</a></li><li><a href="#post-projectsget_user_names" class="table-of-contents__link toc-highlight">POST /projects.get_user_names</a></li><li><a href="#post-projectsmerge" class="table-of-contents__link toc-highlight">POST /projects.merge</a></li><li><a href="#post-projectsmove" class="table-of-contents__link toc-highlight">POST /projects.move</a></li><li><a href="#post-projectsupdate" class="table-of-contents__link toc-highlight">POST /projects.update</a></li><li><a href="#post-projectsvalidate_delete" class="table-of-contents__link toc-highlight">POST /projects.validate_delete</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

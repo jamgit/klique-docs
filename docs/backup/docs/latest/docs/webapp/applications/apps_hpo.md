@@ -1,0 +1,119 @@
+# Hyperparameter Optimization
+
+> The Hyperparameter Optimization app, which samples parameter sets across cloned tasks to find the values that best optimize a chosen metric.
+
+The Hyperparameter Optimization Application finds the set of parameter values that optimize a specific metric(s) for your 
+model.
+
+It takes in a task and its parameters to optimize. The parameter search space can be specified
+by specific (discrete) values and/or value ranges (uniform parameters). 
+
+The optimization app launches multiple copies of the original task, each time sampling different parameter sets, 
+applying a user-selected optimization strategy (random search, Bayesian, etc.). 
+
+Control the optimization process with the advanced configuration options, which include time, iteration, and task 
+limits.
+
+Once you have launched an app instance, you can view the following information in its dashboard:
+
+* Optimization Metric - Last reported and maximum / minimum values of objective metric over time
+* Optimization Objective - Objective metric values per task
+* Parallel coordinates - A visualization of parameter value impact on optimization objective
+* Summary - Task summary table: task execution information, objective metric and parameter values.
+* Budget - Available iterations and tasks budget (percentage, out of the values defined in the HPO instance's advanced configuration)
+* Resources - Number of workers servicing the HPO execution queue, and the number of currently running optimization tasks
+
+![HPO Dashboard](../../img/apps_format_overview.png#light-mode-only)
+![HPO Dashboard](../../img/apps_format_overview_dark.png#dark-mode-only)
+
+:::tip[Embedding Visualizations]
+You can embed plots from the app instance dashboard into [Reports](../webapp_reports.md). Klique 
+also supports embedding resources in third-party platforms that support embedded content (e.g. Notion). These visualizations 
+are updated live as the app instance(s) updates. Hover over the plot and click  
+to copy the embed code, and navigate to a report to paste the embed code.
+:::
+
+## HPO Instance Configuration
+
+When configuring a new HPO instance, you can fill in the required parameters or reuse the configuration of 
+a previously launched instance.  
+
+Launch an app instance with the configuration of a previously launched instance using one of the following options:
+* Cloning a previously launched app instance will open the instance launch form with the original instance's 
+configuration prefilled.
+* Importing an app configuration file. You can export the configuration of a previously launched instance as a JSON file 
+when viewing its configuration.
+
+The prefilled instance launch form can be edited before starting the new app instance. 
+
+To configure a new app instance, click `Launch New`  
+to open the app's instance launch form.
+
+### Configuration Options 
+
+:::note
+Administrators can [customize](../../deploying_klique/app_launch_form_custom.md) the launch form and 
+modify field names and/or available options and defaults. 
+
+This section describes the default configuration provided by Klique.
+:::
+
+* **Import Configuration** - Import an app instance configuration file. This will fill the instance launch form with the 
+  values from the file, which can be modified before launching the app instance
+* **Initial Task to Optimize** - Select a task or enter its ID. This task will be cloned, and each clone will sample a 
+  different set of hyperparameter values. Click **Select** to open the task selection modal, where you can browse and 
+  search for a task, then apply it.
+* **Optimization Method** - The optimization strategy to employ (e.g. random, grid, Hyperband)
+* **Objectives** - Set the optimization targets of minimizing or maximizing the values of a specified metric(s)
+    * Optimization Objective Metric's Title - Title of metric to optimize
+    * Optimization Objective Metric's Series - Metric series (variant) to optimize
+    * Optimization Objective Trend - Choose the optimization target, whether to maximize or minimize the value of the 
+      metric specified above
+    * \+ Add item - Add an objective
+* **Execution Queue** - The [Klique Queue](https://clear.ml/docs/latest/docs/fundamentals/agents_and_queues/#what-is-a-queue) to which 
+  optimization tasks will be enqueued (make sure an agent is assigned to that queue)
+* **Parameters to Optimize** - Parameters comprising the optimization space
+    * Type 
+        * Uniform Parameters - A value range to sample
+            * Minimum Value
+            * Maximum Value
+            * Step Size - Step size between samples
+        * Discrete Parameters - A set of values to sample
+            * Values - Comma separated list of values to sample
+    * Name - The original task's configuration parameter name (including section name e.g. `Args/lr`)  
+    :::tip[Hydra Parameters]
+    For tasks using Hydra, input parameters from the OmegaConf in the following format:
+    `Hydra/<param>`. Specify `<param>` using dot notation. For example, if your OmegaConf looks like this: 
+    ```
+    dataset:
+      user: root
+      main:
+        number: 80
+    ```
+    Specify the `number` parameter with `Hydra/dataset.main.number`.
+
+    Additionally, make sure that the initial task's `_allow_omegaconf_edit_` parameter is set to `False` (in task's 
+    **CONFIGURATION > HYPERPARAMETERS > Hydra**).
+    :::
+* **Optimization Job Title** (optional) - Name for the HPO instance. This will appear in the instance list 
+* **Optimization Tasks Destination Project** (optional) - The project where optimization tasks will be saved. 
+  Leave empty to use the same project as the Initial task. 
+* **Maximum Concurrent Tasks** - The maximum number of simultaneously running optimization tasks
+* **Advanced Configuration** (optional)
+    * Limit Total HPO Tasks - Maximum total number of optimization tasks
+    * Number of Top Tasks to Save - Number of best performing tasks to save (the rest are archived)
+    * Limit Single Task Running Time (Minutes) - Time limit per optimization task. Tasks will be 
+      stopped after the specified time elapsed
+    * Minimal Number of Iterations Per Single Task - Some search methods, such as Optuna, prune underperforming 
+      tasks. This is the minimum number of iterations per task before it can be stopped. Iterations are 
+      based on the tasks' own reporting (for example, if tasks report every epoch, then iterations=epochs)
+    * Maximum Number of Iterations Per Single Task - Maximum iterations per task after which it will be 
+      stopped. Iterations are based on the tasks' own reporting (for example, if tasks report every epoch, 
+      then iterations=epochs)
+    * Limit Total Optimization Instance Time (Minutes) - Time limit for the whole optimization process (in minutes)
+* **Export Configuration** - Export the app instance configuration as a JSON file, which you can later import to create 
+  a new instance with the same configuration 
+  
+
+![HPO app instance launch form](../../img/apps_hpo_wizard.png#light-mode-only)
+![HPO app instance launch form](../../img/apps_hpo_wizard_dark.png#dark-mode-only)

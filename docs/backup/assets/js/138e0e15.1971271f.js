@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkklique_docs=globalThis.webpackChunkklique_docs||[]).push([[4921],{41597(s){s.exports=JSON.parse('{"name":"@easyops-cn/docusaurus-search-local","id":"default"}')}}]);

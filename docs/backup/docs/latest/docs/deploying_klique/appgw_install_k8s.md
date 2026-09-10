@@ -1,0 +1,135 @@
+# Kubernetes Deployment
+
+> Installing the Klique AI Application Gateway on Kubernetes via Helm, including namespace requirements and ingress or NodePort exposure.
+
+This guide details the installation of the Klique App Gateway.
+The App Gateway enables access to your AI workload applications (e.g. remote IDEs like VSCode and Jupyter, model API interface, etc.).
+It acts as a proxy, identifying Tasks running within its [K8s namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) 
+and making them available for network access.
+
+:::important 
+The App Gateway must be installed in the same K8s namespace as a dedicated Klique Orchestrator.
+It can only configure access for Tasks within its own namespace. This means that if you have multiple orchestrators running 
+in multiple namespaces, each namespace must have its own App Gateway.
+:::
+
+## Requirements
+
+* Helm installed and configured
+* A DockerHub token to access the OCI enterprise Helm charts and Docker images
+* A valid Klique Server installation
+
+## Optional for HTTPS
+
+* A valid DNS entry for the new App Gateway instance  
+* A valid SSL certificate
+
+## Helm
+
+### Log into the Klique OCI Registry
+
+```bash
+echo <DOCKERHUB_TOKEN> | helm registry login docker.io --username kliqueenterprise --password-stdin
+```
+
+### Prepare Values
+
+Before installing the App Gateway, create a Helm override `gateway-values.override.yaml` file:
+
+:::note
+The configuration below uses ingress for HTTP(S) traffic. If you plan to expose the App Gateway for non-HTTP(S) workloads without using ingress,
+see [Expose App Gateway via NodePort](#expose-app-gateway-via-nodeport).
+:::
+
+```yaml
+imageCredentials:
+  password: ""
+klique:
+  apiKey: ""
+  apiSecret: ""
+  apiServerUrlReference: ""
+  authCookieName: ""
+ingress:
+  enabled: true
+  hostName: ""
+streamSession:
+  routerAddress: ""
+  service:
+    type: LoadBalancer
+  portRange:
+    start: 
+    end:
+```
+
+**Configuration options:**
+
+* `imageCredentials.password`: Klique DockerHub Access Token.
+* `klique.apiKey` and `klique.apiSecret`: [API credentials](../webapp/settings/webapp_settings_profile.md#api-credentials) created in the Web UI by an Admin user or Service 
+  Account with admin privileges. Make sure to label these credentials clearly, so that they will not be revoked by mistake.
+* `klique.apiServerUrlReference`: Klique API server URL. Use the external URL (starting with `https://api.`) or, when the 
+  gateway runs in the same cluster, the internal service URL including the local domain (e.g. `http://control-plane-apiserver.klique.svc.cluster.local:8008`).
+* `klique.authCookieName`: Cookie used by the Klique server to store the Klique authentication cookie.
+* `ingress.hostName`: Hostname of App Gateway used by the ingress controller to access it.  
+* `streamSession.routerAddress`: The external App Gateway address (can be an IP, hostname, or load balancer address) depending on your network setup. Ensure this address is accessible for TCP and UDP connections.
+* `streamSession.service.type`: Service type used to expose TCP and UDP functionality, default is `NodePort`.
+* `streamSession.portRange.start`: Start port for the TCP and UDP Session feature.
+* `streamSession.portRange.end`: End port for the TCP and UDP Session feature.
+
+The full list of supported configuration is available with the command:
+
+```bash
+helm show readme oci://docker.io/kliqueai/gateway
+```
+
+### Expose App Gateway via NodePort
+
+If you prefer to expose the App Gateway without using an ingress controller (for example, to support non-HTTP(S) workloads), 
+you can configure it to use a `NodePort` service type.
+
+Add the following configuration overrides to your `gateway-values.override.yaml` file:
+
+```yaml
+ingress:
+  enabled: false
+service:
+  type: NodePort
+router:
+  extraEnvs:
+    - name: ROUTER__HTTP__AUTHORIZATION__COOKIE__SECURE
+      value: "false"
+externalURL: "http://<NODE_IP>:<NODE_PORT>"
+```
+
+* `ingress.enabled: false`: Disables ingress creation for the App Gateway.
+* `service.type: NodePort`: Exposes the gateway through a Kubernetes NodePort instead of ingress.
+* `ROUTER__HTTP__AUTHORIZATION__COOKIE__SECURE: false`: Allows the gateway to operate over HTTP rather than HTTPS.
+* `externalURL`: Should point to the gateway's external address, using the node's IP and the assigned port.
+
+### Install
+
+To install the App Gateway component via Helm use the following command:
+
+```bash
+helm upgrade -i <RELEASE_NAME> -n <WORKLOAD_NAMESPACE> oci://docker.io/kliqueai/gateway -f gateway-values.override.yaml
+```
+
+Replace the placeholders with the following values:
+
+* `<RELEASE_NAME>`: Unique name for the App Gateway within the K8s namespace. This is a required parameter in 
+  Helm, which identifies a specific installation of the chart. The release name also defines the App Gateway's name and 
+  appears in the UI within AI workload application URLs (e.g. Remote IDE URLs). This can be customized to support multiple installations within the same 
+  namespace by assigning different release names.
+* `<WORKLOAD_NAMESPACE>`: [Kubernetes Namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) 
+  where workloads will be executed. This namespace must be shared between a dedicated Klique Orchestrator and an App 
+  Gateway. The orchestrator is responsible for monitoring its assigned task queues and spawning workloads within this 
+  namespace. The App Gateway monitors the same namespace for AI workloads (e.g. remote IDE applications). The App Gateway has a 
+  namespace-limited scope, meaning it can only detect and manage tasks within its 
+  assigned namespace.
+
+## Monitoring and Testing the Gateway
+
+Once your gateway is deployed, you can monitor its status, view routed tasks, and run connectivity tests in the
+WebApp, under **Settings > Application Gateway**.
+
+![App Gateway Test](../img/settings_app_gateway_test.png#light-mode-only)
+![App Gateway Test](../img/settings_app_gateway_test_dark.png#dark-mode-only)

@@ -1,0 +1,223 @@
+# Managing GPU Fractions with Cluster Dynamic MIG Operator (CDMO)
+
+> Installing the Cluster Dynamic MIG Operator (CDMO) and assigning NVIDIA MIG GPU profiles to workloads by queue on Kubernetes.
+
+This guide covers using GPU fractions in Kubernetes clusters using NVIDIA MIGs and
+the Cluster Dynamic MIG Operator (CDMO). CDMO enables dynamic MIG (Multi-Instance GPU) configurations. 
+
+This guide covers:
+* Installing CDMO
+* Enabling MIG mode on your cluster
+* Managing GPU partitioning dynamically 
+
+## Installation
+
+### Requirements
+
+* Add and update the Nvidia Helm repo:
+
+  ```bash
+  helm repo add nvidia https://nvidia.github.io/gpu-operator
+  helm repo update
+  ```
+
+* Create a `gpu-operator.override.yaml` file with the following content:
+
+  ```yaml
+  migManager:
+    enabled: false
+  mig:
+    strategy: mixed
+  toolkit:
+    env:
+      - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_ENVVAR_WHEN_UNPRIVILEGED
+        value: "false"
+      - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_AS_VOLUME_MOUNTS
+        value: "true"
+      - name: NVIDIA_CONTAINER_TOOLKIT_OPT_IN_FEATURES
+        value: "disable-cuda-compat-lib-hook"
+  devicePlugin:
+    env:
+      - name: PASS_DEVICE_SPECS
+        value: "true"
+      - name: FAIL_ON_INIT_ERROR
+        value: "true"
+      - name: DEVICE_LIST_STRATEGY # Use volume-mounts
+        value: volume-mounts
+      - name: DEVICE_ID_STRATEGY
+        value: uuid
+      - name: NVIDIA_VISIBLE_DEVICES
+        value: all
+      - name: NVIDIA_DRIVER_CAPABILITIES
+        value: all
+  ```
+
+  :::note[k3s]
+  If using **k3s**, you must set the `containerd` socket path. Add the following entry to your `gpu-operator.override.yaml`:
+
+  ```yaml
+  toolkit:
+    env:
+      - name: CONTAINERD_SOCKET
+        value: "/run/k3s/containerd/containerd.sock"
+  ```
+  :::
+
+  :::note[MicroK8s]
+  If using MicroK8s, you must configure the `containerd` paths used by MicroK8s. Add the following entries to your 
+  `gpu-operator.override.yaml`:
+  
+  ```yaml
+  toolkit:
+   env:
+     - name: CONTAINERD_CONFIG
+       value: "/var/snap/microk8s/current/args/containerd-template.toml"
+     - name: CONTAINERD_SOCKET
+       value: "/var/snap/microk8s/common/run/containerd.sock"
+     - name: CONTAINERD_RUNTIME_CLASS
+       value: "nvidia"
+     - name: CONTAINERD_SET_AS_DEFAULT
+       value: "true"
+  ```
+  :::
+
+* Install the NVIDIA `gpu-operator` using Helm with the previous configuration:
+
+  ```bash
+  helm install -n gpu-operator gpu-operator nvidia/gpu-operator --create-namespace -f gpu-operator.override.yaml
+  ```
+
+### Installing CDMO 
+
+1. Log into the Klique OCI Registry:
+
+   ```bash
+   echo <DOCKERHUB_TOKEN> | helm registry login docker.io --username kliqueenterprise --password-stdin
+   ```
+
+1. Create a `cdmo-values.override.yaml` file with the following content: 
+ 
+   ```yaml
+   imageCredentials:
+     password: "<DOCKERHUB_TOKEN>"
+   ```
+
+1. Install the CDMO Helm Chart using the previous override file:
+
+   ```bash
+   helm upgrade -i -n cdmo cdmo oci://docker.io/kliqueai/dynamic-mig-operator --create-namespace -f cdmo-values.override.yaml
+   ```
+
+1. Enable the NVIDIA MIG support on your cluster by running the following command on all nodes with a MIG-supported GPU 
+  (run it for each GPU `<GPU_ID>` on the host):
+
+   ```bash
+   nvidia-smi -mig 1
+   ```
+
+   :::note[notes]
+   * A node reboot may be required if the command output indicates so.
+   
+   * For convenience, this command can be run from within the `nvidia-device-plugin-daemonset` pod running on the related node.
+   :::
+
+1. Label all MIG-enabled GPU nodes `<NODE_NAME>` from the previous step:
+
+   ```bash
+   kubectl label nodes <NODE_NAME> "cdmo.clear.ml/gpu-partitioning=mig"
+   ```
+
+## Assigning MIG Profiles to Workloads
+
+On Kubernetes, the Kubernetes-Glue is Klique's Orchestrator, and it supports per-queue
+[customization](../custom_workload.md) of workload pod definitions.
+
+The example below demonstrates how to configure the `orchestrator` helm chart to use specific MIG profiles depending on 
+the queue a workload is submitted on:
+* Workloads assigned to the `slice-1` queue will be allocated a single 1 GPU instance, 10GB MIG slice.
+* Workloads assigned to the `slice-2` queue will be allocated a single 2 GPU instance, 20GB MIG slice.
+* Workloads assigned to the `slice-4` queue will be allocated a single 4 GPU instance, 40GB MIG slice.
+* Workloads assigned to the `slice-7` queue will be allocated a single 7 GPU instance, 80GB MIG slice. 
+
+```yaml
+orchestratork8sglue:
+  queues:
+    slice-1:
+      templateOverrides:
+        resources:
+          limits:
+            nvidia.com/mig-1g.10gb: "1"
+
+    slice-2:
+      templateOverrides:
+        resources:
+          limits:
+            nvidia.com/mig-2g.20gb: "1"
+
+    slice-4:
+      templateOverrides:
+        resources:
+          limits:
+            nvidia.com/mig-4g.40gb: "1"
+
+    slice-7:
+      templateOverrides:
+        resources:
+          limits:
+            nvidia.com/mig-7g.80gb: "1"
+```
+
+## Disabling MIGs
+
+To disable MIG mode and restore standard full-GPU access:
+
+1. Ensure no running workflows are using GPUs on the target node(s).
+
+2. Remove the CDMO label from the target node(s) to disable the dynamic MIG reconfiguration.
+
+    ```bash
+    kubectl label nodes <NODE_NAME> "cdmo.clear.ml/gpu-partitioning-"
+    ```
+
+3. Execute a shell into the `device-plugin-daemonset` pod instance running on the target node(s) and execute the following commands:
+
+    ```bash
+    nvidia-smi mig -dci
+
+    nvidia-smi mig -dgi
+
+    nvidia-smi -mig 0
+    ```
+
+4. Edit the `gpu-operator.override.yaml` file to restore full-GPU access: 
+
+    ```yaml
+    toolkit:
+      env:
+        - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_ENVVAR_WHEN_UNPRIVILEGED
+          value: "false"
+        - name: ACCEPT_NVIDIA_VISIBLE_DEVICES_AS_VOLUME_MOUNTS
+          value: "true"
+        - name: NVIDIA_CONTAINER_TOOLKIT_OPT_IN_FEATURES
+          value: "disable-cuda-compat-lib-hook"
+    devicePlugin:
+      env:
+        - name: PASS_DEVICE_SPECS
+          value: "true"
+        - name: FAIL_ON_INIT_ERROR
+          value: "true"
+        - name: DEVICE_LIST_STRATEGY # Use volume-mounts
+          value: volume-mounts
+        - name: DEVICE_ID_STRATEGY
+          value: uuid
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: all
+    ```
+   
+5. Upgrade the `gpu-operator`:
+
+   ```bash
+   helm upgrade -n gpu-operator gpu-operator nvidia/gpu-operator -f gpu-operator.override.yaml
+   ```

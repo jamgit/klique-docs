@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-deploying_klique/vpc_aws" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">AWS VPC | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/deploying_klique/vpc_aws"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="AWS VPC | Klique"><meta data-rh="true" name="description" content="Installing the Klique Server on AWS within a VPC, covering security groups, EC2 instance setup, load balancer configuration, and backups."><meta data-rh="true" property="og:description" content="Installing the Klique Server on AWS within a VPC, covering security groups, EC2 instance setup, load balancer configuration, and backups."><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/deploying_klique/vpc_aws"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/deploying_klique/vpc_aws" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/deploying_klique/vpc_aws" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.8cc3e11e.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.139c2e95.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/klique_setup"><span title="Klique Setup" class="linkLabel_WmDU">Klique Setup</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/deploying_klique/klique_for_kubernetes"><span title="Klique for Kubernetes" class="categoryLinkLabel_W154">Klique for Kubernetes</span></a><button aria-label="Expand sidebar category &#x27;Klique for Kubernetes&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/deploying_klique/klique_for_hpc"><span title="Klique for HPC" class="categoryLinkLabel_W154">Klique for HPC</span></a><button aria-label="Expand sidebar category &#x27;Klique for HPC&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/latest/docs/deploying_klique/on_prem_ubuntu"><span title="Klique for VM / Bare Metal" class="categoryLinkLabel_W154">Klique for VM / Bare Metal</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/latest/docs/deploying_klique/vpc_aws"><span title="Klique on Cloud" class="categoryLinkLabel_W154">Klique on Cloud</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/deploying_klique/vpc_aws"><span title="Klique Server on AWS VPC" class="linkLabel_WmDU">Klique Server on AWS VPC</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/deploying_klique/air_gapped_env"><span title="Air-Gapped Environments" class="linkLabel_WmDU">Air-Gapped Environments</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AWS VPC</h1></header><p>This guide provides step-by-step instructions for installing the Klique Server on AWS using a Virtual Private Cloud (VPC).</p>
+<p>It covers the following:</p>
+<ul>
+<li class="">Set up security groups and IAM role</li>
+<li class="">Create EC2 instance with required disks</li>
+<li class="">Install dependencies and mount disks</li>
+<li class="">Deploy Klique version using <code>docker-compose</code></li>
+<li class="">Set up load balancer and DNS</li>
+<li class="">Set up server backup</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<ul>
+<li class="">It is recommended to start with 4 CPUs and 32 GB of RAM. An <code>r6a.xlarge</code> EC2 instance would accommodate these requirements.</li>
+<li class="">An AWS account with at least 2 availability zones is required. It is recommended to install on a region with at least
+3 availability zones. Having fewer than 3 availability zones would prevent the use of high-availability setups, if
+needed in the future.</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="instance-setup">Instance Setup<a href="#instance-setup" class="hash-link" aria-label="Direct link to Instance Setup" title="Direct link to Instance Setup" translate="no">​</a></h2>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><mdxadmonitiontitle></mdxadmonitiontitle><p>It is recommended to use a VPC with IPv6 enabled for future usage expansion.</p></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="create-security-groups-for-the-server-and-load-balancer">Create Security Groups for the Server and Load Balancer<a href="#create-security-groups-for-the-server-and-load-balancer" class="hash-link" aria-label="Direct link to Create Security Groups for the Server and Load Balancer" title="Direct link to Create Security Groups for the Server and Load Balancer" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p>Create a security group for the load balancer.</p>
+<p>It is recommended to configure the security group to allow access, at first, only for a trusted IP address or a set
+of trusted IP addresses, that will be used for the initial setup of the server.</p>
+<ul>
+<li class="">Ingress TCP ports: 80, 443 from trusted IP addresses.</li>
+<li class="">Egress: All addresses and ports.</li>
+</ul>
+</li>
+<li class="">
+<p>Create a security group for the main server (<code>clearml-main</code>):</p>
+<ul>
+<li class="">Ingress:
+<ul>
+<li class="">TCP port 10000 from the load balancer&#x27;s security group</li>
+<li class="">TCP port 22 from trusted IP addresses.</li>
+</ul>
+</li>
+<li class="">Egress: All addresses and ports</li>
+</ul>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-important admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>important</div><div class="admonitionContent_BuS1"><p>A company’s security policy may require filtering Egress traffic. However, at the initial stage, one should note that
+some external repositories will be used to install software.</p></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="create-an-iam-role-for-the-server">Create an IAM Role for the Server<a href="#create-an-iam-role-for-the-server" class="hash-link" aria-label="Direct link to Create an IAM Role for the Server" title="Direct link to Create an IAM Role for the Server" translate="no">​</a></h3>
+<p>To perform backups to S3, the instance will need a role that allows EC2 access (RW) to a backup bucket.<br>
+An example policy document with the above parameters is provided at <code>self_installed_policy.json</code>.</p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="create-instance">Create Instance<a href="#create-instance" class="hash-link" aria-label="Direct link to Create Instance" title="Direct link to Create Instance" translate="no">​</a></h3>
+<p>Instance requirements:</p>
+<ol>
+<li class="">The instance must be created in a VPC with at least two public subnets to allow for AWS load balancer setup.</li>
+<li class=""><code>x86_64</code> based instance</li>
+<li class=""><a href="https://aws.amazon.com/amazon-linux-2/?amazon-linux-whats-new.sort-by=item.additionalFields.postDateTime&amp;amazon-linux-whats-new.sort-order=desc" target="_blank" rel="noopener noreferrer" class="">Amazon Linux 2 OS</a></li>
+<li class="">Disks:
+<ol>
+<li class="">Root disk: 50GB <code>gp3</code> disk, or one with higher volume/performance.</li>
+<li class="">Data disk:
+<ol>
+<li class="">Used for databases (ElasticSearch and Mongo DB) in which meta-data and events are saved</li>
+<li class="">Device: <code>/dev/sdf</code></li>
+<li class="">Recommended initial size: 100GB</li>
+<li class="">Type: <code>gp3</code> or a higher random access performance one.</li>
+</ol>
+</li>
+<li class="">Fileserver disk:
+<ol>
+<li class="">Used for storing files such as debug images and models</li>
+<li class="">Device: <code>/dev/sdg</code></li>
+<li class="">Recommended initial size: Should be estimated by users of the system.</li>
+<li class="">Type: Depending on usage, but <code>gp3</code> or <code>st1</code> are usually the best options:
+<ol>
+<li class="">For a large amount of data, used by a small number of users/experiments, use <code>st1</code> (minimum <code>st1</code> disk size: 500GB).</li>
+<li class="">For all other scenarios, use SSD disks (e.g. <code>gp3</code>).</li>
+<li class="">The disk type can be changed after creation.</li>
+<li class="">Very large number of users and/or experiments may require higher than the default <code>gp3</code> disk performance.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">Docker data disk:
+<ol>
+<li class="">Used for Docker data.</li>
+<li class="">Device: <code>/dev/sdh</code></li>
+<li class="">Recommended initial size: 30GB</li>
+<li class="">Type: <code>gp3</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">Use the <code>clearml-main</code> security group and the IAM role created in the previous step.</li>
+</ol>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="configuration-and-software-deployment">Configuration and Software Deployment<a href="#configuration-and-software-deployment" class="hash-link" aria-label="Direct link to Configuration and Software Deployment" title="Direct link to Configuration and Software Deployment" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="install-dependencies">Install Dependencies<a href="#install-dependencies" class="hash-link" aria-label="Direct link to Install Dependencies" title="Direct link to Install Dependencies" translate="no">​</a></h3>
+<ol>
+<li class="">Copy the following files to <code>/home/ec2-user</code> directory on the server:
+<ol>
+<li class=""><code>envoy.yaml</code></li>
+<li class=""><code>self_installed_VPC_EC2_amazon_linux_2_install.sh</code></li>
+</ol>
+</li>
+<li class="">Run <code>self_installed_VPC_EC2_amazon_linux_2_install.sh</code> from the <code>/home/ec2-user</code> directory.</li>
+<li class="">Verify the disks were mounted successfully (using: <code>df -h</code>) to:
+<ol>
+<li class=""><code>${CLEARML_ROOT}/data</code></li>
+<li class=""><code>${CLEARML_ROOT}/data/fileserver</code></li>
+<li class=""><code>/var/lib/docker</code></li>
+</ol>
+</li>
+<li class="">Verify that an initial admin user was created in: <code>${CLEARML_ROOT}/config/onprem_poc/apiserver.conf</code>. You can use this user/password for initial login before you connect the server to an IDP,</li>
+<li class="">Reboot server.</li>
+</ol>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="version-deployment">Version Deployment<a href="#version-deployment" class="hash-link" aria-label="Direct link to Version Deployment" title="Direct link to Version Deployment" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p>Copy the following files to <code>/home/ec2-user</code> directory on the server:</p>
+<ul>
+<li class=""><code>constants.env</code></li>
+<li class=""><code>docker-compose.yml</code></li>
+<li class=""><code>docker-compose.override.yml</code></li>
+</ul>
+</li>
+<li class="">
+<p>Log in to Dockerhub:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">source constants.env  </span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">sudo docker login -u=$DOCKERHUB_USER -p=$DOCKERHUB_PASSWORD</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p>Start the dockers:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">sudo docker-compose --env-file constants.env up -d</span><br></div></code></pre></div></div>
+</li>
+</ol>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="load-balancer">Load Balancer<a href="#load-balancer" class="hash-link" aria-label="Direct link to Load Balancer" title="Direct link to Load Balancer" translate="no">​</a></h2>
+<ol>
+<li class="">
+<p>Create a TLS certificate:</p>
+<ol>
+<li class="">Choose a domain name to be used with the server. The main URL that will be used by the system’s users will be <code>app.&lt;domain&gt;</code></li>
+<li class="">Create a certificate, with the following DNS names:
+<ol>
+<li class=""><code>&lt;domain name&gt;</code></li>
+<li class=""><code>*.&lt;domain name&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">
+<p>Create the <code>envoy</code> target group for the server:</p>
+<ol>
+<li class="">Port: 10000</li>
+<li class="">Protocol: HTTP</li>
+<li class="">Target type: instance</li>
+<li class="">Attach the server instance as the single target.</li>
+<li class="">Health check:
+<ol>
+<li class="">Match HTTP response code 200</li>
+<li class="">Path: <code>/api/debug.ping</code></li>
+<li class="">timeout: 10 seconds</li>
+<li class="">Healthy threshold: 1</li>
+<li class="">Unhealthy threshold: 2</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">
+<p>Create an Application Load Balancer, with the following parameters:</p>
+<ol>
+<li class="">Security group: As defined <a href="#create-security-groups-for-the-server-and-load-balancer" class="">above</a> for the load balancer</li>
+<li class="">Subnets: Two subnets on the VPC. It is recommended to have at least one of two on the same subnet as the instance.</li>
+<li class="">Idle timeout: 300 seconds</li>
+<li class="">Enable deletion protection: True</li>
+<li class="">IP address type: If possible, dualstack. Otherwise, IPv4.</li>
+<li class="">Listeners:
+<ol>
+<li class="">HTTP:
+<ol>
+<li class="">Port: 80</li>
+<li class="">protocol: HTTP</li>
+<li class="">redirect (HTTP 301) to the same address, with HTTPS</li>
+</ol>
+</li>
+<li class="">HTTPS:
+<ol>
+<li class="">port 443</li>
+<li class="">Protocol: HTTPS</li>
+<li class="">Certificate: As defined above.</li>
+<li class="">SSL policy:
+<ol>
+<li class="">
+<p>Based on your company&#x27;s security policy</p>
+</li>
+<li class="">
+<p>Currently recommended: <code>ELBSecurityPolicy-TLS13-1-2-Res-2021-06</code></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>After setting up the listener, we recommend changing the rules created automatically: Set a default HTTP 404
+response, and forwarding to the target group only if the HTTP header matches <code>&lt;domain&gt;</code> or <code>*.&lt;domain&gt;</code></p></div></div>
+</li>
+</ol>
+</li>
+<li class="">
+<p>Define DNS rules</p>
+<ol>
+<li class="">Use your DNS provider of choice to forward traffic to the load balancer.</li>
+<li class="">If using Route53, the use of A record aliases is recommended.</li>
+<li class="">The following domains should point to the load balancer:
+<ol>
+<li class=""><code>&lt;domain name&gt;</code></li>
+<li class=""><code>*.&lt;domain name&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>You can now change the load balancers security group to allow Internet access</p>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="backups">Backups<a href="#backups" class="hash-link" aria-label="Direct link to Backups" title="Direct link to Backups" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="file-server">File Server<a href="#file-server" class="hash-link" aria-label="Direct link to File Server" title="Direct link to File Server" translate="no">​</a></h3>
+<p>Identify the file server&#x27;s EBS volume ID on the AWS console.</p>
+<p>On the AWS backup service:</p>
+<ol>
+<li class="">Create a backup vault.</li>
+<li class="">Create a backup plan for the EBS volume into the vault.
+<ol>
+<li class="">Recommended to perform at least a daily backup.</li>
+<li class="">Recommended backups expiration of 2 days at the least.</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="elastic">Elastic<a href="#elastic" class="hash-link" aria-label="Direct link to Elastic" title="Direct link to Elastic" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="create-the-backup-repo">Create the Backup Repo<a href="#create-the-backup-repo" class="hash-link" aria-label="Direct link to Create the Backup Repo" title="Direct link to Create the Backup Repo" translate="no">​</a></h4>
+<ol>
+<li class="">
+<p>Copy <code>create_elastic_backup_repo.sh</code> file to <code>/home/ec2-user</code> directory on the server</p>
+</li>
+<li class="">
+<p>Run:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">create_elastic_backup_repo.sh &lt;bucket_name&gt;</span><br></div></code></pre></div></div>
+</li>
+</ol>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="backing-up">Backing Up<a href="#backing-up" class="hash-link" aria-label="Direct link to Backing Up" title="Direct link to Backing Up" translate="no">​</a></h4>
+<p>Backup is done by running the <code>elastic_backup.py</code> Python script periodically.</p>
+<ol>
+<li class="">
+<p>Copy <code>elastic_backup.py</code> to the <code>/home/ec2-user</code> directory on the server</p>
+</li>
+<li class="">
+<p>Install the required packages:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">pip3 install &quot;elasticsearch\&gt;=6.0.0,\&lt;=7.17.7&quot;  </span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain">pip3 install boto3  </span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p>For daily backups, run:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">/home/ec2-user/elastic_backup.py --host-address localhost --snapshot-name-prefix clearml --backup-repo daily --delete-backups-older-than-days 7</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p>For hourly backups run:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">/home/ec2-user/elastic_backup.py --host-address localhost --snapshot-name-prefix clearml --backup-repo hourly --delete-backups-older-than-days 1 </span><br></div><div class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p>Recommended to add these to the crontab</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="mongodb">MongoDB<a href="#mongodb" class="hash-link" aria-label="Direct link to MongoDB" title="Direct link to MongoDB" translate="no">​</a></h3>
+<p>Backup is done by running the <code>mongo_backup.sh</code> script periodically.</p>
+<ol>
+<li class="">
+<p>Copy <code>mongo_backup.sh</code> to <code>/home/ec2-user</code> directory on the server</p>
+</li>
+<li class="">
+<p>Run:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">mongo_backup.sh &lt;bucket name&gt;/&lt;prefix&gt; (ex: mongo_backup.sh mybucket/path/in/bucket)</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p>Recommended to add this to the crontab</p>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>The MongoDB script does not deal with deletion of old backups. It&#x27;s recommended to create an S3 lifecycle rule for
+deletion beyond the company&#x27;s required retention period.</p></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="monitoring">Monitoring<a href="#monitoring" class="hash-link" aria-label="Direct link to Monitoring" title="Direct link to Monitoring" translate="no">​</a></h2>
+<p>Monitoring your Klique deployment is recommended to ensure service availability and detect performance or resource
+issues early. For monitoring guidelines and recommended metrics, see <a class="" href="/docs/latest/docs/deploying_klique/extra_configs/monitoring_vm_docker">Monitoring</a>.</p>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="maintenance">Maintenance<a href="#maintenance" class="hash-link" aria-label="Direct link to Maintenance" title="Direct link to Maintenance" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="removing-app-containers">Removing App Containers<a href="#removing-app-containers" class="hash-link" aria-label="Direct link to Removing App Containers" title="Direct link to Removing App Containers" translate="no">​</a></h3>
+<p>To remove old application containers, add the following to the cron:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#F8F8F2"><span class="token plain">0 0 * * * root docker container prune --force --filter &quot;until=96h&quot;</span><br></div></code></pre></div></div></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/deploying_klique/appgw_install_compose_hosted"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Application Gateway (Hosted Server)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/deploying_klique/air_gapped_env"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Air-Gapped Environments</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#instance-setup" class="table-of-contents__link toc-highlight">Instance Setup</a><ul><li><a href="#create-security-groups-for-the-server-and-load-balancer" class="table-of-contents__link toc-highlight">Create Security Groups for the Server and Load Balancer</a></li><li><a href="#create-an-iam-role-for-the-server" class="table-of-contents__link toc-highlight">Create an IAM Role for the Server</a></li><li><a href="#create-instance" class="table-of-contents__link toc-highlight">Create Instance</a></li></ul></li><li><a href="#configuration-and-software-deployment" class="table-of-contents__link toc-highlight">Configuration and Software Deployment</a><ul><li><a href="#install-dependencies" class="table-of-contents__link toc-highlight">Install Dependencies</a></li><li><a href="#version-deployment" class="table-of-contents__link toc-highlight">Version Deployment</a></li></ul></li><li><a href="#load-balancer" class="table-of-contents__link toc-highlight">Load Balancer</a></li><li><a href="#backups" class="table-of-contents__link toc-highlight">Backups</a><ul><li><a href="#file-server" class="table-of-contents__link toc-highlight">File Server</a></li><li><a href="#elastic" class="table-of-contents__link toc-highlight">Elastic</a></li><li><a href="#mongodb" class="table-of-contents__link toc-highlight">MongoDB</a></li></ul></li><li><a href="#monitoring" class="table-of-contents__link toc-highlight">Monitoring</a></li><li><a href="#maintenance" class="table-of-contents__link toc-highlight">Maintenance</a><ul><li><a href="#removing-app-containers" class="table-of-contents__link toc-highlight">Removing App Containers</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

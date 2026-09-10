@@ -1,0 +1,620 @@
+# Event Metering
+
+> Klique's event metering service for defining custom usage metrics, reporting them, and querying aggregated usage and cost data.
+
+Klique facilitates the tracking of custom usage metrics via a metering service, by enabling administrators to:
+* Define their metrics of interest
+* Periodically report these metrics to the metering service
+* Querying the aggregated data through API/UI
+
+The service also supports attaching a unit price to a custom event definition. When a unit price is configured, the service provides both the event count and estimated cost.
+
+The metering service records daily aggregates of reported events, by either:
+* Summing all reported values for the day
+* Storing the maximum value reported that day
+
+Tenant admins can view detailed usage and spend information through the [**Metering**](../../webapp/webapp_admin_dashboard_metering.md) tab of the Admin Dashboard.
+
+Platform maintainers can view tenant usage and spend information in the tenant page of the [platform management center](../../whats_klique/management_center.md).
+
+## Service Setup
+
+The Klique metering service is deployed as part of the Klique control plane. It is enabled by the [`usageAggregator`](#usage-aggregator) parameter in the `control-plane` chart. Events are reported into it by built-in reporters or your own custom scripts.
+
+The `control-plane` chart provides built-in [control plane event reporters](#control-plane-usage-events). An additional built-in reporter, [`compute-resources-exporter`](#compute-resources-events), is provided as a standalone Helm chart and reports Kubernetes compute usage from a workload cluster.
+
+Each is enabled independently.
+
+### Usage Aggregator
+
+Enable the metering service on Kubernetes by setting the following in your control plane Helm `values.yaml` file (or override file):
+
+```yaml
+usageAggregator:
+  enabled: true
+```
+
+By default, the metering service stores its data in the MongoDB instance bundled with `control-plane`. To point it at an external MongoDB deployment instead, set the connection string under `externalServices`:
+
+```yaml
+usageAggregator:
+  enabled: true
+  externalServices:
+    mongodbConnectionString: "mongodb://user:pass@mongo.example.com:27017"
+```
+
+For event definitions and pricing configuration, see [Defining Events](#defining-events) below.
+
+#### Exposing via Ingress
+
+By default, the metering service is only reachable from within the cluster. To make its API accessible from outside
+the cluster (for example, to connect a third-party billing or BI system), expose it through an ingress:
+
+```yaml
+usageAggregator:
+  enabled: true
+  ingress:
+    enabled: true
+    hostName: "usage.<BASE_DOMAIN>"
+    # Optional:
+    # ingressClassName: nginx
+    # To serve HTTPS directly from the ingress, reference a Kubernetes secret containing a TLS certificate for the hostname
+    # tlsSecretName: ""
+```
+
+Requests through the ingress still require the service credentials. See [Accessing Aggregated Data](#accessing-aggregated-data).
+
+### Control Plane Usage Events
+
+The `usageScripts` chart parameter controls two reporters of control plane usage events:
+
+- `storageResourcesExporter` - Reports storage usage from the Klique fileserver.
+- `companyLifecycle` - Reports the number of tenant users and service accounts.
+
+Enable `usageScripts` in your override file to activate both reporters:
+
+```yaml
+usageScripts:
+  enabled: true
+```
+
+To disable an individual reporter, set its `enabled: false` while keeping the parent enabled. The example below keeps `storageResourcesExporter` running on its default schedule but disables `companyLifecycle`:
+
+```yaml
+usageScripts:
+  enabled: true
+  companyLifecycle:
+    enabled: false
+```
+
+Each reporter runs hourly by default. To change the schedule, override the `schedule` field on the relevant reporter using standard cron syntax:
+
+```yaml
+usageScripts:
+  enabled: true
+  storageResourcesExporter:
+    cronJob:
+      schedule: "0 */6 * * *"   # every 6 hours
+```
+
+### Compute Resources Events
+
+To report compute usage from a Kubernetes workload cluster to the metering service, deploy the standalone `compute-resources-exporter` Helm chart on the workload cluster.
+
+## Defining Events
+
+Before usage data can be collected, the events must first be defined in the server metering service (Usage Aggregator).
+
+Metered events are identified by type and label, such that different events (different labels) can be grouped together by category (same type).
+
+The metering service configuration includes:
+* Which event types are accepted
+* Which labels are valid for each event type
+* Aggregation policy for each event type
+* Cost information (for each label)
+
+### Usage Aggregator Definitions
+
+Events are configured in the Usage Aggregator configuration:
+* In Kubernetes deployments, define it in the `control-plane` Helm chart using `usageAggregator.configuration`.
+* In Docker Compose deployments, define it in the Usage Aggregator configuration file, which by default is located
+  at: `/opt/clearml/usage_aggregator.conf`.
+
+For each event category, the following definitions are required:
+* `count_strategy` – How daily values are aggregated. The options are:
+  * `sum` - Sum all reported values for a daily total
+  * `max` - Store the maximum reported value for the day
+* `labels` – Events reported for this category. Each event (label) can include optional `pricing` information:
+  * `price` – Event unit price
+  * `units` – How many reported units apply to the unit price
+  * `currency` – Optional (defaults to USD)
+* `type`  - Optional UI indicator information. The Metering UI uses this value to present the data with type-specific 
+  styling or icons. Available options: `compute`, `storage`, `model_tokens`, `users`.
+
+The following example defines a `users` event category with `admins` and `users` labels. It uses the `max` aggregation 
+strategy, meaning only the maximum value reported each day will be stored. It also specifies pricing information such 
+that admin users cost $0.2 per user per day, and non-admin users cost $0.1 per user per day.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+  
+
+  Add the configuration to the `control-plane` Helm chart values file:
+
+  ```
+  usageAggregator:
+    configuration: |
+      pricing {
+        currency: USD
+      } 
+    
+      events {
+        users: {
+          count_strategy: max
+          type: users # optional
+          labels: {
+            admins {
+              pricing {
+                price: 0.2
+                units: 1
+              }
+            }
+            users {
+              pricing {
+                price: 0.1
+                units: 1
+              }
+            }
+          }
+        }
+      }
+  ```
+
+  
+  
+
+  Save the configuration in `/opt/clearml/usage_aggregator.conf`:
+
+  ```
+  pricing {
+     currency: USD
+  }
+
+  events {
+      users: {
+          count_strategy: max
+          type: users # optional
+          labels: {
+              admins {
+                  pricing {
+                      price: 0.2
+                      units: 1
+                  }
+              }
+              users {
+                  pricing {
+                      price: 0.1
+                      units: 1
+                  }
+              }
+          }
+      }
+  }
+  ```
+
+  
+
+### API Server Definitions
+
+The API server forwards [reported metering events](#event-reporting) to the designated metering service according to a specified format template. 
+Klique's metering service expects the following format:
+
+```
+{
+  "id": "<event_id>",
+  "timestamp": <timestamp_millis>,
+  "clearml_tenant": "<tenant_id>",
+  "event_type": "<event type>",
+  "label": ["label1", "label2"],
+  "usage": [value1, value2]
+}
+```
+
+The API server supports Jinja2 to convert reported events into the required format. These templates are located in:
+
+```
+/opt/clearml/config/templates
+```
+
+:::note 
+You can change the template folder location by setting:
+```
+KLIQUE__services__custom_events__template_folder
+```
+:::
+
+The API server sends the event reports it receives to the metering service after applying the event type template 
+conversion to the received report. For example, the following users.j2 template converts a `users` event reported to the API server into the expected aggregator format:
+
+```
+{
+  "id": "{{ event.id }}",
+  "timestamp": {{ event.timestamp_millis | int }},
+  "clearml_tenant": "{{ event.clearml_tenant }}",
+  "event_type": "users",
+  "label": ["admins", "standard"],
+  "usage": [{{ event.admins }}, {{ event.standard }}]
+}
+```
+
+### Enabling a Template
+To enable forwarding a specific event type to the metering service and applying template formatting, set:
+```
+KLIQUE__services__custom_events__channels__usages__events__<template_key>: <template file>
+```
+
+If the template file name is the same as the template key, then you can use the simplified format:
+```
+KLIQUE__services__custom_events__channels__usages__events__<template_key>: true
+```
+
+## Event Reporting
+Metered events are reported to designated endpoints in the Klique API server, which feed the data into the metering service.
+
+```
+Reporters / Custom Scripts
+       ↓ tenants.custom_events API
+API Server (templates → formatted usage events)
+       ↓
+Metering Service (daily aggregation)
+```
+
+Built-in reporters are available for:
+* [K8s Compute nodes](#compute-resources-events)
+* [Klique tenant users](#control-plane-usage-events)
+* [Klique Fileserver storage consumption](#control-plane-usage-events)
+
+Events are sent to the Klique API server using the `tenants.custom_events` endpoint.
+
+All events in a single report must belong to the same event type, designated by the template_key parameter.
+The events may belong to one or more (when reported by a platform admin) tenants.
+
+An event report is comprised of:
+* `template_key` - Identifies the event type
+* `id` - A unique identifier for the event 
+* `clearml_tenant` - The tenant ID the event belongs to. You can find the tenant ID in the following places:
+   * [Platform Management Center](../../platform_management_center/pmc_tenants.md) tenant list (landing page). Click `ID`
+   on the relevant row to copy the tenant ID
+   * [**WebApp settings > Profile**](../../webapp/settings/webapp_settings_profile.md) under `Company`. Click `ID` to 
+   copy the tenant ID   
+* `timestamp_millis` - The time the report applies to
+* Additional parameters as required by event type
+
+For example, the following is an event report providing admin and standard user counts:
+```
+curl -XPOST -u "$ADMIN_USER_KEY":"$ADMIN_USER_SECRET" \
+"$API_SERVER_URL/tenants.custom_events" \
+-H "Content-type: application/json" \
+-d '{
+  "template_key": "users",
+  "events": [{
+      "id": "42b3859cf0324df7b7abae5cdc2004dc",
+      "clearml_tenant": "d1bd92a3b039400cbafc60a7a5b1e52b",
+      "timestamp_millis": 1765195356619,
+      "admins": 2,
+      "standard": 10
+  }]
+}'
+```
+
+## Accessing Aggregated Data
+
+Data aggregated in the metering service is available in:
+* The [Metering](../../webapp/webapp_admin_dashboard_metering.md) tab of the Admin Dashboard
+* [Platform management center](../../platform_management_center/pmc_tenants.md) UI tenant pages
+
+The metering service also makes the data accessible through direct API to facilitate connecting with 3rd party billing 
+systems, BI platforms, etc.
+
+The data is available through the `get_usages` endpoint:
+
+```
+POST <metering service URL>/get_usages
+```
+
+The metering service is reachable in-cluster at the usage-aggregator Kubernetes service (default port 5800), or externally
+through its hostname when [exposed via ingress](#exposing-via-ingress).
+
+| Parameter | Type | Description |
+|-----| :---: |---|
+| `tenant` | String | The tenant ID to query. If omitted, data for all tenants is returned. |
+| `from_date` / `to_date` | String |  Start and end dates (YYYY-MM-DD). Aggregation spans from 00:00 on the start date to 23:59 UTC on the end date. |
+| `categories` | List[String] | Optional list of event categories (event types), for example `["storage"]`. |
+| `include_labels` | Bool | Optional. Default true. When enabled, returns per-label breakdown inside each category. |
+
+#### Request Example
+
+```
+curl -XPOST \
+  -u <API KEY>:<API SECRET> \
+  <Service URL>/get_usages \
+  -d '{
+    "tenant": "1",
+    "from_date": "2026-01-20",
+    "to_date": "2026-01-22",
+    "categories": ["storage", "compute"],
+    "include_labels": true
+  }'
+```
+
+Where `<API KEY>` and `<API SECRET>` are stored in the usage-aggregator Kubernetes secret. 
+
+#### Response Structure
+
+The API returns a JSON object containing usage information for each tenant:
+
+* **Total Cost**: The calculated cost for the requested period.  
+* **Category Breakdown**: Includes daily usage, costs, and the specific `count_strategy` (sum or max) used for each day.  
+* **Labels**: If requested, provides per-label breakdown inside each category.
+
+#### Response Example
+
+```
+{
+    "tenants":
+    [
+        {
+            "currency": "USD",
+            "tenant": "1",
+            "total_cost": 66.9286,
+            "categories":
+            {
+                "compute":
+                {
+                    "type": "compute",
+                    "display_name": "compute",
+                    "free": false,
+                    "count_strategy": "sum",
+                    "unit_name": "sec",
+                    "total_usage_type": "total",
+                    "dates":
+                    [
+                        "2026-01-20",
+                        "2026-01-21",
+                        "2026-01-22"
+                    ],
+                    "usages":
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    "costs":
+                    [
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "total_usage": 0,
+                    "total_cost": 0.0,
+                    "labels":
+                    {
+                        "gpu1":
+                        {
+                            "display_name": "gpu1",
+                            "pricing":
+                            {
+                                "price": 2.5,
+                                "units": 3600
+                            },
+                            "usages":
+                            [
+                                0,
+                                0,
+                                0
+                            ],
+                            "costs":
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "total_usage": 0,
+                            "total_cost": 0.0
+                        }
+                    }
+                },
+                "storage":
+                {
+                    "type": "storage",
+                    "display_name": "storage",
+                    "free": false,
+                    "count_strategy": "max",
+                    "unit_name": "MB",
+                    "total_usage_type": "latest",
+                    "dates":
+                    [
+                        "2026-01-20",
+                        "2026-01-21",
+                        "2026-01-22"
+                    ],
+                    "usages":
+                    [
+                        5280.5177,
+                        5280.5177,
+                        5280.5177
+                    ],
+                    "costs":
+                    [
+                        12.3762,
+                        12.3762,
+                        12.3762
+                    ],
+                    "total_usage": 5280.5177,
+                    "total_cost": 37.1286,
+                    "labels":
+                    {
+                        "fileserver":
+                        {
+                            "display_name": "fileserver",
+                            "pricing":
+                            {
+                                "price": 2.4,
+                                "units": 1024
+                            },
+                            "usages":
+                            [
+                                5280.517719268799,
+                                5280.517719268799,
+                                5280.517719268799
+                            ],
+                            "costs":
+                            [
+                                12.3762,
+                                12.3762,
+                                12.3762
+                            ],
+                            "total_usage": 5280.517719268799,
+                            "total_cost": 37.1286
+                        }
+                    }
+                },
+                "users":
+                {
+                    "type": "users",
+                    "display_name": "users",
+                    "free": false,
+                    "count_strategy": "max",
+                    "unit_name": "",
+                    "total_usage_type": "latest",
+                    "dates":
+                    [
+                        "2026-01-20",
+                        "2026-01-21",
+                        "2026-01-22"
+                    ],
+                    "usages":
+                    [
+                        60.0,
+                        62.0,
+                        62.0
+                    ],
+                    "costs":
+                    [
+                        9.6,
+                        9.8,
+                        9.8
+                    ],
+                    "total_usage": 62.0,
+                    "total_cost": 29.2,
+                    "labels":
+                    {
+                        "admins":
+                        {
+                            "display_name": "admins",
+                            "pricing":
+                            {
+                                "price": 0.2,
+                                "units": 1
+                            },
+                            "usages":
+                            [
+                                36.0,
+                                36.0,
+                                36.0
+                            ],
+                            "costs":
+                            [
+                                7.2,
+                                7.2,
+                                7.2
+                            ],
+                            "total_usage": 36.0,
+                            "total_cost": 21.6
+                        },
+                        "users":
+                        {
+                            "display_name": "users",
+                            "pricing":
+                            {
+                                "price": 0.1,
+                                "units": 1
+                            },
+                            "usages":
+                            [
+                                24.0,
+                                26.0,
+                                26.0
+                            ],
+                            "costs":
+                            [
+                                2.4,
+                                2.6,
+                                2.6
+                            ],
+                            "total_usage": 26.0,
+                            "total_cost": 7.6
+                        }
+                    }
+                },
+                "service_accounts":
+                {
+                    "type": "service_accounts",
+                    "display_name": "Service Accounts",
+                    "free": false,
+                    "count_strategy": "max",
+                    "unit_name": "",
+                    "total_usage_type": "latest",
+                    "dates":
+                    [
+                        "2026-01-20",
+                        "2026-01-21",
+                        "2026-01-22"
+                    ],
+                    "usages":
+                    [
+                        2.0,
+                        2.0,
+                        2.0
+                    ],
+                    "costs":
+                    [
+                        0.2,
+                        0.2,
+                        0.2
+                    ],
+                    "total_usage": 2.0,
+                    "total_cost": 0.6,
+                    "labels":
+                    {
+                        "accounts":
+                        {
+                            "display_name": "accounts",
+                            "pricing":
+                            {
+                                "price": 0.1,
+                                "units": 1
+                            },
+                            "usages":
+                            [
+                                2.0,
+                                2.0,
+                                2.0
+                            ],
+                            "costs":
+                            [
+                                0.2,
+                                0.2,
+                                0.2
+                            ],
+                            "total_usage": 2.0,
+                            "total_cost": 0.6
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
+```

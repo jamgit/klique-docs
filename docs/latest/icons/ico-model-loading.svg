@@ -1,0 +1,20 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<style>
+  .circle {
+    animation-name: anim;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes anim {
+    from {r: 2px;}
+    to {r: 6px;}
+  }
+</style>
+
+<path d="M20.8328 43L5 12.4319H20.8328V43Z" fill="#FF7C00"/>
+<path d="M32.4437 43H20.8328L28.7492 11.3787L43 4L32.4437 43Z" fill="#FF7C00"/>
+<rect x="37" y="36" width="22" height="22" rx="11" fill="#50BEFF"/>
+<rect x="37" y="36" width="22" height="22" rx="11" stroke="#FF7C00" stroke-width="2"/>
+<circle class="circle" cx="48" cy="47" r="6" fill="white"/>
+</svg>

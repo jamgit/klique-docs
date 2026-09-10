@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 64"
+   version="1.1"
+   id="svg454"
+   sodipodi:docname="ico-qdrant--stopped.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs458">
+    <linearGradient
+       id="paint0_linear_4688_32465"
+       x1="23.1805"
+       y1="38.780899"
+       x2="15.4911"
+       y2="38.780899"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0503048,0,0,1.0503048,0.4150975,0.5069941)">
+      <stop
+         stop-color="#FF3364"
+         id="stop22" />
+      <stop
+         offset="1"
+         stop-color="#C91540"
+         stop-opacity="0"
+         id="stop24" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="namedview456"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="11.313708"
+     inkscape:cx="34.07371"
+     inkscape:cy="30.405593"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="216"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg454"
+     inkscape:lockguides="false" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 40.839857,54.573224 39.666981,22.237699 37.54295,13.71269 51.720384,15.213576 v 39.114927 l -8.660393,4.998295 z"
+     fill="#24386c"
+     id="path2"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 51.719124,15.211265 43.058626,20.213027 25.186639,16.292659 4.267553,24.810001 0.7822935,15.211265 13.514391,7.8591278 26.250387,0.5069941 38.982918,7.8591278 Z"
+     fill="#7589be"
+     id="path4"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 0.7822935,15.210635 9.442763,20.212397 14.463027,35.142795 31.413896,48.705486 26.250808,59.323437 13.514811,51.970884 0.7822935,44.61875 Z"
+     fill="#b2bfe8"
+     id="path6"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 31.993769,40.860654 -5.741596,8.464407 v 9.999637 l 8.147214,-4.700745 4.197859,-6.268324"
+     fill="#24386c"
+     id="path8"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 26.254799,39.328574 -8.150681,-14.111895 1.755585,-4.677112 6.674057,-3.235885 7.864682,7.913312 z"
+     fill="#7589be"
+     id="path10"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 18.105169,25.215839 8.147109,4.700744 v 9.409156 l -7.534992,0.324229 -4.558008,-5.819949 z"
+     fill="#b2bfe8"
+     id="path12"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 26.252173,29.915112 8.147214,-4.700324 5.54477,9.232495 -6.709978,5.543929 -6.982006,-0.666524 z"
+     fill="#24386c"
+     id="path14"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 34.398022,54.622903 8.660499,4.701165 V 20.213027 l -8.4058,-4.851253 -8.401913,-4.851243 -8.405695,4.851243 -8.401909,4.851253 v 19.408477 l 8.401909,4.851253 8.405695,4.851673 8.147214,-4.70505 z m 0,-20.00316 -8.147214,4.70463 -8.14711,-4.70463 v -9.405375 l 8.14711,-4.704525 8.147214,4.704525 z"
+     fill="#dc244c"
+     id="path16"
+     style="stroke-width:1.0503" />
+  <path
+     d="M 26.256059,49.328107 V 39.326894 l -8.104782,-4.664509 v 9.984618 z"
+     fill="url(#paint0_linear_4688_32465)"
+     id="path18"
+     style="fill:url(#paint0_linear_4688_32465);stroke-width:1.0503" />
+  <circle cx="49" cy="49" r="12" fill="#24386c" stroke-width="0" />
+  <path
+     d="M49 39C43.48 39 39 43.48 39 49C39 54.52 43.48 59 49 59C54.52 59 59 54.52 59 49C59 43.48 54.52 39 49 39Z"
+     fill="#50BEFF"
+     id="path450" />
+  <rect
+     x="45"
+     y="45"
+     width="8"
+     height="8"
+     rx="1"
+     fill="white"
+     id="rect452" />
+</svg>

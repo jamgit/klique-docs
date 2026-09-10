@@ -1,0 +1,2516 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-references/api/frames" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">frames | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/references/api/frames"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="frames | Klique"><meta data-rh="true" name="description" content="POST /frames.cleargetnext_state"><meta data-rh="true" property="og:description" content="POST /frames.cleargetnext_state"><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/references/api/frames"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/frames" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/frames" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.8cc3e11e.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.139c2e95.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Expand sidebar category &#x27;WebApp&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Collapse sidebar category &#x27;References&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/clearml_sdk"><span title="ClearML SDK" class="linkLabel_WmDU">ClearML SDK</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Legacy allegroai SDK" class="categoryLinkLabel_W154">Legacy allegroai SDK</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/configs/client_configuration"><span title="Client Configuration" class="linkLabel_WmDU">Client Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/orchestrator"><span title="Klique Orchestrator" class="linkLabel_WmDU">Klique Orchestrator</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/mcp_server/overview"><span title="MCP Server" class="categoryLinkLabel_W154">MCP Server</span></a><button aria-label="Expand sidebar category &#x27;MCP Server&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/latest/docs/references/api/"><span title="Server API" class="categoryLinkLabel_W154">Server API</span></a><button aria-label="Collapse sidebar category &#x27;Server API&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/definitions"><span title="API Definitions" class="linkLabel_WmDU">API Definitions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/apps"><span title="apps" class="linkLabel_WmDU">apps</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/auth"><span title="auth" class="linkLabel_WmDU">auth</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/datasets"><span title="datasets" class="linkLabel_WmDU">datasets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/debug"><span title="debug" class="linkLabel_WmDU">debug</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/events"><span title="events" class="linkLabel_WmDU">events</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/references/api/frames"><span title="frames" class="linkLabel_WmDU">frames</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/login"><span title="login" class="linkLabel_WmDU">login</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/models"><span title="models" class="linkLabel_WmDU">models</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/organization"><span title="organization" class="linkLabel_WmDU">organization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/permissions"><span title="permissions" class="linkLabel_WmDU">permissions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/pipelines"><span title="pipelines" class="linkLabel_WmDU">pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/projects"><span title="projects" class="linkLabel_WmDU">projects</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/queues"><span title="queues" class="linkLabel_WmDU">queues</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/reports"><span title="reports" class="linkLabel_WmDU">reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/resources"><span title="resources" class="linkLabel_WmDU">resources</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/routers"><span title="routers" class="linkLabel_WmDU">routers</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/server"><span title="server" class="linkLabel_WmDU">server</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/serving"><span title="serving" class="linkLabel_WmDU">serving</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/sso"><span title="sso" class="linkLabel_WmDU">sso</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/storage"><span title="storage" class="linkLabel_WmDU">storage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/system"><span title="system" class="linkLabel_WmDU">system</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tasks"><span title="tasks" class="linkLabel_WmDU">tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tenants"><span title="tenants" class="linkLabel_WmDU">tenants</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/users"><span title="users" class="linkLabel_WmDU">users</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/variables"><span title="variables" class="linkLabel_WmDU">variables</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/workers"><span title="workers" class="linkLabel_WmDU">workers</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>frames</h1></header><p><a name="frames-clear_get_next_state" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesclear_get_next_state">POST /frames.clear_get_next_state<a href="#post-framesclear_get_next_state" class="hash-link" aria-label="Direct link to POST /frames.clear_get_next_state" title="Direct link to POST /frames.clear_get_next_state" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description">Description<a href="#description" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Clears the scroll state received from the get_next family of functions and<br>
+releases all of its resources</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-clear_get_next_state-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-clear_get_next_state-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>scroll_id</strong>  <br><em>required</em></td><td>Scroll session id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses">Responses<a href="#responses" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-download_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesdownload_for_dataview">POST /frames.download_for_dataview<a href="#post-framesdownload_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.download_for_dataview" title="Direct link to POST /frames.download_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-1">Description<a href="#description-1" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get an attachment containing the frames returned by the dataview specified in<br>
+<code>prepare_download_for_dataview</code></p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-download_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-download_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>prepare_id</strong>  <br><em>required</em></td><td>Call ID returned by a call to prepare_download_for_dataview</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-1">Responses<a href="#responses-1" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-1">Security<a href="#security-1" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_by_id" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_by_id">POST /frames.get_by_id<a href="#post-framesget_by_id" class="hash-link" aria-label="Direct link to POST /frames.get_by_id" title="Direct link to POST /frames.get_by_id" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-2">Description<a href="#description-2" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a specific frame for a dataset version using the frame&#x27;s id. Random Access<br>
+API.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_by_id-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_by_id-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataset</strong>  <br><em>required</em></td><td>Dataset id</td><td>string</td></tr><tr><td><strong>frame</strong>  <br><em>required</em></td><td>Frame id</td><td>string</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>version</strong>  <br><em>required</em></td><td>Version id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-2">Responses<a href="#responses-2" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_by_id-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_by_id-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>frame</strong>  <br><em>optional</em></td><td>Frame data</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesframe">frames.frame</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-2">Security<a href="#security-2" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_by_ids" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_by_ids">POST /frames.get_by_ids<a href="#post-framesget_by_ids" class="hash-link" aria-label="Direct link to POST /frames.get_by_ids" title="Direct link to POST /frames.get_by_ids" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-3">Description<a href="#description-3" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get specific frames for a dataset version using the frame ids. Random Access<br>
+API.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-3">Parameters<a href="#parameters-3" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_by_ids-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_by_ids-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataset</strong>  <br><em>required</em></td><td>Dataset ID</td><td>string</td></tr><tr><td><strong>frame_ids</strong>  <br><em>required</em></td><td>Frame IDs</td><td>&lt; string &gt; array</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>version</strong>  <br><em>required</em></td><td>Version ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-3">Responses<a href="#responses-3" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_by_ids-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_by_ids-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>Frames data</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesframe">frames.frame</a> &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-3">Security<a href="#security-3" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_count" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_count">POST /frames.get_count<a href="#post-framesget_count" class="hash-link" aria-label="Direct link to POST /frames.get_count" title="Direct link to POST /frames.get_count" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-4">Description<a href="#description-4" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Gets the count of frames who&#x27;s ROIs contain at least one of the given label(s)</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_count-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_count-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataset</strong>  <br><em>optional</em></td><td>Dataset id</td><td>string</td></tr><tr><td><strong>labels</strong>  <br><em>optional</em></td><td>List of labels. Only frames containing labels from this list should be counted.  <br>Used only if scroll_id is not provided.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>version</strong>  <br><em>required</em></td><td>Dataset version id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-4">Responses<a href="#responses-4" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_count-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_count-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total count of frames for the entire query.</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-4">Security<a href="#security-4" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_count_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_count_for_dataview">POST /frames.get_count_for_dataview<a href="#post-framesget_count_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_count_for_dataview" title="Direct link to POST /frames.get_count_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-5">Description<a href="#description-5" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Gets the count of frames matching the given dataview</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-5">Parameters<a href="#parameters-5" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_count_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_count_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-5">Responses<a href="#responses-5" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_count_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_count_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>rules</strong>  <br><em>optional</em></td><td>Specific information for each rule of this query.</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesrule_count">frames.rule_count</a> &gt; array</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total count of frames for the entire query.</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-5">Security<a href="#security-5" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_count_for_dataview_id" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_count_for_dataview_id">POST /frames.get_count_for_dataview_id<a href="#post-framesget_count_for_dataview_id" class="hash-link" aria-label="Direct link to POST /frames.get_count_for_dataview_id" title="Direct link to POST /frames.get_count_for_dataview_id" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-6">Description<a href="#description-6" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Gets the count of frames matching the given dataview</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-6">Parameters<a href="#parameters-6" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_count_for_dataview_id-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_count_for_dataview_id-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-6">Responses<a href="#responses-6" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_count_for_dataview_id-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_count_for_dataview_id-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>rules</strong>  <br><em>optional</em></td><td>Specific information for each rule of this query.</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesrule_count">frames.rule_count</a> &gt; array</td></tr><tr><td><strong>total</strong>  <br><em>optional</em></td><td>Total count of frames for the entire query.</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-6">Security<a href="#security-6" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_group_snippets_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_group_snippets_for_dataview">POST /frames.get_group_snippets_for_dataview<a href="#post-framesget_group_snippets_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_group_snippets_for_dataview" title="Direct link to POST /frames.get_group_snippets_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-7">Description<a href="#description-7" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get sample frames for the specified aggregation group</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-7">Parameters<a href="#parameters-7" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_group_snippets_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_group_snippets_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataview</strong>  <br><em>optional</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>group_key</strong>  <br><em>optional</em></td><td>The requested group key</td><td>string</td></tr><tr><td><strong>order_by</strong>  <br><em>optional</em></td><td>The list of fields to sort on.</td><td>&lt; <a href="#frames-get_group_snippets_for_dataview-post-order_by" class="">order_by</a> &gt; array</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>sample_aggregation</strong>  <br><em>optional</em></td><td>Definition of the property for sampling</td><td><a href="#frames-get_group_snippets_for_dataview-post-sample_aggregation" class="">sample_aggregation</a></td></tr></tbody></table>
+<p><a name="frames-get_group_snippets_for_dataview-post-order_by" class=""></a></p>
+<p><strong>order_by</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>optional</em></td><td>The name of the field</td><td>string</td></tr><tr><td><strong>order</strong>  <br><em>optional</em></td><td>The order of the sorting  <br><strong>Default</strong> : <code>&quot;asc&quot;</code></td><td>enum (asc, desc)</td></tr></tbody></table>
+<p><a name="frames-get_group_snippets_for_dataview-post-sample_aggregation" class=""></a></p>
+<p><strong>sample_aggregation</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>required</em></td><td>The name of the frame, roi or source field</td><td>string</td></tr><tr><td><strong>filter</strong>  <br><em>optional</em></td><td>Lucene query filter to choose particular roi or source elements</td><td>string</td></tr><tr><td><strong>samples</strong>  <br><em>optional</em></td><td>The number of samples to return for each aggregation value</td><td>integer</td></tr><tr><td><strong>type</strong>  <br><em>required</em></td><td>Part of the frame that the property field belongs to</td><td>enum (frame, roi, source)</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-7">Responses<a href="#responses-7" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_group_snippets_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_group_snippets_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>List of frames samples for the requested aggregation group. Should be equal or  <br>less to the requested aggregation samples amount</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framessnippet">frames.snippet</a> &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-7">Security<a href="#security-7" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_next" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_next">POST /frames.get_next<a href="#post-framesget_next" class="hash-link" aria-label="Direct link to POST /frames.get_next" title="Direct link to POST /frames.get_next" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-8">Description<a href="#description-8" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Gets frames for a given dataset version.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-8">Parameters<a href="#parameters-8" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_next-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_next-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>Max number of images to be returned. Used only if scroll_id is not provided.</td><td>integer</td></tr><tr><td><strong>clean_subfields</strong>  <br><em>optional</em></td><td>If set to Truethen both frame toplevel fields and subfields are cleaned  <br>according to the schema. Otherwise only top level fields  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>dataset</strong>  <br><em>required</em></td><td>Dataset id</td><td>string</td></tr><tr><td><strong>labels</strong>  <br><em>optional</em></td><td>List of labels. Only frames containing labels from this list should be  <br>returned. Used only if scroll_id is not provided.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>merge_with</strong>  <br><em>optional</em></td><td>Version ID to merge with</td><td>string</td></tr><tr><td><strong>node</strong>  <br><em>optional</em></td><td>Node number. This provides support for multi-node experiments running multiple  <br>workers executing the same experiment on multiple processes or machines</td><td>integer</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>remove_none_values</strong>  <br><em>optional</em></td><td>If set to Truethen none values are removed from frames (except for metadata)  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session ID for getting the next batch of images</td><td>string</td></tr><tr><td><strong>version</strong>  <br><em>required</em></td><td>Dataset version id</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-8">Responses<a href="#responses-8" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_next-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_next-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>eof</strong>  <br><em>optional</em></td><td>When &#x27;frames&#x27; is empty, represents whether there are no more frames left. If  <br>&quot;false&quot;, client can retry the operation.</td><td>boolean</td></tr><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>Frames list</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesframe">frames.frame</a> &gt; array</td></tr><tr><td><strong>frames_returned</strong>  <br><em>optional</em></td><td>Number of frames returned</td><td>integer</td></tr><tr><td><strong>roi_stats</strong>  <br><em>optional</em></td><td>Json object containing the count per labels in frames, e.g. { &#x27;background&#x27;:  <br>312, &#x27;boat&#x27;: 2, &#x27;bus&#x27;: 4, &#x27;car&#x27;: 2, }</td><td>&lt; string, integer &gt; map</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id to be provided in order to get the next batch of images</td><td>string</td></tr><tr><td><strong>scroll_state</strong>  <br><em>optional</em></td><td>JSON object representing the scroll state</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-8">Security<a href="#security-8" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_next_for_dataview">POST /frames.get_next_for_dataview<a href="#post-framesget_next_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_next_for_dataview" title="Direct link to POST /frames.get_next_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-9">Description<a href="#description-9" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Gets frames for a given view specification</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_next_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>Max number of images to be returned. Used only if scroll_id is not provided.</td><td>integer</td></tr><tr><td><strong>clean_subfields</strong>  <br><em>optional</em></td><td>If set to Truethen both frame toplevel fields and subfields are cleaned  <br>according to the schema. Otherwise only top level fields  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>flow_control</strong>  <br><em>optional</em></td><td>Contol if frames retreival always navigate in one direction (the default) or  <br>can navigate forwards and backwards</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesflow_control">frames.flow_control</a></td></tr><tr><td><strong>force_scroll_id</strong>  <br><em>optional</em></td><td></td><td>boolean</td></tr><tr><td><strong>node</strong>  <br><em>optional</em></td><td>Node number. This provides support for multi-node experiments running multiple  <br>workers executing the same experiment on multiple processes or machines</td><td>integer</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Optional random seed used for frame selection. If not provided, one will be  <br>generated.</td><td>integer</td></tr><tr><td><strong>remove_none_values</strong>  <br><em>optional</em></td><td>If set to Truethen none values are removed from frames (except for metadata)  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>reset_scroll</strong>  <br><em>optional</em></td><td></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id for getting the next batch of images</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-9">Responses<a href="#responses-9" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_next_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>eof</strong>  <br><em>optional</em></td><td>When &#x27;frames&#x27; is empty, represents whether there are no more frames left. If  <br>&quot;false&quot;, client can retry the operation.</td><td>boolean</td></tr><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>Frames list</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesframe">frames.frame</a> &gt; array</td></tr><tr><td><strong>frames_returned</strong>  <br><em>optional</em></td><td>Number of frames returned</td><td>integer</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Random seed used for frame selection</td><td>integer</td></tr><tr><td><strong>roi_stats</strong>  <br><em>optional</em></td><td>Json object containing the count per labels in frames, e.g. { &#x27;background&#x27;:  <br>312, &#x27;boat&#x27;: 2, &#x27;bus&#x27;: 4, &#x27;car&#x27;: 2, }</td><td>&lt; string, integer &gt; map</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id to be provided in order to get the next batch of images</td><td>string</td></tr><tr><td><strong>scroll_state</strong>  <br><em>optional</em></td><td>JSON object representing the scroll state</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-9">Security<a href="#security-9" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview_and_context_id" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_next_for_dataview_and_context_id">POST /frames.get_next_for_dataview_and_context_id<a href="#post-framesget_next_for_dataview_and_context_id" class="hash-link" aria-label="Direct link to POST /frames.get_next_for_dataview_and_context_id" title="Direct link to POST /frames.get_next_for_dataview_and_context_id" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-10">Description<a href="#description-10" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get frames for the given dataview specification and context id</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-10">Parameters<a href="#parameters-10" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_next_for_dataview_and_context_id-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview_and_context_id-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>Max number of images to be returned. Used only if scroll_id is not provided.</td><td>integer</td></tr><tr><td><strong>clean_subfields</strong>  <br><em>optional</em></td><td>If set to Truethen both frame toplevel fields and subfields are cleaned  <br>according to the schema. Otherwise only top level fields  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>context_id</strong>  <br><em>required</em></td><td>Retrieve only frames associated with this context_id</td><td>string</td></tr><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>flow_control</strong>  <br><em>optional</em></td><td>Contol if frames retreival always navigate in one direction (the default) or  <br>can navigate forwards and backwards</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesflow_control">frames.flow_control</a></td></tr><tr><td><strong>node</strong>  <br><em>optional</em></td><td>Node number. This provides support for multi-node experiments running multiple  <br>workers executing the same experiment on multiple processes or machines</td><td>integer</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Optional random seed used for frame selection. If not provided, one will be  <br>generated.</td><td>integer</td></tr><tr><td><strong>remove_none_values</strong>  <br><em>optional</em></td><td>If set to Truethen none values are removed from frames (except for metadata)  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id for getting the next batch of images</td><td>string</td></tr><tr><td><strong>timestamp</strong>  <br><em>optional</em></td><td>Start timestamp for frames returned. Optional. Default is 0</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-10">Responses<a href="#responses-10" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_next_for_dataview_and_context_id-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview_and_context_id-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>eof</strong>  <br><em>optional</em></td><td>When &#x27;frames&#x27; is empty, represents whether there are no more frames left. If  <br>&quot;false&quot;, client can retry the operation.</td><td>boolean</td></tr><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>Frames list</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesframe">frames.frame</a> &gt; array</td></tr><tr><td><strong>frames_returned</strong>  <br><em>optional</em></td><td>Number of frames returned</td><td>integer</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Random seed used for frame selection</td><td>integer</td></tr><tr><td><strong>roi_stats</strong>  <br><em>optional</em></td><td>Json object containing the count per labels in frames, e.g. { &#x27;background&#x27;:  <br>312, &#x27;boat&#x27;: 2, &#x27;bus&#x27;: 4, &#x27;car&#x27;: 2, }</td><td>&lt; string, integer &gt; map</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id to be provided in order to get the next batch of images</td><td>string</td></tr><tr><td><strong>scroll_state</strong>  <br><em>optional</em></td><td>JSON object representing the scroll state</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-10">Security<a href="#security-10" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview_id" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_next_for_dataview_id">POST /frames.get_next_for_dataview_id<a href="#post-framesget_next_for_dataview_id" class="hash-link" aria-label="Direct link to POST /frames.get_next_for_dataview_id" title="Direct link to POST /frames.get_next_for_dataview_id" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-11">Description<a href="#description-11" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Gets frames for a given view specification</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-11">Parameters<a href="#parameters-11" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_next_for_dataview_id-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview_id-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>batch_size</strong>  <br><em>optional</em></td><td>Max number of images to be returned. Used only if scroll_id is not provided.</td><td>integer</td></tr><tr><td><strong>clean_subfields</strong>  <br><em>optional</em></td><td>If set to Truethen both frame toplevel fields and subfields are cleaned  <br>according to the schema. Otherwise only top level fields  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview ID</td><td>string</td></tr><tr><td><strong>flow_control</strong>  <br><em>optional</em></td><td>Frames retreival that allows eiter one-directional navigation (the default) or  <br>bidirectional</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesflow_control">frames.flow_control</a></td></tr><tr><td><strong>force_scroll_id</strong>  <br><em>optional</em></td><td></td><td>boolean</td></tr><tr><td><strong>node</strong>  <br><em>optional</em></td><td>Node number. This provides support for multi-node experiments running multiple  <br>workers executing the same experiment on multiple processes or machines</td><td>integer</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Optional random seed used for frame selection. If not provided, one will be  <br>generated.</td><td>integer</td></tr><tr><td><strong>remove_none_values</strong>  <br><em>optional</em></td><td>If set to Truethen none values are removed from frames (except for metadata)  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>reset_scroll</strong>  <br><em>optional</em></td><td></td><td>boolean</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id for getting the next batch of images</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-11">Responses<a href="#responses-11" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_next_for_dataview_id-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_next_for_dataview_id-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>eof</strong>  <br><em>optional</em></td><td>When &#x27;frames&#x27; is empty, represents whether there are no more frames left. If  <br>&quot;false&quot;, client can retry the operation.</td><td>boolean</td></tr><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>Frames list</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesframe">frames.frame</a> &gt; array</td></tr><tr><td><strong>frames_returned</strong>  <br><em>optional</em></td><td>Number of frames returned</td><td>integer</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Random seed used for frame selection</td><td>integer</td></tr><tr><td><strong>roi_stats</strong>  <br><em>optional</em></td><td>Json object containing the count per labels in frames, e.g. { &#x27;background&#x27;:  <br>312, &#x27;boat&#x27;: 2, &#x27;bus&#x27;: 4, &#x27;car&#x27;: 2, }</td><td>&lt; string, integer &gt; map</td></tr><tr><td><strong>scroll_id</strong>  <br><em>optional</em></td><td>Scroll session id to be provided in order to get the next batch of images</td><td>string</td></tr><tr><td><strong>scroll_state</strong>  <br><em>optional</em></td><td>JSON object representing the scroll state</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-11">Security<a href="#security-11" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_snippets_for_dataview">POST /frames.get_snippets_for_dataview<a href="#post-framesget_snippets_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_snippets_for_dataview" title="Direct link to POST /frames.get_snippets_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-12">Description<a href="#description-12" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Return first frame per unique URI for the given dataview specification. Note:<br>
+&#x27;count_range&#x27; option for label rules is not supported and does not affect the<br>
+returned snippets</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-12">Parameters<a href="#parameters-12" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_snippets_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>aggregate_on_context_id</strong>  <br><em>optional</em></td><td>If set to Truethen one frame is returned per unique context_id. If set to  <br>Falseall frames are retuned. If not set then defaults to the server configured  <br>value</td><td>boolean</td></tr><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>The page to return. default=0, Optional</td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>The amount of snippets to return for the page. Cannot be changed after the  <br>first call (after the paging session is created). default=50, Optional. To  <br>change the page size use &#x27;paging_id&#x27;=0 that will reset the paging session.</td><td>integer</td></tr><tr><td><strong>paging_id</strong>  <br><em>optional</em></td><td>Paging session id for getting the next page of frames</td><td>string</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-12">Responses<a href="#responses-12" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_snippets_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>List of frames for the requested page. The amount of frames returned is not  <br>guaranteed to be equal to the requested page size.</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framessnippet">frames.snippet</a> &gt; array</td></tr><tr><td><strong>frames_total</strong>  <br><em>optional</em></td><td>The total number of first frames per unique URI</td><td>integer</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>The currently requested page</td><td>integer</td></tr><tr><td><strong>pages_total</strong>  <br><em>optional</em></td><td>The total number of pages</td><td>integer</td></tr><tr><td><strong>paging_id</strong>  <br><em>optional</em></td><td>Paging session id to be provided in order to get the next page of frames</td><td>string</td></tr><tr><td><strong>total_in_versions</strong>  <br><em>optional</em></td><td>The total number of snippets for the dataview versions (without applying the  <br>dataview filters)</td><td>integer</td></tr><tr><td><strong>versions_updated</strong>  <br><em>optional</em></td><td>The list of versions whose frames were updated since the creation of the paging  <br>iterator. If a version was updated after the iteration was started you may not  <br>receive all the updated snippets. To make sure that you see all the snippets  <br>after the update please reset the paging id (this may result in a different  <br>total amount of pages for the same page size).</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-12">Security<a href="#security-12" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_snippets_for_dataview2">POST /frames.get_snippets_for_dataview2<a href="#post-framesget_snippets_for_dataview2" class="hash-link" aria-label="Direct link to POST /frames.get_snippets_for_dataview2" title="Direct link to POST /frames.get_snippets_for_dataview2" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-13">Description<a href="#description-13" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Return sample frames grouped by the requested field. Note: &#x27;count_range&#x27; option<br>
+for label rules is not supported and does not affect the returned snippets</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-13">Parameters<a href="#parameters-13" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_snippets_for_dataview2-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>aggregation</strong>  <br><em>optional</em></td><td>Specifies whether the returned frames should be aggregated. If not passed then  <br>&#x27;aggregate_on_context_id&#x27; setting is consulted</td><td><a href="#frames-get_snippets_for_dataview2-post-aggregation" class="">aggregation</a></td></tr><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>disable_aggregation</strong>  <br><em>optional</em></td><td>Set this flag to &#x27;true&#x27; to make sure that no aggregation is done regardless of  <br>the server configuration  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>order_by</strong>  <br><em>optional</em></td><td>The list of fields to sort on.</td><td>&lt; <a href="#frames-get_snippets_for_dataview2-post-order_by" class="">order_by</a> &gt; array</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>sample_aggregation</strong>  <br><em>optional</em></td><td>Definition of the property for sampling</td><td><a href="#frames-get_snippets_for_dataview2-post-sample_aggregation" class="">sample_aggregation</a></td></tr><tr><td><strong>search_after</strong>  <br><em>optional</em></td><td>For getting the next portion of snippets should be set to the value returned  <br>from the previous call. Either this parameter or search_before can be passed in  <br>the query. To get snippets from the beginning both should be set to null or  <br>empty string</td><td>string</td></tr><tr><td><strong>search_before</strong>  <br><em>optional</em></td><td>For getting the previous portion of snippets should be set to the value  <br>returned from the previous call. Either this parameter or search_after can be  <br>passed in the query. To get snippets from the beginning both should be set to  <br>null or empty string</td><td>string</td></tr><tr><td><strong>size</strong>  <br><em>optional</em></td><td>The amount of snippets to return.</td><td>integer</td></tr><tr><td><strong>vector_search</strong>  <br><em>optional</em></td><td>Search frames closest to the provided vector. Cannot be used together with  <br>aggregation</td><td><a href="#frames-get_snippets_for_dataview2-post-vector_search" class="">vector_search</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2-post-aggregation" class=""></a></p>
+<p><strong>aggregation</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>aggregate</strong>  <br><em>required</em></td><td>If set to Truethen the returned frames are aggregated on the provided fields</td><td>boolean</td></tr><tr><td><strong>fields</strong>  <br><em>optional</em></td><td>The list of the fields to aggragate on. Only if the aggregate parameter is set  <br>to True</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2-post-order_by" class=""></a></p>
+<p><strong>order_by</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>optional</em></td><td>The name of the field</td><td>string</td></tr><tr><td><strong>order</strong>  <br><em>optional</em></td><td>The order of the sorting  <br><strong>Default</strong> : <code>&quot;asc&quot;</code></td><td>enum (asc, desc)</td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2-post-sample_aggregation" class=""></a></p>
+<p><strong>sample_aggregation</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>required</em></td><td>The name of the frame, roi or source field</td><td>string</td></tr><tr><td><strong>filter</strong>  <br><em>optional</em></td><td>Lucene query filter to choose particular roi or source elements</td><td>string</td></tr><tr><td><strong>samples</strong>  <br><em>optional</em></td><td>The number of samples to return for each aggregation value</td><td>integer</td></tr><tr><td><strong>type</strong>  <br><em>required</em></td><td>Part of the frame that the property field belongs to</td><td>enum (frame, roi, source)</td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2-post-vector_search" class=""></a></p>
+<p><strong>vector_search</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>required</em></td><td>Vector field name</td><td>string</td></tr><tr><td><strong>method</strong>  <br><em>optional</em></td><td>The search method. &#x27;fast&#x27; for indexed search. &#x27;exact&#x27; for script search  <br><strong>Default</strong> : <code>&quot;exact&quot;</code></td><td>enum (fast, exact)</td></tr><tr><td><strong>neighbors</strong>  <br><em>optional</em></td><td>The maximum amount of snippets to return</td><td>integer</td></tr><tr><td><strong>similarity_func</strong>  <br><em>optional</em></td><td>The function for calculating distance from search vector  <br><strong>Default</strong> : <code>&quot;cosine&quot;</code></td><td>enum (l2_norm, dot_product, cosine)</td></tr><tr><td><strong>vector</strong>  <br><em>required</em></td><td>The search vector</td><td>&lt; number &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-13">Responses<a href="#responses-13" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_snippets_for_dataview2-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_for_dataview2-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>List of frames for the requested page. The amount of frames returned is not  <br>guaranteed to be equal to the requested page size.</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framessnippet">frames.snippet</a> &gt; array</td></tr><tr><td><strong>frames_total</strong>  <br><em>optional</em></td><td>The total number of first frames per unique URI</td><td>integer</td></tr><tr><td><strong>search_after</strong>  <br><em>optional</em></td><td>The key for querying next batch of frames (according to the specified sorting  <br>order)</td><td>string</td></tr><tr><td><strong>search_before</strong>  <br><em>optional</em></td><td>The key for querying previous batch of frames (according to the specified  <br>sorting order)</td><td>string</td></tr><tr><td><strong>total_in_versions</strong>  <br><em>optional</em></td><td>The total number of snippets for the dataview versions (without applying the  <br>dataview filters)</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-13">Security<a href="#security-13" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_snippets_query_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_snippets_query_for_dataview">POST /frames.get_snippets_query_for_dataview<a href="#post-framesget_snippets_query_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_snippets_query_for_dataview" title="Direct link to POST /frames.get_snippets_query_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-14">Description<a href="#description-14" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get Elasticsearch query that returns frames with unique URIs for the given<br>
+dataview specification. The query is returned only for the clients that have<br>
+kibana space set up. Note: &#x27;count_range&#x27; option for label rules is not<br>
+supported and not reflected in the query</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-14">Parameters<a href="#parameters-14" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_snippets_query_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_query_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-14">Responses<a href="#responses-14" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_snippets_query_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_snippets_query_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>kibana_link</strong>  <br><em>optional</em></td><td>The link to the Kibana discovery page with the dataview query</td><td>string</td></tr><tr><td><strong>query</strong>  <br><em>optional</em></td><td>The Elasticsearch query filter that should bring the snippet frames according  <br>to the provided dataview</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-14">Security<a href="#security-14" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_source_ids_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_source_ids_for_dataview">POST /frames.get_source_ids_for_dataview<a href="#post-framesget_source_ids_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_source_ids_for_dataview" title="Direct link to POST /frames.get_source_ids_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-15">Description<a href="#description-15" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get unique sorce id that exist in the frames in the given dataview</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-15">Parameters<a href="#parameters-15" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_source_ids_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_source_ids_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>max_count</strong>  <br><em>optional</em></td><td>Number of source IDs to return. default=100, Optional</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-15">Responses<a href="#responses-15" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_source_ids_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_source_ids_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>source_ids</strong>  <br><em>optional</em></td><td>Unique source ids for the dataset version</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-15">Security<a href="#security-15" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_stats_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_stats_for_dataview">POST /frames.get_stats_for_dataview<a href="#post-framesget_stats_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.get_stats_for_dataview" title="Direct link to POST /frames.get_stats_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-16">Description<a href="#description-16" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get labels&#x27; stats for a dataview</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-16">Parameters<a href="#parameters-16" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_stats_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_stats_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>labels_property</strong>  <br><em>optional</em></td><td>Definition of the property for labels calculation</td><td><a href="#frames-get_stats_for_dataview-post-labels_property" class="">labels_property</a></td></tr></tbody></table>
+<p><a name="frames-get_stats_for_dataview-post-labels_property" class=""></a></p>
+<p><strong>labels_property</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>required</em></td><td>The name of the frame, roi or source field</td><td>string</td></tr><tr><td><strong>filter</strong>  <br><em>optional</em></td><td>Lucene query filter to choose particular roi or source elements</td><td>string</td></tr><tr><td><strong>type</strong>  <br><em>required</em></td><td>Part of the frame that the property field belongs to</td><td>enum (frame, roi, source)</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-16">Responses<a href="#responses-16" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_stats_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_stats_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>content_types</strong>  <br><em>optional</em></td><td>List of statistics for each content type</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesstat_count">frames.stat_count</a> &gt; array</td></tr><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>List of statistics for each frame (annotated/unannotated)</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesstat_count">frames.stat_count</a> &gt; array</td></tr><tr><td><strong>labels</strong>  <br><em>optional</em></td><td>List of statistics for each label</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesstat_count">frames.stat_count</a> &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-16">Security<a href="#security-16" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-get_with_projection" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesget_with_projection">POST /frames.get_with_projection<a href="#post-framesget_with_projection" class="hash-link" aria-label="Direct link to POST /frames.get_with_projection" title="Direct link to POST /frames.get_with_projection" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-17">Description<a href="#description-17" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>For each passed query return projected frames matcing the conditions. One frame<br>
+is returned per unique query field value</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-17">Parameters<a href="#parameters-17" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-get_with_projection-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-get_with_projection-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>query</strong>  <br><em>optional</em></td><td>The list of field queries</td><td>&lt; <a href="#frames-get_with_projection-post-query" class="">query</a> &gt; array</td></tr><tr><td><strong>versions</strong>  <br><em>optional</em></td><td>Dataset versions</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#framesview_entry">frames.view_entry</a> &gt; array</td></tr></tbody></table>
+<p><a name="frames-get_with_projection-post-query" class=""></a></p>
+<p><strong>query</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>field</strong>  <br><em>optional</em></td><td>The field name</td><td>string</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>List of projected fields</td><td>&lt; string &gt; array</td></tr><tr><td><strong>values</strong>  <br><em>optional</em></td><td>The allowed field values</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-17">Responses<a href="#responses-17" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-get_with_projection-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-get_with_projection-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>frames</strong>  <br><em>optional</em></td><td>Projected frames per rule indexed by the rule key</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-17">Security<a href="#security-17" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="frames-prepare_download_for_dataview" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-framesprepare_download_for_dataview">POST /frames.prepare_download_for_dataview<a href="#post-framesprepare_download_for_dataview" class="hash-link" aria-label="Direct link to POST /frames.prepare_download_for_dataview" title="Direct link to POST /frames.prepare_download_for_dataview" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-18">Description<a href="#description-18" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Prepare request data for frames download. Intended for allowing the user to<br>
+send the data using a POST request (since a query string in a GET request<br>
+cannot accomodate large generic data structures), and use the resulting call&#x27;s<br>
+ID as a handle for calling the <code>download_for_dataview</code> endpoint using a GET<br>
+method.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-18">Parameters<a href="#parameters-18" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#frames-prepare_download_for_dataview-request" class="">request</a></td></tr></tbody></table>
+<p><a name="frames-prepare_download_for_dataview-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>clean_subfields</strong>  <br><em>optional</em></td><td>If set to Truethen both frame toplevel fields and subfields are cleaned  <br>according to the schema. Otherwise only top level fields  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>dataview</strong>  <br><em>required</em></td><td>Dataview specification</td><td><a class="" href="/docs/latest/docs/references/api/definitions#framesdataview">frames.dataview</a></td></tr><tr><td><strong>download_type</strong>  <br><em>optional</em></td><td>Download type. Determines the downloaded file&#x27;s formatting and mime type.  <br><strong>Default</strong> : <code>&quot;json&quot;</code></td><td>enum (json, jsonlines)</td></tr><tr><td><strong>node</strong>  <br><em>optional</em></td><td>Node number. This provides support for multi-node experiments running multiple  <br>workers executing the same experiment on multiple processes or machines</td><td>integer</td></tr><tr><td><strong>projection</strong>  <br><em>optional</em></td><td>Used to select which parts of the frame will be returned. Each string  <br>represents a field or sub-field (using dot-separated notation). In order to  <br>specify a specific array element, use array index as a field name. To specify  <br>all array elements, use &#x27;*&#x27;.</td><td>&lt; string &gt; array</td></tr><tr><td><strong>random_seed</strong>  <br><em>optional</em></td><td>Optional random seed used for frame selection. If not provided, one will be  <br>generated.</td><td>integer</td></tr><tr><td><strong>remove_none_values</strong>  <br><em>optional</em></td><td>If set to Truethen none values are removed from frames (except for metadata)  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-18">Responses<a href="#responses-18" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#frames-prepare_download_for_dataview-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="frames-prepare_download_for_dataview-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>prepare_id</strong>  <br><em>optional</em></td><td>Prepare ID (use when calling <code>download_for_dataview</code>)</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-18">Security<a href="#security-18" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/references/api/events"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">events</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/references/api/login"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">login</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#post-framesclear_get_next_state" class="table-of-contents__link toc-highlight">POST /frames.clear_get_next_state</a></li><li><a href="#post-framesdownload_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.download_for_dataview</a></li><li><a href="#post-framesget_by_id" class="table-of-contents__link toc-highlight">POST /frames.get_by_id</a></li><li><a href="#post-framesget_by_ids" class="table-of-contents__link toc-highlight">POST /frames.get_by_ids</a></li><li><a href="#post-framesget_count" class="table-of-contents__link toc-highlight">POST /frames.get_count</a></li><li><a href="#post-framesget_count_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_count_for_dataview</a></li><li><a href="#post-framesget_count_for_dataview_id" class="table-of-contents__link toc-highlight">POST /frames.get_count_for_dataview_id</a></li><li><a href="#post-framesget_group_snippets_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_group_snippets_for_dataview</a></li><li><a href="#post-framesget_next" class="table-of-contents__link toc-highlight">POST /frames.get_next</a></li><li><a href="#post-framesget_next_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_next_for_dataview</a></li><li><a href="#post-framesget_next_for_dataview_and_context_id" class="table-of-contents__link toc-highlight">POST /frames.get_next_for_dataview_and_context_id</a></li><li><a href="#post-framesget_next_for_dataview_id" class="table-of-contents__link toc-highlight">POST /frames.get_next_for_dataview_id</a></li><li><a href="#post-framesget_snippets_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_snippets_for_dataview</a></li><li><a href="#post-framesget_snippets_for_dataview2" class="table-of-contents__link toc-highlight">POST /frames.get_snippets_for_dataview2</a></li><li><a href="#post-framesget_snippets_query_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_snippets_query_for_dataview</a></li><li><a href="#post-framesget_source_ids_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_source_ids_for_dataview</a></li><li><a href="#post-framesget_stats_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.get_stats_for_dataview</a></li><li><a href="#post-framesget_with_projection" class="table-of-contents__link toc-highlight">POST /frames.get_with_projection</a></li><li><a href="#post-framesprepare_download_for_dataview" class="table-of-contents__link toc-highlight">POST /frames.prepare_download_for_dataview</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

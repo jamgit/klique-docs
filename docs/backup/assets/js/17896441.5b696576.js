@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkklique_docs=globalThis.webpackChunkklique_docs||[]).push([[8401],{18506(s,c,k){k.d(c,{A:()=>l});const l={...k(53436).A}}}]);

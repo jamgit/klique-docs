@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-webapp/applications/apps_model_deployment" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">vLLM Model Deployment | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/webapp/applications/apps_model_deployment"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="vLLM Model Deployment | Klique"><meta data-rh="true" name="description" content="LLM deployment as vLLM inference services behind a secure endpoint, covering multi-model hosting, LoRA adapters, and speculative decoding."><meta data-rh="true" property="og:description" content="LLM deployment as vLLM inference services behind a secure endpoint, covering multi-model hosting, LoRA adapters, and speculative decoding."><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/webapp/applications/apps_model_deployment"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/webapp/applications/apps_model_deployment" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/webapp/applications/apps_model_deployment" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.8cc3e11e.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.139c2e95.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Collapse sidebar category &#x27;WebApp&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/role_based_ui"><span title="Role-Based UI" class="linkLabel_WmDU">Role-Based UI</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/webapp_admin_dashboard"><span title="Admin Dashboard" class="categoryLinkLabel_W154">Admin Dashboard</span></a><button aria-label="Expand sidebar category &#x27;Admin Dashboard&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/admin_settings"><span title="Administrator Settings" class="categoryLinkLabel_W154">Administrator Settings</span></a><button aria-label="Expand sidebar category &#x27;Administrator Settings&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_overview"><span title="Klique Applications" class="categoryLinkLabel_W154">Klique Applications</span></a><button aria-label="Collapse sidebar category &#x27;Klique Applications&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_hpo"><span title="General" class="categoryLinkLabel_W154">General</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_ssh_session"><span title="AI Dev" class="categoryLinkLabel_W154">AI Dev</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_milvus"><span title="Databases" class="categoryLinkLabel_W154">Databases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_gradio"><span title="UI Dev" class="categoryLinkLabel_W154">UI Dev</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_deploy_slurm"><span title="Cluster" class="categoryLinkLabel_W154">Cluster</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_embed_model_deployment"><span title="Deploy" class="categoryLinkLabel_W154">Deploy</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_embed_model_deployment"><span title="Embedding Model Deployment" class="linkLabel_WmDU">Embedding Model Deployment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_model_deployment"><span title="vLLM Model Deployment" class="linkLabel_WmDU">vLLM Model Deployment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_llama_deployment"><span title="Llama.cpp Model Deployment" class="linkLabel_WmDU">Llama.cpp Model Deployment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_sglang"><span title="SGLang Model Deployment" class="linkLabel_WmDU">SGLang Model Deployment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_container_launcher"><span title="Containerized Application Launcher" class="linkLabel_WmDU">Containerized Application Launcher</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_llm_ui"><span title="LLM UI" class="linkLabel_WmDU">LLM UI</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_mcp_server"><span title="MCP Server Deployment" class="linkLabel_WmDU">MCP Server Deployment</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_claude_code"><span title="Agentic-AI" class="categoryLinkLabel_W154">Agentic-AI</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/applications/apps_nvidia_nim"><span title="NVAIE" class="categoryLinkLabel_W154">NVAIE</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/webapp_workers_queues"><span title="Orchestration" class="categoryLinkLabel_W154">Orchestration</span></a><button aria-label="Expand sidebar category &#x27;Orchestration&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/webapp/webapp_model_endpoints"><span title="Model Endpoints" class="linkLabel_WmDU">Model Endpoints</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/datasets/webapp_dataset_page"><span title="Datasets" class="categoryLinkLabel_W154">Datasets</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/hyperdatasets_webapp/datasets"><span title="Hyper-Datasets" class="categoryLinkLabel_W154">Hyper-Datasets</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/webapp_home"><span title="Projects" class="categoryLinkLabel_W154">Projects</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/webapp/pipelines/webapp_pipeline_page"><span title="Pipelines" class="categoryLinkLabel_W154">Pipelines</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/webapp/settings/webapp_settings_overview"><span title="Settings" class="categoryLinkLabel_W154">Settings</span></a><button aria-label="Expand sidebar category &#x27;Settings&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Expand sidebar category &#x27;References&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>vLLM Model Deployment</h1></header><p>The vLLM Model Deployment application enables users to quickly deploy LLMs as networking services over a secure
+endpoint. This application supports various model configurations and customizations to optimize performance and resource
+usage. The vLLM Model Deployment application serves your model(s) on a machine of your choice. Once an app instance is running,
+it serves your model through a secure, publicly accessible network endpoint.</p>
+<p>The app supports multi-model hosting and Universal Memory technology, enabling inactive models to be offloaded to other memory options to free GPU resources:</p>
+<ul>
+<li class="">CPU RAM – via <code>Automatic CPU Offloading</code>, <code>CPU Offload GiB</code>, and configurable <code>Max CUDA Memory</code> limits.</li>
+<li class="">Disk storage – via <code>Swap Space</code> and <code>Disk Swapping</code> (when <code>Automatic CPU Offloading</code> is disabled).</li>
+</ul>
+<p>The app monitors endpoint activity and shuts down if the model remains inactive over a specified maximum idle time.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>AI Application Gateway</div><div class="admonitionContent_BuS1"><p>The vLLM Model Deployment app makes use of the App Gateway Router which implements a secure, authenticated
+network endpoint for the model.</p><p>If the Klique AI Application Gateway is not available, the model endpoint might not be accessible.
+For more information, see <a class="" href="/docs/latest/docs/whats_klique/appgw">AI Application Gateway</a>.</p></div></div>
+<p>Once you start a vLLM Model Deployment instance, you can view the following information in its dashboard:</p>
+<ul>
+<li class="">Status indicator
+<ul>
+<li class=""><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-model-active.svg" alt="Active instance" class="icon size-lg space-sm img_ev3q"> - App instance is running and is actively in use</li>
+<li class=""><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-model-loading.svg" alt="Loading instance" class="icon size-lg space-sm img_ev3q"> - App instance is setting up</li>
+<li class=""><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-model-idle.svg" alt="Idle instance" class="icon size-lg space-sm img_ev3q"> - App instance is idle</li>
+<li class=""><img decoding="async" loading="lazy" src="/docs/latest/icons/ico-model-stopped.svg" alt="Stopped instance" class="icon size-lg space-sm img_ev3q"> - App instance is stopped</li>
+</ul>
+</li>
+<li class="">Idle time - Time elapsed since last activity</li>
+<li class="">Generate Token - Link to your workspace Settings page, where you can generate a token for accessing your deployed model in the <code>AI APPLICATION GATEWAY</code> section</li>
+<li class="">Deployed models table:
+<ul>
+<li class="">Model name</li>
+<li class="">Endpoint - The publicly accessible URL of the model endpoint. Active model endpoints are also available in the
+<a class="" href="/docs/latest/docs/webapp/webapp_model_endpoints">Model Endpoints</a> table, which allows you to view and compare endpoint details and
+monitor status over time</li>
+</ul>
+</li>
+<li class="">Model access command line example
+<ul>
+<li class="">Select model the command should access</li>
+<li class="">Prompt - Provide a prompt to send to the model</li>
+<li class="">The <code>curl</code> command line to send your prompt to the selected model’s endpoint. Replace <code>YOUR_GENERATED_TOKEN</code> with a
+valid token generated in the <code>AI APPLICATION GATEWAY</code> section of the <a class="" href="/docs/latest/docs/webapp/settings/webapp_settings_profile#ai-application-gateway-tokens">Settings</a>
+page.</li>
+</ul>
+</li>
+<li class="">Total Number of Requests - Number of requests over time</li>
+<li class="">Tokens per Second - Number of tokens processed over time</li>
+<li class="">Latency - Request response time (ms) over time</li>
+<li class="">Endpoint resource monitoring metrics over time</li>
+<li class="">CPU usage
+<ul>
+<li class="">Network throughput</li>
+<li class="">Disk performance</li>
+<li class="">Memory performance</li>
+<li class="">GPU utilization</li>
+<li class="">GPU memory usage</li>
+<li class="">GPU temperature</li>
+</ul>
+</li>
+<li class="">Console log - The console log shows the app instance&#x27;s console output: setup progress, status changes, error messages,
+etc.</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="vLLM Model Deployment App" src="/docs/latest/assets/images/apps_model_deployment-c61c4ca2bca60c5c45854a48f6e2c522.png#light-mode-only" width="1920" height="1080" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="vLLM Model Deployment App" src="/docs/latest/assets/images/apps_model_deployment_dark-5157fcf74515ccc109addf6f61654f79.png#dark-mode-only" width="1920" height="1080" class="img_ev3q"></p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Embedding Visualizations</div><div class="admonitionContent_BuS1"><p>You can embed plots from the app instance dashboard into <a class="" href="/docs/latest/docs/webapp/webapp_reports">Reports</a>. Klique
+also supports embedding resources in third-party platforms that support embedded content (e.g. Notion). These visualizations
+are updated live as the app instance(s) updates. Hover over the plot and click <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-plotly-embed-code.svg" alt="Embed code" class="icon size-md space-sm img_ev3q">
+to copy the embed code, and navigate to a report to paste the embed code.</p></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="vllm-model-deployment-instance-configuration">vLLM Model Deployment Instance Configuration<a href="#vllm-model-deployment-instance-configuration" class="hash-link" aria-label="Direct link to vLLM Model Deployment Instance Configuration" title="Direct link to vLLM Model Deployment Instance Configuration" translate="no">​</a></h2>
+<p>When configuring a new vLLM Model Deployment instance, you can fill in the required parameters or reuse the
+configuration of a previously launched instance.</p>
+<p>Launch an app instance with the configuration of a previously launched instance using one of the following options:</p>
+<ul>
+<li class="">Cloning a previously launched app instance will open the instance launch form with the original instance&#x27;s
+configuration prefilled.</li>
+<li class="">Importing an app configuration file. You can export the configuration of a previously launched instance as a JSON file
+when viewing its configuration.</li>
+</ul>
+<p>The prefilled configuration form can be edited before launching the new app instance.</p>
+<p>To configure a new app instance, click <code>Launch New</code> <img decoding="async" loading="lazy" src="/docs/latest/icons/ico-add.svg" alt="Add new" class="icon size-md space-sm img_ev3q">
+to open the app&#x27;s configuration form.</p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="configuration-options">Configuration Options<a href="#configuration-options" class="hash-link" aria-label="Direct link to Configuration Options" title="Direct link to Configuration Options" translate="no">​</a></h3>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Administrators can <a class="" href="/docs/latest/docs/deploying_klique/app_launch_form_custom">customize</a> the launch form and
+modify field names and/or available options and defaults.</p><p>This section describes the default configuration provided by Klique.</p></div></div>
+<ul>
+<li class="">
+<p><strong>Import Configuration</strong>: Import an app instance configuration file. This will fill the instance launch form with the
+values from the file, which can be modified before launching the app instance</p>
+</li>
+<li class="">
+<p><strong>Instance name</strong>: Name for the vLLM Model Deployment instance. This will appear in the instance list</p>
+</li>
+<li class="">
+<p><strong>Service Project (Access Control)</strong>: The Klique project where the app instance is created. Access is determined by
+project-level permissions (i.e. users with read access can use the app).</p>
+</li>
+<li class="">
+<p><strong>Queue</strong>: The <a href="https://clear.ml/docs/latest/docs/fundamentals/agents_and_queues/#what-is-a-queue" target="_blank" rel="nofollow noopener noreferrer" class="">Klique Queue</a> to which the vLLM Model Deployment app
+instance task will be enqueued. Make sure an agent is assigned to that queue.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Multi-GPU inference</div><div class="admonitionContent_BuS1"><p>To run multi-GPU inference, ensure the queue&#x27;s pod specification (from the base template and/or <code>templateOverrides</code>) defines multiple GPUs. See <a class="" href="/docs/latest/docs/orchestrator/custom_workload#example-gpu-queues-with-shared-memory">GPU Queues with Shared Memory</a>
+for an example configuration of a queue that allocates multiple GPUs and shared memory.</p></div></div>
+</li>
+<li class="">
+<p><strong>AI Gateway Route</strong>: Select an available, admin-preconfigured route to use as the service endpoint. If none is selected, an ephemeral endpoint will be created.</p>
+</li>
+<li class="">
+<p><strong>Model Configuration</strong>: Configure the behavior and performance of the model engine.</p>
+<ul>
+<li class="">Trust Remote Code: Select to set Hugging Face <a href="https://huggingface.co/docs/text-generation-inference/main/en/reference/launcher#trustremotecode" target="_blank" rel="noopener noreferrer" class=""><code>trust_remote_code</code></a>
+to <code>true</code>.</li>
+<li class="">CLI: vLLM CLI arguments. If set, these arguments will be passed to vLLM and all following entries will be ignored,
+except for the <code>Model</code> field.</li>
+<li class="">Enforce Eager: Forces PyTorch <a href="https://pytorch.org/executorch/stable/concepts.html#eager-mode" target="_blank" rel="noopener noreferrer" class="">eager mode</a> for execution.
+If not selected, a hybrid of eager mode and CUDA graph will be used for maximal performance and flexibility.</li>
+<li class="">Enable Automatic Prefix Caching: Caches key-value pairs for shared prefixes across requests. This reduces
+computational overhead and memory usage by reusing cached KV pairs for subsequent requests with the same prefix. For
+more information, see <a href="https://docs.vllm.ai/en/v0.9.2/features/automatic_prefix_caching.html" target="_blank" rel="noopener noreferrer" class="">Automatic Prefix Caching</a>.</li>
+<li class="">Disable Sliding Window: Prevents the model from using a sliding window for input processing. Instead, it caps the
+input length to the sliding window size and processes the entire sequence as a whole.</li>
+<li class="">Enable Reasoning: Enables model to generate <a href="https://docs.vllm.ai/en/latest/features/reasoning_outputs.html" target="_blank" rel="noopener noreferrer" class="">reasoning content</a>.</li>
+<li class="">Enable Auto Tool Choice: When set, vLLM will automatically choose between supported tool-call parsers. Requires to select parser backend in <code>Tool Call Parser</code></li>
+<li class="">Model: A Klique Model ID or a HuggingFace model name (e.g. <code>openai-community/gpt2</code>)</li>
+<li class="">Model Endpoint Name: The name to be used for API access.</li>
+<li class="">Multimedia Limit per Prompt: Set limits on the number of multi-modal inputs allowed for each prompt. Input a comma-separated
+list of items, e.g., <code>image=16,video=2</code> allows a maximum of 16 images and 2 videos per prompt. Defaults to 1 for each modality</li>
+<li class="">Max Context Length: Maximum model context length. If unspecified, it will be derived from the model config.</li>
+<li class="">Max Number of Sequences per iteration: Maximum number of sequences that can be processed together in a single iteration</li>
+<li class="">Speculative Draft Tensor Parallel Size: Maximum sequence length covered by CUDA graphs. Longer sequences fall back to eager mode.</li>
+<li class="">Tool Call Parser: Select which tool-call parser to use when <code>Enable Auto Tool Choice</code> is enabled. These parsers
+convert model output into OpenAI API–compatible tool calls. For more information about the parsers, see <a href="https://docs.vllm.ai/en/stable/features/tool_calling.html" target="_blank" rel="noopener noreferrer" class="">vLLM documentation</a>.</li>
+<li class="">Tool Parser plugin: Name of a registered parser plugin for custom tool-call parsing. If set, this plugin can be
+referenced by the parser selected in the <code>Tool Call Parser</code> field.</li>
+<li class="">Max Num Batched Tokens: Maximum number of batched tokens per iteration</li>
+<li class="">Reasoning Parser: Select the reasoning parser depending on the model that you&#x27;re using. This is used to parse the
+reasoning content into OpenAI API format. Required if <code>Reasoning</code> is enabled. For more information about reasoning parser,
+see <a href="https://docs.vllm.ai/en/v0.9.1/features/reasoning_outputs.html" target="_blank" rel="noopener noreferrer" class="">vLLM documentation</a>.</li>
+<li class="">Model Implementation: Which implementation of the model to use:
+<ul>
+<li class="">No selection (default): Use the vLLM implementation if it exists and fall back to the Transformers implementation
+if no vLLM implementation is available.</li>
+<li class=""><code>vllm</code>: Use the vLLM model implementation.</li>
+<li class=""><code>transformers</code>: Use the Transformers model implementation</li>
+</ul>
+</li>
+<li class="">GPU Memory Utilization: The fraction of GPU memory to be used for the model executor, which can range from 0 to 1.
+Default: 0.9.</li>
+<li class="">GPUs (Tensor Parallel Size): Number of GPUs used to load the model. Defaults to the number of GPUs detected on the machine</li>
+<li class="">Swap Space: CPU swap space size (GiB) per GPU</li>
+<li class="">CPU Offload GiB: Space in GiB to offload to CPU per GPU. Default 0, which means no offloading. This allows for a
+virtual increase in GPU memory size (e.g., for a 24 GB GPU with 10 GiB set, it appears as 34 GB). Requires fast
+CPU-GPU interconnect during model operations.</li>
+<li class="">Quantization: Method used to quantize the weights. If None, we first check the <code>quantization_config</code> attribute in
+the model config file. If that is <code>None</code>, we assume the model weights are not quantized and use <code>dtype</code> to determine
+the data type of the weights.</li>
+<li class="">Dtype: Data type for model weights and activations. Select one of the following:
+<ul>
+<li class=""><code>auto</code>: If selected, will use base model data type.</li>
+<li class=""><code>float16</code></li>
+<li class=""><code>bfloat16</code></li>
+<li class=""><code>float32</code></li>
+</ul>
+</li>
+<li class="">KV Cache Dtype: Data type for KV cache storage. Select one of the following:
+<ul>
+<li class=""><code>auto</code>: If selected, will use the model data type.</li>
+<li class=""><code>fp8</code></li>
+<li class=""><code>ffp8_e5m2</code></li>
+<li class=""><code>fp8_e4m3</code></li>
+</ul>
+</li>
+<li class="">Pipeline Parallel Size: Number of pipeline stages</li>
+<li class="">Token Block Size: Block size for contiguous chunks of tokens. Ignored on neuron devices.</li>
+<li class="">Random Seed</li>
+<li class="">Max Logprobs: Max number of log probabilities to return if requested.</li>
+<li class="">Max Concurrent Requests: The maximum number of concurrent requests for this particular deployment. Having a low
+limit will deny client requests instead of having them wait for too long</li>
+<li class="">RoPE Theta: Use with <code>RoPE Scaling</code>. In some cases, changing the theta improves the performance of the scaled model.</li>
+<li class="">RoPE Scaling: RoPE scaling configuration in JSON. For example, <code>{&quot;rope_type&quot;:&quot;dynamic&quot;,&quot;factor&quot;:2.0}</code>.</li>
+<li class="">Revision: The specific Hugging Face version of the model (i.e. weights) you want to use. You can use a specific commit
+ID or a branch like <code>refs/pr/2</code>.</li>
+<li class="">Code Revision: The specific revision to use for the model code on HuggingFace Hub. It can be a branch name, a tag
+name, or a commit ID. If unspecified, will use the default version.</li>
+<li class="">Tokenizer: A Klique Model ID or a Hugging Face tokenizer</li>
+<li class="">Tokenizer Revision: The specific tokenizer Hugging Face version to use. It can be a branch name, a tag name, or a
+commit ID. If unspecified, will use the default version.</li>
+<li class="">Tokenizer Mode: Select the tokenizer mode:
+<ul>
+<li class=""><code>auto</code>: Uses the fast tokenizer if available</li>
+<li class=""><code>slow</code>: Uses the slow tokenizer.</li>
+</ul>
+</li>
+<li class="">Speculative decoding: The speculative decoding technique improves inter-token latency in memory-bound LLM inference.
+For more information, see the <a href="https://docs.vllm.ai/en/v0.5.5/models/spec_decode.html" target="_blank" rel="noopener noreferrer" class="">vLLM documentation</a>.
+<ul>
+<li class="">Speculative model: Draft model name for speculative decoding.</li>
+<li class="">Speculative Disable MQA Scorer: Disable <a href="https://data.europa.eu/mqa/methodology?locale=en" target="_blank" rel="noopener noreferrer" class="">MQA scorer</a> in speculative decoding.</li>
+<li class="">Speculative Decoding Acceptance Method: Select the acceptance method to use during draft token verification:
+<ul>
+<li class=""><code>RejectionSampler</code>: Does not allow changing the acceptance rate of draft tokens</li>
+<li class=""><code>TypicalAcceptanceSampler</code>: Allows for a higher acceptance rate at the cost of lower quality, and vice versa.</li>
+</ul>
+</li>
+<li class="">Num Speculative Tokens: Number of speculative tokens to sample.</li>
+<li class="">Speculative Disable By Batch Size: Disable speculative decoding for new incoming requests if the number of enqueue
+requests exceeds this value.</li>
+<li class="">Speculative Draft Tensor Parallel Size: Tensor parallel replicas for the draft model.</li>
+<li class="">Speculative Max Model Len: Maximum sequence length for the draft model. Sequences over this length will skip
+speculation.</li>
+<li class="">Speculative Model Quantization: Choose the quantization method for the speculative model. If set to <code>None</code>, the app
+checks the <code>quantization_config</code> in the model&#x27;s configuration file. If that is also <code>None</code>, the app assumes the model
+weights are not quantized and uses the dtype to determine the data type.</li>
+</ul>
+</li>
+<li class="">Num Lookahead Slots: Experimental scheduling config necessary for speculative decoding.</li>
+<li class="">Model Overrides: Add to or override this model&#x27;s configuration. The model options have to correspond to
+<a href="https://docs.vllm.ai/en/stable/configuration/engine_args/" target="_blank" rel="noopener noreferrer" class="">vLLM options</a>. For example, <code>pipeline_parallel_size</code>
+corresponds to the <code>--pipeline-parallel-size</code> option in vLLM. To set a flag, pass <code>flag: true</code>, for example, <code>enforce_eager: true</code>
+corresponds to the <code>--enforce-eager</code> flag</li>
+</ul>
+</li>
+<li class="">
+<p><strong>LoRA Configuration</strong></p>
+<ul>
+<li class="">Enable LoRA: If checked, enable handling of <a href="https://huggingface.co/docs/diffusers/en/training/lora#lora" target="_blank" rel="noopener noreferrer" class="">LoRA adapters</a>.</li>
+<li class="">LoRA Modules: LoRA module configurations in the format <code>name=path</code>. Multiple modules can be specified.</li>
+<li class="">Max LoRAs: Max number of LoRAs in a single batch.</li>
+<li class="">Long LoRA Scaling Factors: Specify multiple scaling factors to allow for multiple LoRA adapters trained with those
+scaling factors to be used at the same time.</li>
+<li class="">Max LoRA Rank</li>
+<li class="">LoRA Extra Vocabulary Size: Maximum size of extra vocabulary that can be present in a LoRA adapter (added to the base model vocabulary).</li>
+<li class="">LoRA Dtype: Select the data type for LoRA. Select one of the following:
+<ul>
+<li class=""><code>auto</code>: If selected, will default to base model data type.</li>
+<li class=""><code>float16</code></li>
+<li class=""><code>bfloat16</code></li>
+<li class=""><code>float32</code></li>
+</ul>
+</li>
+<li class="">Max CPU LoRAs: Maximum number of LoRAs to store in CPU memory. Must be greater or equal to the
+<code>Max Number of Sequences</code> field in the General section below. Defaults to <code>Max Number of Sequences</code>.</li>
+<li class="">Enable LoRA Bias: Enable bias for LoRA adapters</li>
+<li class="">Fully Sharded LoRAs: Use fully-sharded LoRA layers. By default, half of the LoRA computation is sharded with tensor
+parallelism. Fully-sharded LoRAs uses tensor parallelism to shard the entire LoRA computation.</li>
+</ul>
+</li>
+<li class="">
+<p>General</p>
+<ul>
+<li class="">Enable Debug Mode: Run deployment in debug mode</li>
+<li class="">Use V1 Engine: Use the vLLM V1 engine, vastly improving performance. Read more about it <a href="https://blog.vllm.ai/2025/01/27/v1-alpha-release.html" target="_blank" rel="noopener noreferrer" class="">here</a>.</li>
+<li class="">Trust Remote Code: Select to set Hugging Face <a href="https://huggingface.co/docs/text-generation-inference/main/en/reference/launcher#trustremotecode" target="_blank" rel="noopener noreferrer" class=""><code>trust_remote_code</code></a> to <code>true</code>.</li>
+<li class="">Disable log requests: Disable logging requests</li>
+<li class="">Disable Async Output Processing: Disable async output processing, which may result in lower performance</li>
+<li class="">HuggingFace Token: Token for accessing HuggingFace models that require authentication</li>
+<li class="">Max CUDA Memory (GiB): The maximum amount of CUDA memory identified by the system. Can exceed the actual hardware memory, and the surplus memory will be offloaded to the CPU memory. Only usable on amd64 machines.</li>
+<li class="">CUDA Memory Manager Minimum Threshold: Maximum size (Kb) of the allocated chunks that should not be offloaded to CPU when using automatic CPU offloading. Defaults to <code>-1</code> when running on a single GPU, and <code>66000</code> (64Mib) when running on multiple GPUs</li>
+<li class="">Max Log Length: Max number of prompt characters or prompt ID numbers being printed in log. Default: unlimited.</li>
+<li class="">Device: Device type for vLLM execution.</li>
+<li class="">Guided Decoding Backend: Select engine for decoding <code>config.json</code> files:
+<ul>
+<li class=""><code>[outlines](https://github.com/outlines-dev/outlines)</code></li>
+<li class=""><code>[lm-format-enforcer](https://github.com/noamgat/lm-format-enforcer)</code></li>
+</ul>
+</li>
+<li class="">Distributed Executor Backend: Select backend for distributed model workers.
+<ul>
+<li class=""><code>mp</code></li>
+<li class=""><code>ray</code></li>
+</ul>
+</li>
+<li class="">Config Overrides: Extra configuration overrides (JSON).</li>
+<li class="">Uvicorn Log Level: Log level for uvicorn</li>
+<li class="">vLLM Log Level: Log level for vLLM.</li>
+<li class="">Load Format: Select the model weights format to load:
+<ul>
+<li class=""><code>auto</code>: Load the weights in the safetensors format and fall back to the pytorch bin format if safetensors format
+is not available.</li>
+<li class=""><code>pt</code>: Load the weights in the pytorch bin format.</li>
+<li class=""><code>safetensors</code>: Load the weights in the safetensors format.</li>
+<li class=""><code>npcache</code>: Load the weights in pytorch format and store a numpy cache to speed up the loading.</li>
+<li class=""><code>Dummy</code>: Initialize the weights with random values. Mainly used for profiling.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Advanced</strong></p>
+<ul>
+<li class="">Skip Tokenizer Init: Skip initialization of tokenizer and detokenizer</li>
+<li class="">Disable Custom All Reduce: Disable the custom all-reduce kernel and fall back to NCCL.</li>
+<li class="">Enable Chunk Prefill: Prefill requests can be chunked.</li>
+<li class="">Disable Logprobs During Spec Decoding: Do not return token log probabilities during speculative decoding.</li>
+<li class="">Enable Prompt Adapter: Enable handling of PromptAdapters.</li>
+<li class="">Enable Prompt Tokens Details: Enable <code>prompt_tokens_details</code> in usage. This allows the model to return detailed
+information about each token in the input prompt.</li>
+<li class="">Ray Workers Use Nsight: Use <a href="https://developer.nvidia.com/nsight-systems" target="_blank" rel="noopener noreferrer" class="">nsight</a> to profile Ray workers.</li>
+<li class="">Enable Automatic CPU Offloading: Enable multiple models to share GPUs by offloading unused ones to CPU.
+If <code>Max CUDA Memory</code> exceeds GPU capacity, this application will offload the surplus to the CPU RAM, virtually
+increasing the VRAM</li>
+<li class="">Enable Disk Swapping: Load multiple models on the same GPUs by offloading inactive ones to disk (requires
+<code>Automatic CPU Offloading</code> to be disabled).</li>
+<li class="">Model Loader Extra Config: Extra config for model loader (JSON)</li>
+<li class="">Max Prompt Adapter Token: Max tokens for PromptAdapters.</li>
+<li class="">HF Overrides: Extra arguments for HuggingFace config (JSON).</li>
+<li class="">Ignore Patterns: Patterns to ignore when loading the model.</li>
+<li class="">Guided Decoding Backend: Select engine for decoding <code>config.json</code> files:
+<ul>
+<li class=""><code>[outlines](https://github.com/outlines-dev/outlines)</code></li>
+<li class=""><code>[lm-format-enforcer](https://github.com/noamgat/lm-format-enforcer)</code></li>
+</ul>
+</li>
+<li class="">Ngram Prompt Lookup Max: Max window size for ngram prompt lookup.</li>
+<li class="">Ngram Prompt Lookup Min: Min window size for ngram prompt lookup.</li>
+<li class="">Num GPU Blocks Override: Override GPU profiling with fixed GPU blocks.</li>
+<li class="">Num Scheduler Steps: Max forward steps per scheduler call.</li>
+<li class="">Override Pooler Config: Override pooling method in embedding model (JSON).</li>
+<li class="">Preemption Mode: Handle preemption by recompute or swap.</li>
+<li class="">Return Tokens As Token IDs: Represent tokens as <code>token_id:{id}</code> if <code>Max Logprobs</code> is used.</li>
+<li class="">Scheduler Delay Factor: Apply a delay factor to scheduling next prompt (Applied delay is <code>delay factor * previous prompt latency</code>)</li>
+<li class="">Scheduling Policy: Select one of the following:
+<ul>
+<li class=""><code>fcfs</code>: Requests are handled first come, first served (in order of arrival)</li>
+<li class=""><code>priority</code>:  Requests are handled based on given priority (lower value means earlier handling) and time of arrival
+deciding any ties</li>
+</ul>
+</li>
+<li class="">Task: Task to use the model for. Select one of the following:
+<ul>
+<li class="">auto: When the model only supports one task, &quot;auto&quot; can be used to select it. Otherwise, you must specify
+explicitly which task to use.</li>
+<li class="">generate</li>
+<li class="">embedding</li>
+</ul>
+</li>
+<li class="">Tokenizer Pool Extra Config: Extra config for tokenizer pool (JSON). Ignored if <code>Tokenizer Pool Size</code> is <code>0</code>.</li>
+<li class="">Tokenizer Pool Size: Size of tokenizer pool to use for asynchronous tokenization.</li>
+<li class="">Tokenizer Pool Type: Type of tokenizer pool to use for asynchronous tokenization.</li>
+<li class="">Typical Acceptance Sampler Posterior Threshold: Lower bound threshold for the posterior probability of a token to be accepted</li>
+</ul>
+</li>
+<li class="">
+<p><strong>vLLM Version</strong>: If set, the vLLM version specified in this field will be installed. Otherwise, use the preinstalled 0.7.2 version</p>
+</li>
+<li class="">
+<p><strong>Idle options</strong></p>
+<ul>
+<li class="">Idle Time Limit (Hours): Maximum idle time after which the app instance will shut down</li>
+<li class="">Last Action Report Interval (Seconds): Frequency at which last activity is reported. Prevents idle shutdown while still active.</li>
+</ul>
+</li>
+</ul>
+<div class="max-w-65">
+<p><img decoding="async" loading="lazy" alt="vLLM Model Deployment app form" src="/docs/latest/assets/images/apps_model_deployment_form-17f411d7fdb7b55c906aad2169130684.png#light-mode-only" width="741" height="1029" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="vLLM Model Deployment app form" src="/docs/latest/assets/images/apps_model_deployment_form_dark-bd2a17449b7e167a0774de5f2885eb95.png#dark-mode-only" width="747" height="1033" class="img_ev3q"></p>
+</div></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/webapp/applications/apps_embed_model_deployment"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Embedding Model Deployment</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/webapp/applications/apps_llama_deployment"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Llama.cpp Model Deployment</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#vllm-model-deployment-instance-configuration" class="table-of-contents__link toc-highlight">vLLM Model Deployment Instance Configuration</a><ul><li><a href="#configuration-options" class="table-of-contents__link toc-highlight">Configuration Options</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

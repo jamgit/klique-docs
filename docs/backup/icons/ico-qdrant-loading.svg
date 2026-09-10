@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 64"
+   version="1.1"
+   id="svg424"
+   sodipodi:docname="ico-qdrant--loading.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs428">
+    <linearGradient
+       id="paint0_linear_4688_32465"
+       x1="23.1805"
+       y1="38.780899"
+       x2="15.4911"
+       y2="38.780899"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0503048,0,0,1.0503048,0.728884,0.46535982)">
+      <stop
+         stop-color="#FF3364"
+         id="stop22" />
+      <stop
+         offset="1"
+         stop-color="#C91540"
+         stop-opacity="0"
+         id="stop24" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="namedview426"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="56.480155"
+     inkscape:cy="13.081476"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="216"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg424" />
+  <style
+     id="style400">
+  @keyframes anim {
+    from {
+        r: 2px;
+    }
+    to {
+      r: 6px;
+    }
+    to {
+        r: 8px;
+    }
+  }
+  .circle {
+      animation-name: anim;
+      animation-duration: 1.2s;
+      animation-iteration-count: infinite;
+  }
+</style>
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 41.15364,54.53159 39.98077,22.196065 37.856736,13.671056 52.03417,15.171942 v 39.114927 l -8.66039,4.998295 z"
+     fill="#24386c"
+     id="path2"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 52.03291,15.169631 43.37241,20.171393 25.500425,16.251025 4.581339,24.768367 1.09608,15.169631 13.828177,7.8174935 26.564173,0.46535982 39.2967,7.8174935 Z"
+     fill="#7589be"
+     id="path4"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="M 1.09608,15.169001 9.756549,20.170763 14.776813,35.101161 31.727682,48.663852 26.564594,59.281803 13.828597,51.92925 1.09608,44.577116 Z"
+     fill="#b2bfe8"
+     id="path6"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 32.307555,40.81902 -5.741596,8.464407 v 9.999637 l 8.147214,-4.700745 4.197857,-6.268324"
+     fill="#24386c"
+     id="path8"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 26.568585,39.28694 -8.150681,-14.111895 1.755585,-4.677112 6.674057,-3.235885 7.864682,7.913312 z"
+     fill="#7589be"
+     id="path10"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 18.418955,25.174205 8.147109,4.700744 v 9.409156 l -7.534992,0.324229 -4.558008,-5.819949 z"
+     fill="#b2bfe8"
+     id="path12"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 26.565959,29.873478 8.147214,-4.700324 5.544767,9.232495 -6.709975,5.543929 -6.982006,-0.666524 z"
+     fill="#24386c"
+     id="path14"
+     style="stroke-width:1.0503" />
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 34.711808,54.581269 8.660502,4.701165 V 20.171393 L 34.966507,15.32014 26.564594,10.468897 18.158899,15.32014 9.75699,20.171393 V 39.57987 l 8.401909,4.851253 8.405695,4.851673 8.147214,-4.70505 z m 0,-20.00316 -8.147214,4.70463 -8.14711,-4.70463 v -9.405375 l 8.14711,-4.704525 8.147214,4.704525 z"
+     fill="#dc244c"
+     id="path16"
+     style="stroke-width:1.0503" />
+  <path
+     d="M 26.569845,49.286473 V 39.28526 l -8.104782,-4.664509 v 9.984618 z"
+     fill="url(#paint0_linear_4688_32465)"
+     id="path18"
+     style="fill:url(#paint0_linear_4688_32465);stroke-width:1.0503" />
+  <circle cx="49" cy="49" r="12" fill="#24386c" stroke-width="0" />
+  <circle
+     class="circle"
+     cx="16"
+     cy="16"
+     r="8"
+     fill="#D3FF00"
+     style="transform: translate(33px, 33px)"
+     id="circle422" />
+</svg>

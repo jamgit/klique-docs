@@ -1,0 +1,2871 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-references/api/auth" data-has-hydrated="false">
+<head><meta name="robots" content="noindex, follow">
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.0">
+<title data-rh="true">auth | Klique</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" name="twitter:image" content="https://klique.ai/docs/latest/img/klique_docs_meta.png"><meta data-rh="true" property="og:url" content="https://klique.ai/docs/latest/docs/references/api/auth"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="auth | Klique"><meta data-rh="true" name="description" content="POST /auth.add_user"><meta data-rh="true" property="og:description" content="POST /auth.add_user"><link data-rh="true" rel="icon" href="/docs/latest/img/klique-favicon.ico"><link data-rh="true" rel="canonical" href="https://klique.ai/docs/latest/docs/references/api/auth"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/auth" hreflang="en"><link data-rh="true" rel="alternate" href="https://klique.ai/docs/latest/docs/references/api/auth" hreflang="x-default"><!-- Google Tag Manager -->
+    <script>!function(e,t,a,n){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var g=t.getElementsByTagName(a)[0],m=t.createElement(a);m.async=!0,m.src="https://www.googletagmanager.com/gtm.js?id=GTM-NTQFXHGP",g.parentNode.insertBefore(m,g)}(window,document,"script","dataLayer")</script>
+    <!-- End Google Tag Manager --><link rel="stylesheet" href="/docs/latest/assets/css/styles.f3fac823.css">
+<script src="/docs/latest/assets/js/runtime~main.8cc3e11e.js" defer="defer"></script>
+<script src="/docs/latest/assets/js/main.139c2e95.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" class="navbar__brand"><div class="navbar__logo"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"> </b></a><a class="navbar__item navbar__link" href="/docs/latest/docs/">Overview</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Deployment</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/latest/docs/klique_setup">Klique Setup</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_configuration">Klique Configuration</a></li><li><a class="dropdown__link" href="/docs/latest/docs/klique_maintenance">Platform Administration</a></li></ul></div><a class="navbar__item navbar__link" href="/docs/latest/docs/getting_started/use_cases">Using Klique</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-ico header-ico--youtube" aria-label="YouTube"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a href="https://klique.ai" target="_blank" rel="noopener noreferrer" tabindex="-1" class="sidebarLogo_isFc"><img src="/docs/latest/img/logo-klique--on-light.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/docs/latest/img/logo-klique.svg" alt="Klique" class="themedComponent_mlkZ themedComponent--dark_xIcU"><b> </b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/getting_started/use_cases"><span title="Use Cases" class="categoryLinkLabel_W154">Use Cases</span></a><button aria-label="Expand sidebar category &#x27;Use Cases&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/agentic_interface/"><span title="Agentic Interface" class="linkLabel_WmDU">Agentic Interface</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/latest/docs/webapp/webapp_overview"><span title="WebApp" class="categoryLinkLabel_W154">WebApp</span></a><button aria-label="Expand sidebar category &#x27;WebApp&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/latest/docs/references/references_overview"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Collapse sidebar category &#x27;References&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/clearml_sdk"><span title="ClearML SDK" class="linkLabel_WmDU">ClearML SDK</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/latest/docs/references/hyperdataset/"><span title="Legacy allegroai SDK" class="categoryLinkLabel_W154">Legacy allegroai SDK</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/configs/client_configuration"><span title="Client Configuration" class="linkLabel_WmDU">Client Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/orchestrator"><span title="Klique Orchestrator" class="linkLabel_WmDU">Klique Orchestrator</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/latest/docs/references/mcp_server/overview"><span title="MCP Server" class="categoryLinkLabel_W154">MCP Server</span></a><button aria-label="Expand sidebar category &#x27;MCP Server&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/latest/docs/references/api/"><span title="Server API" class="categoryLinkLabel_W154">Server API</span></a><button aria-label="Collapse sidebar category &#x27;Server API&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/definitions"><span title="API Definitions" class="linkLabel_WmDU">API Definitions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/apps"><span title="apps" class="linkLabel_WmDU">apps</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/latest/docs/references/api/auth"><span title="auth" class="linkLabel_WmDU">auth</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/datasets"><span title="datasets" class="linkLabel_WmDU">datasets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/debug"><span title="debug" class="linkLabel_WmDU">debug</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/events"><span title="events" class="linkLabel_WmDU">events</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/frames"><span title="frames" class="linkLabel_WmDU">frames</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/login"><span title="login" class="linkLabel_WmDU">login</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/models"><span title="models" class="linkLabel_WmDU">models</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/organization"><span title="organization" class="linkLabel_WmDU">organization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/permissions"><span title="permissions" class="linkLabel_WmDU">permissions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/pipelines"><span title="pipelines" class="linkLabel_WmDU">pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/projects"><span title="projects" class="linkLabel_WmDU">projects</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/queues"><span title="queues" class="linkLabel_WmDU">queues</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/reports"><span title="reports" class="linkLabel_WmDU">reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/resources"><span title="resources" class="linkLabel_WmDU">resources</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/routers"><span title="routers" class="linkLabel_WmDU">routers</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/server"><span title="server" class="linkLabel_WmDU">server</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/serving"><span title="serving" class="linkLabel_WmDU">serving</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/sso"><span title="sso" class="linkLabel_WmDU">sso</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/storage"><span title="storage" class="linkLabel_WmDU">storage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/system"><span title="system" class="linkLabel_WmDU">system</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tasks"><span title="tasks" class="linkLabel_WmDU">tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/tenants"><span title="tenants" class="linkLabel_WmDU">tenants</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/users"><span title="users" class="linkLabel_WmDU">users</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/variables"><span title="variables" class="linkLabel_WmDU">variables</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/latest/docs/references/api/workers"><span title="workers" class="linkLabel_WmDU">workers</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/latest/docs/faq"><span title="FAQ" class="linkLabel_WmDU">FAQ</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>auth</h1></header><p><a name="auth-add_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authadd_user">POST /auth.add_user<a href="#post-authadd_user" class="hash-link" aria-label="Direct link to POST /auth.add_user" title="Direct link to POST /auth.add_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description">Description<a href="#description" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Add a new user manually. Only supported in on-premises deployments</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-add_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-add_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>additional_info</strong>  <br><em>optional</em></td><td>User additional info</td><td>object</td></tr><tr><td><strong>avatar</strong>  <br><em>optional</em></td><td>Avatar URL</td><td>string</td></tr><tr><td><strong>company</strong>  <br><em>optional</em></td><td>Associated company ID. If not provided, the caller&#x27;s company ID will be used</td><td>string</td></tr><tr><td><strong>email</strong>  <br><em>required</em></td><td>Email address uniquely identifying the user</td><td>string</td></tr><tr><td><strong>family_name</strong>  <br><em>optional</em></td><td>Family name</td><td>string</td></tr><tr><td><strong>given_name</strong>  <br><em>optional</em></td><td>Given name</td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>required</em></td><td>User name (makes the auth entry more readable)</td><td>string</td></tr><tr><td><strong>provider</strong>  <br><em>optional</em></td><td>Provider ID indicating the external provider used to authenticate the user</td><td>string</td></tr><tr><td><strong>provider_token</strong>  <br><em>optional</em></td><td>Provider-issued token for this user</td><td>string</td></tr><tr><td><strong>provider_user_id</strong>  <br><em>optional</em></td><td>Unique user ID assigned by the external provider</td><td>string</td></tr><tr><td><strong>secret_key</strong>  <br><em>optional</em></td><td>A secret key (used as the user&#x27;s password)</td><td>string</td></tr><tr><td><strong>user_provided_email</strong>  <br><em>optional</em></td><td>User provided email</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses">Responses<a href="#responses" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-add_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-add_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>id</strong>  <br><em>optional</em></td><td>New user ID</td><td>string</td></tr><tr><td><strong>secret</strong>  <br><em>optional</em></td><td>The secret key used as the user&#x27;s password</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin</td></tr></tbody></table>
+<p><a name="auth-create_credentials" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authcreate_credentials">POST /auth.create_credentials<a href="#post-authcreate_credentials" class="hash-link" aria-label="Direct link to POST /auth.create_credentials" title="Direct link to POST /auth.create_credentials" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-1">Description<a href="#description-1" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Creates a new set of credentials for the authenticated user. New key/secret is<br>
+returned. Note: Secret will never be returned in any other API call. If a<br>
+secret is lost or compromised, the key should be revoked and a new set of<br>
+credentials can be created.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-create_credentials-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-create_credentials-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested credentials expiration time in seconds</td><td>integer</td></tr><tr><td><strong>label</strong>  <br><em>optional</em></td><td>Optional credentials label</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-1">Responses<a href="#responses-1" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-create_credentials-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-create_credentials-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>credentials</strong>  <br><em>optional</em></td><td>Created credentials</td><td><a class="" href="/docs/latest/docs/references/api/definitions#authcredentials">auth.credentials</a></td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-1">Security<a href="#security-1" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-create_service_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authcreate_service_user">POST /auth.create_service_user<a href="#post-authcreate_service_user" class="hash-link" aria-label="Direct link to POST /auth.create_service_user" title="Direct link to POST /auth.create_service_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-2">Description<a href="#description-2" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Creates a new service user</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-create_service_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-create_service_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_running_as_owner</strong>  <br><em>optional</em></td><td>Whether the service user can impersonate as another user  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>credentials_expiration_sec</strong>  <br><em>optional</em></td><td>Requested credentials expiration time in seconds</td><td>integer</td></tr><tr><td><strong>name</strong>  <br><em>required</em></td><td>User name (makes the auth entry more readable)</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-2">Responses<a href="#responses-2" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-create_service_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-create_service_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>credentials</strong>  <br><em>optional</em></td><td>Created credentials</td><td><a class="" href="/docs/latest/docs/references/api/definitions#authcredentials">auth.credentials</a></td></tr><tr><td><strong>id</strong>  <br><em>optional</em></td><td>New user ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-2">Security<a href="#security-2" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin</td></tr></tbody></table>
+<p><a name="auth-create_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authcreate_user">POST /auth.create_user<a href="#post-authcreate_user" class="hash-link" aria-label="Direct link to POST /auth.create_user" title="Direct link to POST /auth.create_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-3">Description<a href="#description-3" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Creates a new user auth entry. Intended for internal use.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-3">Parameters<a href="#parameters-3" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-create_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-create_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>additional_info</strong>  <br><em>optional</em></td><td>User additional info</td><td>object</td></tr><tr><td><strong>avatar</strong>  <br><em>optional</em></td><td>Avatar URL</td><td>string</td></tr><tr><td><strong>company</strong>  <br><em>required</em></td><td>Associated company ID</td><td>string</td></tr><tr><td><strong>email</strong>  <br><em>required</em></td><td>Email address uniquely identifying the user</td><td>string</td></tr><tr><td><strong>family_name</strong>  <br><em>optional</em></td><td>Family name</td><td>string</td></tr><tr><td><strong>given_name</strong>  <br><em>optional</em></td><td>Given name</td><td>string</td></tr><tr><td><strong>internal</strong>  <br><em>optional</em></td><td>Whether the user is internal. Only system users can create internal users  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>name</strong>  <br><em>required</em></td><td>User name (makes the auth entry more readable)</td><td>string</td></tr><tr><td><strong>provider</strong>  <br><em>optional</em></td><td>Provider ID indicating the external provider used to authenticate the user</td><td>string</td></tr><tr><td><strong>provider_token</strong>  <br><em>optional</em></td><td>Provider-issued token for this user</td><td>string</td></tr><tr><td><strong>provider_user_id</strong>  <br><em>optional</em></td><td>Unique user ID assigned by the external provider</td><td>string</td></tr><tr><td><strong>role</strong>  <br><em>optional</em></td><td>User role</td><td><a class="" href="/docs/latest/docs/references/api/definitions#authrole">auth.role</a></td></tr><tr><td><strong>user_provided_email</strong>  <br><em>optional</em></td><td>User provided email</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-3">Responses<a href="#responses-3" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-create_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-create_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>id</strong>  <br><em>optional</em></td><td>New user ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-3">Security<a href="#security-3" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin</td></tr></tbody></table>
+<p><a name="auth-delete_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authdelete_user">POST /auth.delete_user<a href="#post-authdelete_user" class="hash-link" aria-label="Direct link to POST /auth.delete_user" title="Direct link to POST /auth.delete_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-4">Description<a href="#description-4" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Delete a new user manually. Only supported in on-premises deployments. This<br>
+only removes the user&#x27;s auth entry so that any references to the deleted user&#x27;s<br>
+ID will still have valid user information</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-delete_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-delete_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>user</strong>  <br><em>required</em></td><td>User ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-4">Responses<a href="#responses-4" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-delete_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-delete_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>deleted</strong>  <br><em>optional</em></td><td>True if user was successfully deleted, False otherwise</td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-4">Security<a href="#security-4" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin</td></tr></tbody></table>
+<p><a name="auth-edit_credentials" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authedit_credentials">POST /auth.edit_credentials<a href="#post-authedit_credentials" class="hash-link" aria-label="Direct link to POST /auth.edit_credentials" title="Direct link to POST /auth.edit_credentials" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-5">Description<a href="#description-5" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Updates the label of the existing credentials for the authenticated user.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-5">Parameters<a href="#parameters-5" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-edit_credentials-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-edit_credentials-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>access_key</strong>  <br><em>required</em></td><td>Existing credentials key</td><td>string</td></tr><tr><td><strong>label</strong>  <br><em>optional</em></td><td>New credentials label</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-5">Responses<a href="#responses-5" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-edit_credentials-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-edit_credentials-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>updated</strong>  <br><em>optional</em></td><td>Number of credentials updated</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-5">Security<a href="#security-5" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-edit_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authedit_user">POST /auth.edit_user<a href="#post-authedit_user" class="hash-link" aria-label="Direct link to POST /auth.edit_user" title="Direct link to POST /auth.edit_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-6">Description<a href="#description-6" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Edit a users&#x27; auth data properties</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-6">Parameters<a href="#parameters-6" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-edit_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-edit_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>role</strong>  <br><em>optional</em></td><td>The new user&#x27;s role within the company</td><td><a class="" href="/docs/latest/docs/references/api/definitions#authrole">auth.role</a></td></tr><tr><td><strong>user</strong>  <br><em>optional</em></td><td>User ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-6">Responses<a href="#responses-6" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-edit_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-edit_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>fields</strong>  <br><em>optional</em></td><td>Updated fields names and values</td><td>object</td></tr><tr><td><strong>updated</strong>  <br><em>optional</em></td><td>Number of users updated (0 or 1)</td><td>number</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-6">Security<a href="#security-6" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin</td></tr></tbody></table>
+<p><a name="auth-fixed_users_mode" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authfixed_users_mode">POST /auth.fixed_users_mode<a href="#post-authfixed_users_mode" class="hash-link" aria-label="Direct link to POST /auth.fixed_users_mode" title="Direct link to POST /auth.fixed_users_mode" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-7">Description<a href="#description-7" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Return fixed users mode status</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-7">Parameters<a href="#parameters-7" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-7">Responses<a href="#responses-7" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-fixed_users_mode-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-fixed_users_mode-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>enabled</strong>  <br><em>optional</em></td><td>Fixed users mode enabled</td><td>boolean</td></tr></tbody></table>
+<p><a name="auth-generate_endpoint_router_token" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authgenerate_endpoint_router_token">POST /auth.generate_endpoint_router_token<a href="#post-authgenerate_endpoint_router_token" class="hash-link" aria-label="Direct link to POST /auth.generate_endpoint_router_token" title="Direct link to POST /auth.generate_endpoint_router_token" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-8">Description<a href="#description-8" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get a router token that provides task access to non-clearml user<br>
+through specific routes</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-8">Parameters<a href="#parameters-8" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-generate_endpoint_router_token-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-generate_endpoint_router_token-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>endpoints</strong>  <br><em>required</em></td><td>IDs of the routes that this token can be used for</td><td>&lt; string &gt; array</td></tr><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested token expiration time in seconds. Cannot be larger then  <br>max_expiration_sec returned from auth.get_router_tokens</td><td>integer</td></tr><tr><td><strong>label</strong>  <br><em>required</em></td><td>Token label</td><td>string</td></tr><tr><td><strong>metadata</strong>  <br><em>optional</em></td><td>Token metadata</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-8">Responses<a href="#responses-8" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-generate_endpoint_router_token-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-generate_endpoint_router_token-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>User auth token used for verifying task access</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-7">Security<a href="#security-7" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin</td></tr></tbody></table>
+<p><a name="auth-generate_router_token" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authgenerate_router_token">POST /auth.generate_router_token<a href="#post-authgenerate_router_token" class="hash-link" aria-label="Direct link to POST /auth.generate_router_token" title="Direct link to POST /auth.generate_router_token" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-9">Description<a href="#description-9" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get a router token based on supplied credentials (key/secret).<br>
+Intended for use by users with key/secret credentials that wish to obtain a<br>
+token for use with the task router / App Gateway. Token can only be used to<br>
+verify task access by the router.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-generate_router_token-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-generate_router_token-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested token expiration time in seconds. Cannot be larger then  <br>max_expiration_sec returned from auth.get_router_tokens</td><td>integer</td></tr><tr><td><strong>label</strong>  <br><em>required</em></td><td>Token label</td><td>string</td></tr><tr><td><strong>never_expires</strong>  <br><em>optional</em></td><td>If set to true then a token that never expires is generated. Such a token stays  <br>valid until it is explicitly revoked with auth.revoke_router_tokens, its user  <br>is deleted or its user is removed from the company - each of these blocks it at  <br>once. Changing the user&#x27;s role or security groups does not invalidate the  <br>token, but does take effect on it: the identity it acts as is refreshed from  <br>the db every time the token is used, so a demoted user&#x27;s token loses the access  <br>along with the user. Only admin users can generate such a token and only when  <br>allow_non_expiring is returned from auth.get_router_tokens. Cannot be passed  <br>together with expiration_sec  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>user</strong>  <br><em>optional</em></td><td>The user to generate token for. Only admin users can generate tokens for other  <br>users</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-9">Responses<a href="#responses-9" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-generate_router_token-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-generate_router_token-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>User auth token used for verifying task access</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-8">Security<a href="#security-8" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-get_credentials" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authget_credentials">POST /auth.get_credentials<a href="#post-authget_credentials" class="hash-link" aria-label="Direct link to POST /auth.get_credentials" title="Direct link to POST /auth.get_credentials" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-10">Description<a href="#description-10" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Returns all existing credential keys for the authenticated user. Note: Only<br>
+credential keys are returned.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-10">Parameters<a href="#parameters-10" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-10">Responses<a href="#responses-10" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-get_credentials-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-get_credentials-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>additional_credentials</strong>  <br><em>optional</em></td><td>The user credentials for the user tenant companies, each with an empty secret  <br>field.</td><td>&lt; string, <a class="" href="/docs/latest/docs/references/api/definitions#authcredential_key">auth.credential_key</a> &gt; map</td></tr><tr><td><strong>credentials</strong>  <br><em>optional</em></td><td>List of credentials for the user own company, each with an empty secret field.</td><td>&lt; <a class="" href="/docs/latest/docs/references/api/definitions#authcredential_key">auth.credential_key</a> &gt; array</td></tr><tr><td><strong>default_expiration_sec</strong>  <br><em>optional</em></td><td>Default credentials expiration in seconds</td><td>integer</td></tr><tr><td><strong>max_credentials</strong>  <br><em>optional</em></td><td>Max credenitals allowed for the user</td><td>integer</td></tr><tr><td><strong>max_expiration_sec</strong>  <br><em>optional</em></td><td>Maximum credentials expiration in seconds for non-admin users</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-9">Security<a href="#security-9" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-get_router_tokens" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authget_router_tokens">POST /auth.get_router_tokens<a href="#post-authget_router_tokens" class="hash-link" aria-label="Direct link to POST /auth.get_router_tokens" title="Direct link to POST /auth.get_router_tokens" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-11">Description<a href="#description-11" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get Router tokens. Only admin users can get revoked tokens, other<br>
+user tokens or endpoint tokens</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-11">Parameters<a href="#parameters-11" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-get_router_tokens-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-get_router_tokens-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>include_revoked</strong>  <br><em>optional</em></td><td>If set to &#x27;true&#x27; then revoked tokens are also returned  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>only_fields</strong>  <br><em>optional</em></td><td>List of document&#x27;s field names (nesting is supported using &#x27;.&#x27;, e.g.  <br>user.name). If provided, this list defines the query&#x27;s projection (only these  <br>fields will be returned for each result entry)</td><td>&lt; string &gt; array</td></tr><tr><td><strong>order_by</strong>  <br><em>optional</em></td><td>List of field names to order by. Use &#x27;-&#x27; prefix to specify descending order.  <br>Optional, recommended when using page</td><td>&lt; string &gt; array</td></tr><tr><td><strong>page</strong>  <br><em>optional</em></td><td>Page number, returns a specific page out of the resulting list of tokens  <br><strong>Minimum value</strong> : <code>0</code></td><td>integer</td></tr><tr><td><strong>page_size</strong>  <br><em>optional</em></td><td>Page size, specifies the number of results returned in each page (last page may  <br>contain fewer results)  <br><strong>Minimum value</strong> : <code>1</code></td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-11">Responses<a href="#responses-11" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-get_router_tokens-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-get_router_tokens-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>allow_non_expiring</strong>  <br><em>optional</em></td><td>Whether the calling user can generate router tokens that never expire  <br>(auth.generate_router_token with never_expires). Requires an admin user and a  <br>server that opted in</td><td>boolean</td></tr><tr><td><strong>max_expiration_sec</strong>  <br><em>optional</em></td><td>Max router token expiration in seconds</td><td>integer</td></tr><tr><td><strong>tokens</strong>  <br><em>optional</em></td><td></td><td>&lt; <a href="#auth-get_router_tokens-post-tokens" class="">tokens</a> &gt; array</td></tr></tbody></table>
+<p><a name="auth-get_router_tokens-post-tokens" class=""></a></p>
+<p><strong>tokens</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>created</strong>  <br><em>optional</em></td><td>Token creation time</td><td>string (date-time)</td></tr><tr><td><strong>created_by</strong>  <br><em>optional</em></td><td>User who created the token</td><td>object</td></tr><tr><td><strong>endpoints</strong>  <br><em>optional</em></td><td>IDs of the routes that this token can be used for. Only for endpoint tokens</td><td>&lt; object &gt; array</td></tr><tr><td><strong>expires</strong>  <br><em>optional</em></td><td>Token expiration time. Not returned for a token that never expires</td><td>string (date-time)</td></tr><tr><td><strong>id</strong>  <br><em>optional</em></td><td>Token ID</td><td>string</td></tr><tr><td><strong>key</strong>  <br><em>optional</em></td><td>Token key</td><td>string</td></tr><tr><td><strong>label</strong>  <br><em>optional</em></td><td>Token Label</td><td>string</td></tr><tr><td><strong>metadata</strong>  <br><em>optional</em></td><td>Token metadata. Only for endpoint tokens</td><td>object</td></tr><tr><td><strong>revoked</strong>  <br><em>optional</em></td><td>Whether the token revoked</td><td>boolean</td></tr><tr><td><strong>revoked_at</strong>  <br><em>optional</em></td><td>Token revokation time</td><td>string (date-time)</td></tr><tr><td><strong>revoked_by</strong>  <br><em>optional</em></td><td>User who revoked the token</td><td>object</td></tr><tr><td><strong>type</strong>  <br><em>optional</em></td><td>Token type</td><td>enum (endpoint_token, identity_token)</td></tr><tr><td><strong>user</strong>  <br><em>optional</em></td><td>Token user</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-10">Security<a href="#security-10" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-get_task_token" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authget_task_token">POST /auth.get_task_token<a href="#post-authget_task_token" class="hash-link" aria-label="Direct link to POST /auth.get_task_token" title="Direct link to POST /auth.get_task_token" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-12">Description<a href="#description-12" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a task-limited token based on supplied credentials (token or key/secret).<br>
+Intended for use by users who wish to run a task under limited credentials.<br>
+Returned token will be limited so that all operations can only be performed on<br>
+the specified task.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-12">Parameters<a href="#parameters-12" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-get_task_token-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-get_task_token-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested token expiration time in seconds. Not guaranteed,  might be  <br>overridden by the service</td><td>integer</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-12">Responses<a href="#responses-12" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-get_task_token-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-get_task_token-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>Token string</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-11">Security<a href="#security-11" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-get_task_token_for_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authget_task_token_for_user">POST /auth.get_task_token_for_user<a href="#post-authget_task_token_for_user" class="hash-link" aria-label="Direct link to POST /auth.get_task_token_for_user" title="Direct link to POST /auth.get_task_token_for_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-13">Description<a href="#description-13" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get a task-limited token for the specified user. Intended for<br>
+internal use. Token will be limited by appropriate permissions for the provided<br>
+user and restricted for operations only for the provided task.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-13">Parameters<a href="#parameters-13" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-get_task_token_for_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-get_task_token_for_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>company</strong>  <br><em>required</em></td><td>Company ID</td><td>string</td></tr><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested token expiration time in seconds. Not guaranteed,  might be  <br>overridden by the service</td><td>integer</td></tr><tr><td><strong>task</strong>  <br><em>required</em></td><td>Task ID</td><td>string</td></tr><tr><td><strong>user</strong>  <br><em>required</em></td><td>User ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-13">Responses<a href="#responses-13" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-get_task_token_for_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-get_task_token_for_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>Token string</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-12">Security<a href="#security-12" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root</td></tr></tbody></table>
+<p><a name="auth-get_token_for_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authget_token_for_user">POST /auth.get_token_for_user<a href="#post-authget_token_for_user" class="hash-link" aria-label="Direct link to POST /auth.get_token_for_user" title="Direct link to POST /auth.get_token_for_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-14">Description<a href="#description-14" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Get a token for the specified user. Intended for internal use. Token<br>
+will be limited by appropriate permissions for the provided user.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-14">Parameters<a href="#parameters-14" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-get_token_for_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-get_token_for_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>company</strong>  <br><em>required</em></td><td>Company ID</td><td>string</td></tr><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested token expiration time in seconds. Not guaranteed,  might be  <br>overridden by the service</td><td>integer</td></tr><tr><td><strong>user</strong>  <br><em>required</em></td><td>User ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-14">Responses<a href="#responses-14" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-get_token_for_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-get_token_for_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-13">Security<a href="#security-13" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root</td></tr></tbody></table>
+<p><a name="auth-get_users_info" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authget_users_info">POST /auth.get_users_info<a href="#post-authget_users_info" class="hash-link" aria-label="Direct link to POST /auth.get_users_info" title="Direct link to POST /auth.get_users_info" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-15">Description<a href="#description-15" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. retrieves email and created time of users</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-15">Parameters<a href="#parameters-15" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-get_users_info-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-get_users_info-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>emails</strong>  <br><em>optional</em></td><td>user emails to retrieve information of</td><td>&lt; string &gt; array</td></tr><tr><td><strong>include_providers_info</strong>  <br><em>optional</em></td><td>If set then user info stored for each provider is returned  <br><strong>Default</strong> : <code>false</code></td><td>boolean</td></tr><tr><td><strong>users</strong>  <br><em>optional</em></td><td>user IDs to retrieve information of</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-15">Responses<a href="#responses-15" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-get_users_info-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-get_users_info-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>users</strong>  <br><em>optional</em></td><td>&lt; string, <a href="#auth-get_users_info-post-users" class="">users</a> &gt; map</td></tr></tbody></table>
+<p><a name="auth-get_users_info-post-users" class=""></a></p>
+<p><strong>users</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Schema</th></tr></thead><tbody><tr><td><strong>created</strong>  <br><em>optional</em></td><td>string (date-time)</td></tr><tr><td><strong>email</strong>  <br><em>optional</em></td><td>string</td></tr><tr><td><strong>id</strong>  <br><em>optional</em></td><td>string</td></tr><tr><td><strong>providers</strong>  <br><em>optional</em></td><td>object</td></tr><tr><td><strong>role</strong>  <br><em>optional</em></td><td>string</td></tr><tr><td><strong>sec_groups</strong>  <br><em>optional</em></td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-14">Security<a href="#security-14" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root</td></tr></tbody></table>
+<p><a name="auth-locate_credentials" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authlocate_credentials">POST /auth.locate_credentials<a href="#post-authlocate_credentials" class="hash-link" aria-label="Direct link to POST /auth.locate_credentials" title="Direct link to POST /auth.locate_credentials" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-16">Description<a href="#description-16" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get user and credentials info info from the access key</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-16">Parameters<a href="#parameters-16" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-locate_credentials-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-locate_credentials-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>access_key</strong>  <br><em>required</em></td><td>Existing credentials key</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-16">Responses<a href="#responses-16" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-locate_credentials-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-locate_credentials-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>expire</strong>  <br><em>optional</em></td><td>Credential expiration time (UTC)</td><td>string (date-time)</td></tr><tr><td><strong>label</strong>  <br><em>optional</em></td><td>Credentials label</td><td>string</td></tr><tr><td><strong>last_used</strong>  <br><em>optional</em></td><td>The time when the credentials were last used</td><td>string (date-time)</td></tr><tr><td><strong>last_used_from</strong>  <br><em>optional</em></td><td></td><td>string</td></tr><tr><td><strong>name</strong>  <br><em>optional</em></td><td>User name</td><td>string</td></tr><tr><td><strong>user</strong>  <br><em>optional</em></td><td>User ID</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-15">Security<a href="#security-15" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>admin,system,root</td></tr></tbody></table>
+<p><a name="auth-login" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authlogin">POST /auth.login<a href="#post-authlogin" class="hash-link" aria-label="Direct link to POST /auth.login" title="Direct link to POST /auth.login" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-17">Description<a href="#description-17" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Get a token based on supplied credentials (key/secret). Intended for use by<br>
+users with key/secret credentials that wish to obtain a token for use with<br>
+other services. Token will be limited by the same permissions that exist for<br>
+the credentials used in this call.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-17">Parameters<a href="#parameters-17" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-login-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-login-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>expiration_sec</strong>  <br><em>optional</em></td><td>Requested token expiration time in seconds. Not guaranteed,  might be  <br>overridden by the service</td><td>integer</td></tr><tr><td><strong>set_cookie</strong>  <br><em>optional</em></td><td>Set a cookie with the generated token on the response  <br><strong>Default</strong> : <code>true</code></td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-17">Responses<a href="#responses-17" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-login-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-login-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>Token string</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-16">Security<a href="#security-16" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-logout" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authlogout">POST /auth.logout<a href="#post-authlogout" class="hash-link" aria-label="Direct link to POST /auth.logout" title="Direct link to POST /auth.logout" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-18">Description<a href="#description-18" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Removes the authentication cookie from the current session</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-18">Parameters<a href="#parameters-18" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-18">Responses<a href="#responses-18" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-17">Security<a href="#security-17" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-redirect_to_router" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authredirect_to_router">POST /auth.redirect_to_router<a href="#post-authredirect_to_router" class="hash-link" aria-label="Direct link to POST /auth.redirect_to_router" title="Direct link to POST /auth.redirect_to_router" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-19">Description<a href="#description-19" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Generates the auth code for the passed router and task and redirects the client<br>
+to the router</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-19">Parameters<a href="#parameters-19" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-redirect_to_router-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-redirect_to_router-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>path</strong>  <br><em>optional</em></td><td>Path to use when redirecting</td><td>string</td></tr><tr><td><strong>route</strong>  <br><em>optional</em></td><td>Route ID. Either task or route (or both) should be specified</td><td>string</td></tr><tr><td><strong>router</strong>  <br><em>required</em></td><td>Router ID. Should match one of the configured server routers</td><td>string</td></tr><tr><td><strong>subdomain</strong>  <br><em>optional</em></td><td>Subdomain to use when redirecting</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>optional</em></td><td>Task ID. Either task or route (or both) should be specified</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-19">Responses<a href="#responses-19" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-18">Security<a href="#security-18" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-reload_config" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authreload_config">POST /auth.reload_config<a href="#post-authreload_config" class="hash-link" aria-label="Direct link to POST /auth.reload_config" title="Direct link to POST /auth.reload_config" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-20">Description<a href="#description-20" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Reload auth configuration (currently supports blocking tokens). For user roles<br>
+associated with a company (Admin, Superuser) this call will only affect<br>
+company-related configuration.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-20">Parameters<a href="#parameters-20" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-20">Responses<a href="#responses-20" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td>object</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-19">Security<a href="#security-19" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root,admin,superuser</td></tr></tbody></table>
+<p><a name="auth-revoke_credentials" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authrevoke_credentials">POST /auth.revoke_credentials<a href="#post-authrevoke_credentials" class="hash-link" aria-label="Direct link to POST /auth.revoke_credentials" title="Direct link to POST /auth.revoke_credentials" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-21">Description<a href="#description-21" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Revokes (and deletes) a set (key, secret) of credentials for the authenticated<br>
+user.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-21">Parameters<a href="#parameters-21" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-revoke_credentials-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-revoke_credentials-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>access_key</strong>  <br><em>optional</em></td><td>Credentials key</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-21">Responses<a href="#responses-21" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-revoke_credentials-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-revoke_credentials-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>revoked</strong>  <br><em>optional</em></td><td>Number of credentials revoked</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-20">Security<a href="#security-20" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-revoke_router_tokens" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authrevoke_router_tokens">POST /auth.revoke_router_tokens<a href="#post-authrevoke_router_tokens" class="hash-link" aria-label="Direct link to POST /auth.revoke_router_tokens" title="Direct link to POST /auth.revoke_router_tokens" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-22">Description<a href="#description-22" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Remove router tokens by ids</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-22">Parameters<a href="#parameters-22" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-revoke_router_tokens-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-revoke_router_tokens-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>ids</strong>  <br><em>required</em></td><td>IDs of the tokens to revoke. Only admins can remove tokens for other users</td><td>&lt; string &gt; array</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-22">Responses<a href="#responses-22" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-revoke_router_tokens-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-revoke_router_tokens-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>revoked</strong>  <br><em>optional</em></td><td>The number of revoked tokens</td><td>integer</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-21">Security<a href="#security-21" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-set_credentials" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authset_credentials">POST /auth.set_credentials<a href="#post-authset_credentials" class="hash-link" aria-label="Direct link to POST /auth.set_credentials" title="Direct link to POST /auth.set_credentials" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-23">Description<a href="#description-23" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Set a secret_key for a given access_key. Only supported in on-premises<br>
+deployments</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-23">Parameters<a href="#parameters-23" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-set_credentials-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-set_credentials-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>access_key</strong>  <br><em>required</em></td><td>Credentials key. Must be identical to the user&#x27;s ID (this is the only value  <br>supported in on-premises deployments)</td><td>string</td></tr><tr><td><strong>secret_key</strong>  <br><em>required</em></td><td>New secret key</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-23">Responses<a href="#responses-23" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-set_credentials-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-set_credentials-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>set</strong>  <br><em>optional</em></td><td>True if secret was successfully set, False otherwise</td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-22">Security<a href="#security-22" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-validate_router_code" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authvalidate_router_code">POST /auth.validate_router_code<a href="#post-authvalidate_router_code" class="hash-link" aria-label="Direct link to POST /auth.validate_router_code" title="Direct link to POST /auth.validate_router_code" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-24">Description<a href="#description-24" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Validate the previously issued router auth code and return the auth<br>
+token. Can be called by admin users or service accounts</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-24">Parameters<a href="#parameters-24" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-validate_router_code-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-validate_router_code-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>code</strong>  <br><em>required</em></td><td>The code received by the router from redirect_to_router call</td><td>string</td></tr><tr><td><strong>route</strong>  <br><em>optional</em></td><td>Route ID. Either task or route (or both) should be specified</td><td>string</td></tr><tr><td><strong>router</strong>  <br><em>required</em></td><td>Router ID. Should be the same as used for the code generation</td><td>string</td></tr><tr><td><strong>task</strong>  <br><em>optional</em></td><td>Task ID. Either task or route (or both) should be specified</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-24">Responses<a href="#responses-24" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-validate_router_code-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-validate_router_code-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>optional</em></td><td>User auth token used for verifying task access</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-23">Security<a href="#security-23" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>all</td></tr></tbody></table>
+<p><a name="auth-validate_token" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authvalidate_token">POST /auth.validate_token<a href="#post-authvalidate_token" class="hash-link" aria-label="Direct link to POST /auth.validate_token" title="Direct link to POST /auth.validate_token" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-25">Description<a href="#description-25" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Validate a token and return user identity if valid. Intended for<br>
+internal use.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-25">Parameters<a href="#parameters-25" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-validate_token-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-validate_token-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>token</strong>  <br><em>required</em></td><td>Token string</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-25">Responses<a href="#responses-25" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-validate_token-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-validate_token-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>company</strong>  <br><em>optional</em></td><td>Associated company ID</td><td>string</td></tr><tr><td><strong>role</strong>  <br><em>optional</em></td><td>User role (system, root, admin, user, ...)</td><td>string</td></tr><tr><td><strong>tenant</strong>  <br><em>optional</em></td><td>Tenant company ID</td><td>string</td></tr><tr><td><strong>tenants</strong>  <br><em>optional</em></td><td>List of all the tenant companies that the user joined</td><td>&lt; string &gt; array</td></tr><tr><td><strong>user</strong>  <br><em>optional</em></td><td>Associated user ID</td><td>string</td></tr><tr><td><strong>valid</strong>  <br><em>optional</em></td><td>Boolean indicating if the token is valid</td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-24">Security<a href="#security-24" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root</td></tr></tbody></table>
+<p><a name="auth-validate_user" class=""></a></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="post-authvalidate_user">POST /auth.validate_user<a href="#post-authvalidate_user" class="hash-link" aria-label="Direct link to POST /auth.validate_user" title="Direct link to POST /auth.validate_user" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="description-26">Description<a href="#description-26" class="hash-link" aria-label="Direct link to Description" title="Direct link to Description" translate="no">​</a></h4>
+<p>Internal. Validate a user using an email and provider user ID. Intended for<br>
+internal use.</p>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="parameters-26">Parameters<a href="#parameters-26" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>Body</strong></td><td><strong>request</strong>  <br><em>required</em></td><td>request body</td><td><a href="#auth-validate_user-request" class="">request</a></td></tr></tbody></table>
+<p><a name="auth-validate_user-request" class=""></a></p>
+<p><strong>request</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>email</strong>  <br><em>required</em></td><td>Email address uniquely identifying the user</td><td>string</td></tr><tr><td><strong>provider</strong>  <br><em>required</em></td><td>Provider ID indicating the external provider used to authenticate the user</td><td>string</td></tr><tr><td><strong>provider_token</strong>  <br><em>optional</em></td><td>Provider-issued token for this user</td><td>string</td></tr><tr><td><strong>provider_user_id</strong>  <br><em>required</em></td><td>Unique user ID assigned by the external provider</td><td>string</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="responses-26">Responses<a href="#responses-26" class="hash-link" aria-label="Direct link to Responses" title="Direct link to Responses" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>HTTP Code</th><th>Schema</th></tr></thead><tbody><tr><td><strong>200</strong></td><td><a href="#auth-validate_user-response-200" class="">Response 200</a></td></tr></tbody></table>
+<p><a name="auth-validate_user-response-200" class=""></a></p>
+<p><strong>Response 200</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th><th>Schema</th></tr></thead><tbody><tr><td><strong>company</strong>  <br><em>optional</em></td><td>Associated company ID</td><td>string</td></tr><tr><td><strong>msg</strong>  <br><em>optional</em></td><td>Validation message</td><td>string</td></tr><tr><td><strong>user</strong>  <br><em>optional</em></td><td>Associated user ID</td><td>string</td></tr><tr><td><strong>valid</strong>  <br><em>optional</em></td><td>Boolean indicating if the user is valid</td><td>boolean</td></tr></tbody></table>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="security-25">Security<a href="#security-25" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Name</th><th>Scopes</th></tr></thead><tbody><tr><td><strong>Bearer</strong></td><td><strong>clearml</strong></td><td>system,root</td></tr></tbody></table></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/latest/docs/references/api/apps"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">apps</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/latest/docs/references/api/datasets"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">datasets</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#post-authadd_user" class="table-of-contents__link toc-highlight">POST /auth.add_user</a></li><li><a href="#post-authcreate_credentials" class="table-of-contents__link toc-highlight">POST /auth.create_credentials</a></li><li><a href="#post-authcreate_service_user" class="table-of-contents__link toc-highlight">POST /auth.create_service_user</a></li><li><a href="#post-authcreate_user" class="table-of-contents__link toc-highlight">POST /auth.create_user</a></li><li><a href="#post-authdelete_user" class="table-of-contents__link toc-highlight">POST /auth.delete_user</a></li><li><a href="#post-authedit_credentials" class="table-of-contents__link toc-highlight">POST /auth.edit_credentials</a></li><li><a href="#post-authedit_user" class="table-of-contents__link toc-highlight">POST /auth.edit_user</a></li><li><a href="#post-authfixed_users_mode" class="table-of-contents__link toc-highlight">POST /auth.fixed_users_mode</a></li><li><a href="#post-authgenerate_endpoint_router_token" class="table-of-contents__link toc-highlight">POST /auth.generate_endpoint_router_token</a></li><li><a href="#post-authgenerate_router_token" class="table-of-contents__link toc-highlight">POST /auth.generate_router_token</a></li><li><a href="#post-authget_credentials" class="table-of-contents__link toc-highlight">POST /auth.get_credentials</a></li><li><a href="#post-authget_router_tokens" class="table-of-contents__link toc-highlight">POST /auth.get_router_tokens</a></li><li><a href="#post-authget_task_token" class="table-of-contents__link toc-highlight">POST /auth.get_task_token</a></li><li><a href="#post-authget_task_token_for_user" class="table-of-contents__link toc-highlight">POST /auth.get_task_token_for_user</a></li><li><a href="#post-authget_token_for_user" class="table-of-contents__link toc-highlight">POST /auth.get_token_for_user</a></li><li><a href="#post-authget_users_info" class="table-of-contents__link toc-highlight">POST /auth.get_users_info</a></li><li><a href="#post-authlocate_credentials" class="table-of-contents__link toc-highlight">POST /auth.locate_credentials</a></li><li><a href="#post-authlogin" class="table-of-contents__link toc-highlight">POST /auth.login</a></li><li><a href="#post-authlogout" class="table-of-contents__link toc-highlight">POST /auth.logout</a></li><li><a href="#post-authredirect_to_router" class="table-of-contents__link toc-highlight">POST /auth.redirect_to_router</a></li><li><a href="#post-authreload_config" class="table-of-contents__link toc-highlight">POST /auth.reload_config</a></li><li><a href="#post-authrevoke_credentials" class="table-of-contents__link toc-highlight">POST /auth.revoke_credentials</a></li><li><a href="#post-authrevoke_router_tokens" class="table-of-contents__link toc-highlight">POST /auth.revoke_router_tokens</a></li><li><a href="#post-authset_credentials" class="table-of-contents__link toc-highlight">POST /auth.set_credentials</a></li><li><a href="#post-authvalidate_router_code" class="table-of-contents__link toc-highlight">POST /auth.validate_router_code</a></li><li><a href="#post-authvalidate_token" class="table-of-contents__link toc-highlight">POST /auth.validate_token</a></li><li><a href="#post-authvalidate_user" class="table-of-contents__link toc-highlight">POST /auth.validate_user</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/@KliqueAI" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://klique.ai/resources/content-hub/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Klique Content Hub</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Klique. Built with Docusaurus.</div></div></div></footer></div>
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTQFXHGP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --></body>
+</html>

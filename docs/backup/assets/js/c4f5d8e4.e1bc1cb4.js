@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkklique_docs=globalThis.webpackChunkklique_docs||[]).push([[2634],{30192(s,u,c){c.r(u),c.d(u,{default:()=>a});c(96540);var e=c(56347),l=c(86025),o=c(74848);function a(){return(0,o.jsx)(e.rd,{to:(0,l.Ay)("/docs/")})}}}]);
