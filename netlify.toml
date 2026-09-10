@@ -1,0 +1,18 @@
+# ---------------------------------------------------------------------------
+# netlify.toml for the DOCS repo — STATIC OUTPUT ONLY
+#
+# This assumes the repo contains the already-built Docusaurus output
+# (index.html, assets/, etc.) and NOT the Docusaurus source project. There's
+# no source to compile, so there's no [build] command — Netlify just serves
+# these files directly.
+# ---------------------------------------------------------------------------
+
+[build]
+  publish = "."
+
+# No `command` needed — there's nothing to build. Netlify will just publish
+# whatever's committed to the repo root on every push.
+#
+# The "ignore build" idea from the source-project version doesn't apply
+# here either — there's no expensive build step to skip, so every push
+# just republishes the static files, which is instant either way.
