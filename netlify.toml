@@ -16,3 +16,19 @@
 # The "ignore build" idea from the source-project version doesn't apply
 # here either — there's no expensive build step to skip, so every push
 # just republishes the static files, which is instant either way.
+
+# ---------------------------------------------------------------------------
+# Preview convenience only: since the real content lives nested at
+# /docs/latest/docs/ (not at the true root), visiting the bare Netlify URL
+# — https://klique-docs.netlify.app/ or a deploy-preview subdomain — shows
+# nothing at "/" by default. This sends anyone visiting root straight to the
+# actual homepage instead.
+#
+# This has no effect on the production path (klique.ai/docs/latest/docs/):
+# the website's proxy redirect targets /docs/latest/docs/ directly on this
+# site, so it never touches "/" and never triggers this rule.
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/"
+  to = "/docs/latest/docs/"
+  status = 302
